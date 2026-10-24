@@ -48,9 +48,13 @@ html.js-anim .reveal.is-visible {
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+}
+
+.hero__grid > * {
+  min-width: 0;
 }
 
 .hero__motto {
@@ -273,9 +277,13 @@ html.js-anim .reveal.is-visible {
 /* 4. Featured Game: SL BAD BOY Golden-Hour 3D Showcase Stage */
 .featured-game-shell {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: clamp(1.35rem, 3vw, 2.5rem);
   align-items: stretch;
+}
+
+.featured-game-shell > * {
+  min-width: 0;
 }
 
 .runner-stage {
@@ -549,9 +557,13 @@ html.js-anim .reveal.is-visible {
 /* 6. Crest Symbolism Anatomy Grid (About Page) */
 .crest-anatomy {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(1.6rem, 4vw, 3rem);
   align-items: center;
+}
+
+.crest-anatomy > * {
+  min-width: 0;
 }
 
 .crest-showcase-panel {

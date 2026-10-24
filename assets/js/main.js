@@ -10,37 +10,45 @@
   var config = window.SDS_SITE_CONFIG || {};
 
   var SOCIAL_META = {
+    instagram: {
+      label: "Instagram · Latest News",
+      ariaLabel: "Follow Shaun David Studios on Instagram for latest news",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
+    },
     youtube: {
       label: "YouTube",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.27 3.6-6.27 3.6Z"/></svg>'
+      ariaLabel: "Shaun David Studios on YouTube",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.27 3.6-6.27 3.6Z"/></svg>'
     },
     x: {
       label: "X (Twitter)",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z"/></svg>'
-    },
-    instagram: {
-      label: "Instagram",
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
+      ariaLabel: "Shaun David Studios on X",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z"/></svg>'
     },
     linkedin: {
       label: "LinkedIn",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95V21h-4V9Z"/></svg>'
+      ariaLabel: "Shaun David Studios on LinkedIn",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95V21h-4V9Z"/></svg>'
     },
     discord: {
       label: "Discord",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.4 2.8a13.7 13.7 0 0 0-.64 1.32 18.27 18.27 0 0 0-5.52 0A13.7 13.7 0 0 0 8.6 2.8a19.74 19.74 0 0 0-4.93 1.57C.56 9.04-.29 13.58.13 18.06a19.9 19.9 0 0 0 6.03 3.06c.49-.66.92-1.36 1.29-2.1a12.9 12.9 0 0 1-2.03-.98c.17-.12.34-.25.5-.38a14.17 14.17 0 0 0 12.16 0c.17.13.33.26.5.38-.65.39-1.33.72-2.03.98.37.74.8 1.44 1.29 2.1a19.84 19.84 0 0 0 6.03-3.06c.5-5.19-.85-9.69-3.55-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.96 0c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>'
+      ariaLabel: "Shaun David Studios on Discord",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.4 2.8a13.7 13.7 0 0 0-.64 1.32 18.27 18.27 0 0 0-5.52 0A13.7 13.7 0 0 0 8.6 2.8a19.74 19.74 0 0 0-4.93 1.57C.56 9.04-.29 13.58.13 18.06a19.9 19.9 0 0 0 6.03 3.06c.49-.66.92-1.36 1.29-2.1a12.9 12.9 0 0 1-2.03-.98c.17-.12.34-.25.5-.38a14.17 14.17 0 0 0 12.16 0c.17.13.33.26.5.38-.65.39-1.33.72-2.03.98.37.74.8 1.44 1.29 2.1a19.84 19.84 0 0 0 6.03-3.06c.5-5.19-.85-9.69-3.55-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.96 0c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42Z"/></svg>'
     },
     itchio: {
       label: "itch.io",
-      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7.5 6.5 4h11L20 7.5v3a2.5 2.5 0 0 1-4 2 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4-2v-3Z"/><path d="M5 12.5V20h14v-7.5"/><path d="M9.5 16h5"/></svg>'
+      ariaLabel: "Shaun David Studios on itch.io",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7.5 6.5 4h11L20 7.5v3a2.5 2.5 0 0 1-4 2 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4-2v-3Z"/><path d="M5 12.5V20h14v-7.5"/><path d="M9.5 16h5"/></svg>'
     },
     playStore: {
       label: "Google Play",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.2c-.38.4-.6 1.02-.6 1.82v15.96c0 .8.22 1.42.6 1.82l.1.09L12.64 13v-.2L3.7 2.1l-.1.1Zm11.98 13.78-2.98-2.98v-.2l2.98-2.98.07.04 3.53 2c1.01.57 1.01 1.51 0 2.08l-3.53 2-.07.04ZM15.65 16 12.64 13 3.6 22.04c.34.36.9.4 1.53.05L15.65 16Zm0-8L5.13 1.91c-.63-.35-1.19-.31-1.53.05L12.64 11l3.01-3Z"/></svg>'
+      ariaLabel: "Shaun David Studios on Google Play",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.2c-.38.4-.6 1.02-.6 1.82v15.96c0 .8.22 1.42.6 1.82l.1.09L12.64 13v-.2L3.7 2.1l-.1.1Zm11.98 13.78-2.98-2.98v-.2l2.98-2.98.07.04 3.53 2c1.01.57 1.01 1.51 0 2.08l-3.53 2-.07.04ZM15.65 16 12.64 13 3.6 22.04c.34.36.9.4 1.53.05L15.65 16Zm0-8L5.13 1.91c-.63-.35-1.19-.31-1.53.05L12.64 11l3.01-3Z"/></svg>'
     },
     github: {
       label: "GitHub",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.39-3.88-1.39-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.02 11.02 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>'
+      ariaLabel: "Shaun David Studios on GitHub",
+      icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.39-3.88-1.39-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.02 11.02 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>'
     }
   };
 
@@ -181,6 +189,7 @@
           key: key,
           url: url.trim(),
           label: SOCIAL_META[key].label,
+          ariaLabel: SOCIAL_META[key].ariaLabel || SOCIAL_META[key].label,
           icon: SOCIAL_META[key].icon
         });
       }
@@ -209,7 +218,9 @@
             return (
               '<li><a href="' +
               escapeHtml(item.url) +
-              '" target="_blank" rel="noopener noreferrer">' +
+              '" target="_blank" rel="noopener noreferrer" aria-label="' +
+              escapeHtml(item.ariaLabel) +
+              '">' +
               item.icon +
               "<span>" +
               escapeHtml(item.label) +
@@ -223,8 +234,8 @@
             return (
               '<li><a class="social-pill" href="' +
               escapeHtml(item.url) +
-              '" target="_blank" rel="noopener noreferrer" aria-label="Shaun David Studios on ' +
-              escapeHtml(item.label) +
+              '" target="_blank" rel="noopener noreferrer" aria-label="' +
+              escapeHtml(item.ariaLabel) +
               '">' +
               item.icon +
               "<span>" +
@@ -249,7 +260,7 @@
       } else {
         slot.hidden = false;
         slot.innerHTML =
-          '<a href="mailto:' +
+          '<a class="site-footer__email" href="mailto:' +
           escapeHtml(email) +
           '">' +
           escapeHtml(email) +
@@ -307,7 +318,6 @@
   /* 4. Configurable Project Links, Release Dates & Screenshots (No Repo Links) */
   function hydrateProjects() {
     var projects = config.projects || {};
-
     Object.keys(projects).forEach(function (id) {
       var proj = projects[id];
       if (!proj) return;
@@ -378,64 +388,50 @@
     });
   }
 
-  /* 5. Optional Additional News Updates Hydration & Category Filtering */
+  /* 5. News & Category Filters */
   function hydrateNewsAndFilters() {
     var feed = document.querySelector("[data-news-feed]");
-    var extra = Array.isArray(config.additionalUpdates) ? config.additionalUpdates : [];
-
-    if (feed && extra.length > 0) {
-      var prependedHtml = extra
-        .filter(function (u) {
-          return u && u.title && u.summary;
+    if (feed && Array.isArray(config.newsPosts) && config.newsPosts.length > 0) {
+      var prepended = config.newsPosts
+        .filter(function (post) {
+          return post && post.title && post.summary;
         })
-        .map(function (u) {
-          var cat = u.category || "announcement";
-          var catLabel = u.categoryLabel || "Studio Update";
-          var dateStr = u.date || "";
-          var iso = u.isoDate || "";
-          var linkHtml =
-            isValidHttpsUrl(u.linkUrl) || (typeof u.linkUrl === "string" && u.linkUrl.startsWith("/"))
-              ? '<p style="margin-top:1rem;"><a class="btn btn--ghost btn--sm" href="' +
-                escapeHtml(u.linkUrl) +
-                '">' +
-                escapeHtml(u.linkLabel || "Read Details") +
-                "</a></p>"
-              : "";
-
+        .map(function (post) {
+          var cat = post.category || "announcement";
+          var catLabel = post.categoryLabel || "Studio Update";
+          var dateStr = post.date || "Studio Log";
           return (
             '<article class="sds-card news-entry" data-filter-item="' +
             escapeHtml(cat) +
             '">' +
             '<div class="news-entry__meta">' +
-            (dateStr
-              ? '<time class="news-entry__date"' +
-                (iso ? ' datetime="' + escapeHtml(iso) + '"' : "") +
-                ">" +
-                escapeHtml(dateStr) +
-                "</time>"
-              : "") +
+            '<time class="news-entry__date">' +
+            escapeHtml(dateStr) +
+            "</time>" +
             '<span class="badge badge--status">' +
             escapeHtml(catLabel) +
             "</span>" +
             "</div>" +
             '<div class="news-entry__body">' +
-            "<h2>" +
-            escapeHtml(u.title) +
-            "</h2>" +
+            "<h3>" +
+            escapeHtml(post.title) +
+            "</h3>" +
             "<p>" +
-            escapeHtml(u.summary) +
+            escapeHtml(post.summary) +
             "</p>" +
-            linkHtml +
             "</div>" +
             "</article>"
           );
         })
         .join("");
 
-      feed.insertAdjacentHTML("afterbegin", prependedHtml);
+      if (prepended) {
+        feed.insertAdjacentHTML("afterbegin", prepended);
+      }
     }
 
-    document.querySelectorAll("[data-filter-group]").forEach(function (group) {
+    var filterGroups = document.querySelectorAll("[data-filter-group]");
+    filterGroups.forEach(function (group) {
       var targetSelector = group.getAttribute("data-filter-group");
       var scope = targetSelector ? document.querySelector(targetSelector) : document;
       if (!scope) return;
@@ -445,7 +441,7 @@
 
       buttons.forEach(function (btn) {
         btn.addEventListener("click", function () {
-          var filterVal = btn.getAttribute("data-filter") || "all";
+          var selected = btn.getAttribute("data-filter") || "all";
           buttons.forEach(function (b) {
             var active = b === btn;
             b.classList.toggle("is-active", active);
@@ -454,12 +450,13 @@
 
           var items = scope.querySelectorAll("[data-filter-item]");
           var visibleCount = 0;
-
           items.forEach(function (item) {
-            var categories = (item.getAttribute("data-filter-item") || "").split(/\s+/);
-            var matches = filterVal === "all" || categories.indexOf(filterVal) !== -1;
-            item.hidden = !matches;
-            if (matches) visibleCount++;
+            var cats = (item.getAttribute("data-filter-item") || "")
+              .toLowerCase()
+              .split(/\s+/);
+            var match = selected === "all" || cats.indexOf(selected) !== -1;
+            item.hidden = !match;
+            if (match) visibleCount++;
           });
 
           if (emptyMsg) {
@@ -470,71 +467,102 @@
     });
   }
 
-  /* 6. JSON-LD & Canonical Runtime Enhancement */
+  /* 6. Dynamic Canonical, Open Graph URL & JSON-LD Enhancement when `siteUrl` is configured */
   function enhanceStructuredData() {
-    var verifiedSocials = getVerifiedSocials().map(function (s) {
+    var verifiedSocialUrls = getVerifiedSocials().map(function (s) {
       return s.url;
     });
-    var siteUrl = isValidHttpsUrl(config.siteUrl)
+    var siteOrigin = isValidHttpsUrl(config.siteUrl)
       ? config.siteUrl.trim().replace(/\/+$/, "")
       : "";
     var email = isValidEmail(config.contactEmail) ? config.contactEmail.trim() : "";
 
-    if (siteUrl && !document.querySelector('link[rel="canonical"]')) {
-      var link = document.createElement("link");
-      link.rel = "canonical";
-      link.href = siteUrl + window.location.pathname;
-      document.head.appendChild(link);
+    if (siteOrigin) {
+      var pagePath = window.location.pathname || "/";
+      var canonicalHref = siteOrigin + pagePath;
+
+      var existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (!existingCanonical) {
+        var link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        link.setAttribute("href", canonicalHref);
+        document.head.appendChild(link);
+      }
+
+      var ogUrl = document.querySelector('meta[property="og:url"]');
+      if (!ogUrl) {
+        var meta = document.createElement("meta");
+        meta.setAttribute("property", "og:url");
+        meta.setAttribute("content", canonicalHref);
+        document.head.appendChild(meta);
+      }
     }
 
     var ldScripts = document.querySelectorAll('script[type="application/ld+json"]');
     ldScripts.forEach(function (scriptEl) {
       try {
         var data = JSON.parse(scriptEl.textContent);
-        var graph = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
-        var updated = false;
+        var modified = false;
 
-        graph.forEach(function (node) {
+        function enrichNode(node) {
           if (!node || typeof node !== "object") return;
-          if (node["@type"] === "Organization" || node["@type"] === "Person") {
-            if (verifiedSocials.length > 0) {
-              node.sameAs = verifiedSocials;
-              updated = true;
-            } else if ("sameAs" in node) {
-              delete node.sameAs;
-              updated = true;
+          var type = node["@type"];
+          if (type === "Organization") {
+            if (siteOrigin && !node.url) {
+              node.url = siteOrigin + "/";
+              modified = true;
+            }
+            if (email && !node.email) {
+              node.email = email;
+              modified = true;
+            }
+            if (verifiedSocialUrls.length > 0) {
+              var existingSameAs = Array.isArray(node.sameAs) ? node.sameAs : [];
+              verifiedSocialUrls.forEach(function (u) {
+                if (existingSameAs.indexOf(u) === -1) existingSameAs.push(u);
+              });
+              node.sameAs = existingSameAs;
+              modified = true;
             }
           }
-          if (node["@type"] === "Organization" && email) {
-            node.email = email;
-            updated = true;
+          if (type === "Person" && siteOrigin && !node.url) {
+            node.url = siteOrigin + "/shaun-david/";
+            modified = true;
           }
-          if (siteUrl && node["@type"] === "Organization" && !node.url) {
-            node.url = siteUrl + "/";
-            updated = true;
+          if (type === "WebSite" && siteOrigin && !node.url) {
+            node.url = siteOrigin + "/";
+            modified = true;
           }
-        });
-
-        if (updated) {
-          scriptEl.textContent = JSON.stringify(data, null, 2);
         }
-      } catch (_e) {
-        /* Keep valid static JSON-LD untouched */
+
+        if (Array.isArray(data["@graph"])) {
+          data["@graph"].forEach(enrichNode);
+        } else {
+          enrichNode(data);
+        }
+
+        if (modified) {
+          scriptEl.textContent = JSON.stringify(data);
+        }
+      } catch (_err) {
+        /* Keep static JSON-LD intact if parsing fails */
       }
     });
   }
 
-  /* 7. Interactive Shaun David Studios Production Ident Modal */
+  /* 7. Interactive Studio Ident Modal */
   function initStudioIdentModal() {
-    var modal = document.getElementById("sds-ident-modal");
-    if (!modal) return;
-
     var openBtns = document.querySelectorAll("[data-open-ident]");
+    var modal = document.getElementById("sds-ident-modal");
+    if (!modal || openBtns.length === 0) return;
+
     var closeBtns = modal.querySelectorAll("[data-close-ident]");
-    var timerId = null;
     var lastFocused = null;
+    var timerId = null;
+
     var reducedMotion =
-      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function playIdentChord() {
       if (reducedMotion) return;

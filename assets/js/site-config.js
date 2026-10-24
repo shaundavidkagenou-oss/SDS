@@ -1,66 +1,56 @@
 /**
  * ============================================================================
- * SHAUN DAVID STUDIOS — OFFICIAL WEBSITE CONFIGURATION
+ * SHAUN DAVID STUDIOS — CENTRAL STUDIO CONFIGURATION
  * ============================================================================
- * Edit this file to update public URLs, contact email, social links, project
- * release links, screenshots, or announcements across the entire website.
- *
- * SAFETY & DISPLAY RULES:
- * - Leave any unverified URL as an empty string ("").
- * - Empty strings are automatically omitted from buttons, navigation, footers,
- *   and Schema.org JSON-LD `sameAs` arrays — visitors will never see broken
- *   links or "TODO" placeholders.
- * - Once your live Cloudflare Pages or custom HTTPS domain is active, set
- *   `siteUrl` below AND run:
- *     node scripts/configure-domain.mjs https://your-live-domain
+ * Edit this file whenever you want to:
+ *   1. Set your live custom domain (`siteUrl`) after deploying to Cloudflare Pages
+ *      (also run `node scripts/configure-domain.mjs https://your-domain.com`
+ *       to stamp static canonical URLs and `sitemap.xml` automatically).
+ *   2. Update official studio contact details (`contactEmail`).
+ *   3. Add verified official social profiles (`socials`) — empty strings are
+ *      automatically hidden across the website and omitted from `sameAs` JSON-LD.
+ *   4. Add official play/download links, release dates, or gameplay screenshots
+ *      for any studio game or software project.
+ *   5. Publish new studio announcements or patch notes (`newsPosts`).
  * ============================================================================
  */
 window.SDS_SITE_CONFIG = {
   studioName: "Shaun David Studios",
   shortName: "SDS",
   tagline: "Creating Music · Games · & Everything Beyond",
-  foundedLocation: "Sri Lanka",
-
-  founder: {
-    name: "Shaun David",
-    alternateName: "H.K.S Sathsara",
-    role: "Founder & CEO of Shaun David Studios",
-    shortRole: "Founder & CEO",
-    recognition: "Best English Announcer in Western Province, Sri Lanka",
-    location: "Sri Lanka"
-  },
+  country: "Sri Lanka",
 
   /**
-   * Deployed production origin (HTTPS, no trailing slash).
-   * Example: "https://shaundavidstudios.com" or "https://sds.pages.dev"
-   * Leave "" until the real production URL is verified.
+   * Leave blank ("") until your official domain or pages.dev URL is live.
+   * Never put placeholder domains like example.com here.
    */
   siteUrl: "",
 
   /**
-   * Official contact & support email address.
+   * Founder & CEO Identity
+   */
+  founder: {
+    name: "Shaun David",
+    alternateName: "H.K.S Sathsara",
+    role: "Founder & CEO",
+    country: "Sri Lanka",
+    recognition: "Best English Announcer in Western Province, Sri Lanka"
+  },
+
+  /**
+   * Official Studio Contact & Support Email.
    */
   contactEmail: "official.shaundavidstudios@gmail.com",
 
   /**
-   * Studio branding image paths (relative to site root).
-   */
-  logo: {
-    original: "/assets/img/sds-logo-original.jpg",
-    crestGold: "/assets/img/sds-crest-gold.png",
-    crestIvory: "/assets/img/sds-crest-ivory.png",
-    lockupDark: "/assets/img/sds-lockup-dark.png",
-    ogImage: "/assets/img/og-image.png"
-  },
-
-  /**
-   * Official verified public social profiles.
-   * Add verified HTTPS URLs when ready — empty entries remain hidden automatically.
+   * Official Social & Store Profiles.
+   * Only non-empty valid https:// URLs are rendered on the live site and added
+   * to Schema.org `Organization` / `Person` `sameAs` arrays.
    */
   socials: {
+    instagram: "https://www.instagram.com/shaun.david.studios/",
     youtube: "",
     x: "",
-    instagram: "",
     linkedin: "",
     discord: "",
     itchio: "",
@@ -69,49 +59,48 @@ window.SDS_SITE_CONFIG = {
   },
 
   /**
-   * Verified Games & Software Portfolio Configuration.
-   * Supply `playUrl`, `downloadUrl`, `releaseDate`, or `screenshots` (array of
-   * `{ src: "/assets/img/...", alt: "...", caption: "..." }`) when publicly released.
+   * Official Portfolio Projects & Release Links.
+   * When a public web build or store listing launches, paste the URL into
+   * `playUrl` or `downloadUrl` and the Play / Download buttons will activate!
    */
   projects: {
     "sl-bad-boy": {
-      id: "sl-bad-boy",
       title: "SL BAD BOY — Schoolboy Rush",
       category: "game",
       status: "In Active Development",
-      platforms: "Web Browser & Android",
+      platforms: ["Web Browser", "Android"],
       packageId: "lk.shaun.slbadboy",
-      releaseDate: "",
       playUrl: "",
       downloadUrl: "",
+      releaseDate: "",
       screenshots: []
     },
     "sds-geox-meetings": {
-      id: "sds-geox-meetings",
       title: "SDS Geox Meetings",
       category: "software",
       status: "In Development",
-      platforms: "Web Application",
-      releaseDate: "",
+      platforms: ["Web Application"],
       playUrl: "",
       downloadUrl: "",
+      releaseDate: "",
       screenshots: []
     },
-    "routemora": {
-      id: "routemora",
+    routemora: {
       title: "RouteMora",
       category: "software",
       status: "Active Project",
-      platforms: "Web Application",
-      releaseDate: "",
+      platforms: ["Web Application"],
       playUrl: "",
       downloadUrl: "",
+      releaseDate: "",
       screenshots: []
     }
   },
 
   /**
-   * Optional quick-publish updates prepended to the News & Development Updates page.
+   * Additional News / Patch Note entries (optional).
+   * Static HTML entries in `/news/index.html` are always crawlable without JS;
+   * any items added to this array will prepend dynamically to the news feed.
    */
-  additionalUpdates: []
+  newsPosts: []
 };

@@ -12,6 +12,7 @@ Official website repository for **Shaun David Studios** (**SDS**), an independen
 - **Location**: Sri Lanka
 - **Founder & CEO**: Shaun David (Sri Lankan name: **H.K.S Sathsara**) — recognized as **Best English Announcer in Western Province, Sri Lanka**
 - **Contact & Support**: `official.shaundavidstudios@gmail.com`
+- **Official Instagram (Latest News)**: [@shaun.david.studios](https://www.instagram.com/shaun.david.studios/)
 - **Featured Portfolio**:
   1. **SL BAD BOY — Schoolboy Rush** — Original 3D Sri Lankan endless runner for Web and Android (`Three.js`, `JavaScript`, `Vite`, `Capacitor`, `Web Audio API`)
   2. **SDS Geox Meetings** — Real-time browser-based collaborative visual whiteboard and strategy hub (`React 18`, `TypeScript`, `Node.js`, `WebSockets`)

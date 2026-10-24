@@ -7,13 +7,16 @@
  *   2. Unique <title> and <meta name="description"> across all HTML pages
  *   3. Single <h1> per page
  *   4. All <img> tags have non-empty alt attributes
- *   5. All internal relative href/src links resolve to real files in the repo
- *   6. All JSON-LD <script type="application/ld+json"> blocks parse cleanly
- *   7. No placeholder domains (example.com, yourdomain.com, etc.) exist in HTML/XML/robots
- *   8. Owner-verified details:
+ *   5. All 24x24 icon <svg> tags have explicit width & height attributes (prevents giant icon glitches)
+ *   6. All CSS multi-column grids use minmax(0, ...) (prevents PC horizontal overflow)
+ *   7. All internal relative href/src links resolve to real files in the repo
+ *   8. All JSON-LD <script type="application/ld+json"> blocks parse cleanly
+ *   9. No placeholder domains exist in HTML/XML/robots
+ *  10. Owner-verified details:
  *      - H.K.S Sathsara (Person.alternateName + visible copy)
  *      - Best English Announcer in Western Province, Sri Lanka
  *      - official.shaundavidstudios@gmail.com (Contact & Support email + mailto:)
+ *      - https://www.instagram.com/shaun.david.studios/ (Official Instagram for Latest News)
  *      - No "View GitHub Repository" buttons or GitHub links in HTML
  *      - No "SD Education" references in HTML or site-config.js
  *      - Mobile quick-navigation dock (.mobile-dock) present on every HTML page
@@ -114,14 +117,27 @@ for (const page of HTML_PAGES) {
     fail(`${page}: Missing .mobile-dock navigation.`);
   }
 
-  // Check official support email presence on every page
+  // Check official support email & official Instagram presence on every page
   if (!html.includes("mailto:official.shaundavidstudios@gmail.com")) {
     fail(`${page}: Missing mailto:official.shaundavidstudios@gmail.com link.`);
+  }
+  if (!html.includes("https://www.instagram.com/shaun.david.studios/")) {
+    fail(`${page}: Missing official Instagram link https://www.instagram.com/shaun.david.studios/`);
   }
 
   // Check H.K.S Sathsara presence on every page
   if (!html.includes("H.K.S Sathsara")) {
     fail(`${page}: Missing founder Sri Lankan name 'H.K.S Sathsara'.`);
+  }
+
+  // Check that every 24x24 icon <svg> has explicit width & height attributes
+  const svgTags = html.match(/<svg\b[^>]*>/gi) || [];
+  for (const tag of svgTags) {
+    if (/viewBox="0 0 24 24"/i.test(tag)) {
+      if (!/\bwidth="\d+"/i.test(tag) || !/\bheight="\d+"/i.test(tag)) {
+        fail(`${page}: 24x24 icon <svg> missing explicit width/height attributes -> ${tag}`);
+      }
+    }
   }
 
   // Check <title>
@@ -228,7 +244,7 @@ for (const recognitionPage of ["index.html", "about/index.html", "shaun-david/in
   }
 }
 
-// 4. Check site-config.js integrity
+// 4. Check site-config.js & main.js SVG icon sizing
 const siteConfigText = fs.readFileSync(path.join(ROOT, "assets/js/site-config.js"), "utf8");
 if (/sd-education|SD Education/i.test(siteConfigText)) {
   fail("assets/js/site-config.js still references SD Education.");
@@ -236,11 +252,30 @@ if (/sd-education|SD Education/i.test(siteConfigText)) {
 if (!siteConfigText.includes("official.shaundavidstudios@gmail.com")) {
   fail("assets/js/site-config.js missing official.shaundavidstudios@gmail.com.");
 }
+if (!siteConfigText.includes("https://www.instagram.com/shaun.david.studios/")) {
+  fail("assets/js/site-config.js missing Instagram https://www.instagram.com/shaun.david.studios/.");
+}
 if (!siteConfigText.includes("H.K.S Sathsara")) {
   fail("assets/js/site-config.js missing H.K.S Sathsara.");
 }
 
-// 5. Check robots.txt and sitemap.xml for placeholder domains
+const mainJsText = fs.readFileSync(path.join(ROOT, "assets/js/main.js"), "utf8");
+const jsSvgs = mainJsText.match(/<svg\b[^>]*>/gi) || [];
+for (const tag of jsSvgs) {
+  if (!/\bwidth="\d+"/i.test(tag) || !/\bheight="\d+"/i.test(tag)) {
+    fail(`assets/js/main.js: Dynamic icon <svg> missing explicit width/height -> ${tag}`);
+  }
+}
+
+// 5. Check CSS grids prevent horizontal overflow on PC
+for (const cssFile of ["assets/css/main.css", "assets/css/animations.css"]) {
+  const css = fs.readFileSync(path.join(ROOT, cssFile), "utf8");
+  if (/grid-template-columns:\s*\d+(?:\.\d+)?fr\s+\d+(?:\.\d+)?fr/.test(css)) {
+    fail(`${cssFile}: Found bare multi-column fr grid without minmax(0, ...) overflow guard.`);
+  }
+}
+
+// 6. Check robots.txt and sitemap.xml for placeholder domains
 for (const seoFile of ["robots.txt", "sitemap.xml"]) {
   const content = fs.readFileSync(path.join(ROOT, seoFile), "utf8");
   if (/(example\.com|yourdomain\.com|placeholder\.com)/i.test(content)) {
@@ -249,10 +284,11 @@ for (const seoFile of ["robots.txt", "sitemap.xml"]) {
 }
 
 if (errors === 0) {
-  pass(`All ${HTML_PAGES.length} HTML pages passed unique <title>, meta description, single <h1>, image alt, and mobile-dock checks.`);
+  pass(`All ${HTML_PAGES.length} HTML pages passed unique <title>, meta description, single <h1>, image alt, and SVG sizing checks.`);
+  pass("All CSS multi-column grids use minmax(0, ...) overflow guards for PC & mobile.");
   pass("All internal links, stylesheets, scripts, icons, and images resolve cleanly.");
-  pass("All Schema.org JSON-LD blocks (Organization, Person with H.K.S Sathsara, ProfilePage, VideoGame) parsed cleanly.");
-  pass("Owner-verified details confirmed: H.K.S Sathsara, Best English Announcer in Western Province, official.shaundavidstudios@gmail.com, 3-project portfolio (no SD Education, no GitHub buttons).");
+  pass("All Schema.org JSON-LD blocks (Organization, Person with H.K.S Sathsara, Instagram sameAs, ProfilePage, VideoGame) parsed cleanly.");
+  pass("Owner-verified details confirmed: H.K.S Sathsara, Best English Announcer in Western Province, official.shaundavidstudios@gmail.com, Instagram (@shaun.david.studios for Latest News), 3-project portfolio.");
   console.log("\nVerification succeeded with 0 errors.");
 } else {
   console.error(`\nVerification failed with ${errors} error(s).`);
