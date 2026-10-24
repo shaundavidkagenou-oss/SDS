@@ -1,0 +1,831 @@
+/* ==========================================================================
+   SHAUN DAVID STUDIOS — LOGO-MATCHED ANIMATIONS & INTERACTIVE STAGES
+   GPU-composited choreography for BOTH Mobile Touch & Desktop PC.
+   Respects `prefers-reduced-motion: reduce` completely.
+   ========================================================================== */
+
+/* 1. Ambient Forge-Ember & Compass Vector Canvas (Desktop + Mobile Touch) */
+.ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.76;
+}
+
+/* 2. Progressive Scroll Reveal (Always visible if JS is disabled!) */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js-anim .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+html.js-anim .reveal {
+  transition: opacity 0.68s var(--ease-out-expo), transform 0.68s var(--ease-out-expo);
+  transition-delay: var(--delay, 0ms);
+}
+
+html.js-anim .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Home Hero Stage & Clockwork Compass Astrolabe */
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding: clamp(2.2rem, 6vw, 5.2rem) 0;
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero__grid > * {
+  min-width: 0;
+}
+
+.hero__motto {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 2.2vw, 0.86rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.hero__motto::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.hero__actions {
+  margin-top: 1.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.hero__profiles {
+  margin-top: 1.85rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--ivory-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.hero__profiles-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Clockwork Compass Emblem Rig */
+.astrolabe-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.astrolabe {
+  --aim-deg: 135deg;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  width: min(440px, 88vw);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform 0.25s ease-out;
+}
+
+.astrolabe__glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 174, 88, 0.28) 0%, rgba(214, 174, 88, 0.07) 52%, transparent 72%);
+  filter: blur(18px);
+  animation: pulseAura 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.astrolabe.is-pulsing::after {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  border: 2px solid var(--gold-bright);
+  pointer-events: none;
+  animation: shockwaveRing 0.7s var(--ease-out-expo) forwards;
+}
+
+.astrolabe__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.astrolabe__ring-outer {
+  transform-origin: 250px 250px;
+  animation: spinSlowCW 60s linear infinite;
+}
+
+.astrolabe__ring-gear {
+  transform-origin: 250px 250px;
+  animation: spinSlowCCW 38s linear infinite;
+}
+
+.astrolabe__ring-needle {
+  transform-origin: 250px 250px;
+  transform: rotate(var(--aim-deg, 135deg));
+  transition: transform 0.42s var(--ease-out-expo);
+}
+
+.astrolabe__octagon-draw {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 0;
+  animation: drawOctagon 2.2s var(--ease-out-expo) both;
+}
+
+/* Central Authentic SDS Crest with Metallic Glint */
+.astrolabe__crest-frame {
+  position: relative;
+  width: 55%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(214, 174, 88, 0.24));
+}
+
+.astrolabe__crest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: floatCrest 5.5s ease-in-out infinite;
+}
+
+.astrolabe__crest-frame::after {
+  content: '';
+  position: absolute;
+  inset: -6%;
+  background: linear-gradient(115deg, transparent 36%, rgba(255, 248, 220, 0.26) 50%, transparent 64%);
+  mix-blend-mode: screen;
+  transform: translateX(-130%) rotate(12deg);
+  animation: crestSheen 6.5s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* 4 Interactive Quadrant Nodes around the Crest (48px Thumb-Friendly!) */
+.quadrant-node {
+  position: absolute;
+  z-index: 5;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 12, 19, 0.94);
+  border: 1px solid var(--gold-border-strong);
+  color: var(--gold-bright);
+  cursor: pointer;
+  clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
+  transition: transform 0.25s var(--ease-out-expo), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.quadrant-node svg {
+  width: 20px;
+  height: 20px;
+}
+
+.quadrant-node:hover,
+.quadrant-node[aria-pressed="true"],
+.quadrant-node.is-active {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  color: #06080D;
+  border-color: #FFFFFF;
+  transform: scale(1.12);
+  box-shadow: 0 0 24px rgba(246, 226, 168, 0.6);
+}
+
+.quadrant-node--nw { top: 9%; left: 9%; }
+.quadrant-node--ne { top: 9%; right: 9%; }
+.quadrant-node--sw { bottom: 9%; left: 9%; }
+.quadrant-node--se { bottom: 9%; right: 9%; }
+
+.astrolabe-readout {
+  margin-top: 1.1rem;
+  width: min(440px, 100%);
+  padding: 0.9rem 1.1rem;
+  background: rgba(11, 15, 24, 0.90);
+  border: 1px solid var(--gold-border);
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  text-align: center;
+  min-height: 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.astrolabe-readout__title {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 0.25rem;
+}
+
+.astrolabe-readout__desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.48;
+}
+
+/* 4. Featured Game: SL BAD BOY Golden-Hour 3D Showcase Stage */
+.featured-game-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(1.35rem, 3vw, 2.5rem);
+  align-items: stretch;
+}
+
+.featured-game-shell > * {
+  min-width: 0;
+}
+
+.runner-stage {
+  --sky-top: #1D1128;
+  --sky-mid: #7C2D3E;
+  --sky-horizon: #F29B38;
+  --sun-glow: #FFD27D;
+  position: relative;
+  min-height: 410px;
+  border: 1px solid var(--gold-border);
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 52%, var(--sky-horizon) 78%, #10131C 79%, #090B10 100%);
+  transition: background 0.6s ease;
+}
+
+/* District Sky Variations */
+.runner-stage[data-district="colombo"] {
+  --sky-top: #1B1026;
+  --sky-mid: #8A3044;
+  --sky-horizon: #F59E3D;
+}
+.runner-stage[data-district="kandy"] {
+  --sky-top: #111F2D;
+  --sky-mid: #3C5E66;
+  --sky-horizon: #E5A95C;
+}
+.runner-stage[data-district="ella"] {
+  --sky-top: #0E2224;
+  --sky-mid: #2C695A;
+  --sky-horizon: #F2B863;
+}
+.runner-stage[data-district="galle"] {
+  --sky-top: #181834;
+  --sky-mid: #6E3963;
+  --sky-horizon: #FA8B48;
+}
+.runner-stage[data-district="anuradhapura"] {
+  --sky-top: #26140E;
+  --sky-mid: #96481E;
+  --sky-horizon: #FBBF49;
+}
+.runner-stage[data-district="jaffna"] {
+  --sky-top: #1F1228;
+  --sky-mid: #993C38;
+  --sky-horizon: #F8AD42;
+}
+.runner-stage[data-district="trincomalee"] {
+  --sky-top: #0F1D35;
+  --sky-mid: #2E5A82;
+  --sky-horizon: #F5A352;
+}
+
+/* Low Golden-Hour Solar Disc & God Rays */
+.runner-stage__sun {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  width: 108px;
+  height: 108px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF8DE 0%, var(--sun-glow) 45%, rgba(245, 158, 61, 0) 74%);
+  box-shadow: 0 0 70px rgba(255, 206, 115, 0.65);
+  pointer-events: none;
+}
+
+.runner-stage__rays {
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(from 180deg at 50% 46%, rgba(255, 224, 150, 0.09) 0deg 6deg, transparent 6deg 18deg);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Landmark Silhouette SVG Layer */
+.runner-stage__landmarks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 35%;
+  height: 45%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.landmark-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.45s ease, transform 0.45s var(--ease-out-expo);
+}
+
+.landmark-scene.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 3D Perspective Three-Lane Sri Lankan Highway */
+.runner-stage__road-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36%;
+  background: linear-gradient(180deg, #171B26 0%, #090C12 100%);
+  border-top: 2px solid rgba(255, 210, 125, 0.45);
+  perspective: 220px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.runner-stage__road {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(280px, 78%);
+  height: 220%;
+  transform: translateX(-50%) rotateX(62deg);
+  transform-origin: top center;
+  background:
+    linear-gradient(90deg, rgba(246, 226, 168, 0.45) 0 3px, transparent 3px calc(100% - 3px), rgba(246, 226, 168, 0.45) calc(100% - 3px) 100%),
+    linear-gradient(180deg, #1E2433 0%, #10141E 100%);
+}
+
+.runner-stage__lanes {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(180deg, #F6C453 0 22px, transparent 22px 48px),
+    repeating-linear-gradient(180deg, #F6C453 0 22px, transparent 22px 48px);
+  background-size: 3px 48px, 3px 48px;
+  background-position: 33.33% 0, 66.66% 0;
+  background-repeat: repeat-y;
+  animation: highwayFlow 0.72s linear infinite;
+}
+
+/* HUD Overlay inside Stage */
+.runner-stage__hud-top {
+  position: relative;
+  z-index: 4;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(180deg, rgba(5, 7, 11, 0.82), transparent);
+}
+
+.runner-hud-pill {
+  font-family: var(--font-mono);
+  font-size: clamp(0.64rem, 1.9vw, 0.72rem);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  background: rgba(7, 10, 16, 0.85);
+  border: 1px solid rgba(246, 226, 168, 0.35);
+  color: var(--gold-bright);
+  backdrop-filter: blur(8px);
+}
+
+.runner-stage__hud-bottom {
+  position: relative;
+  z-index: 4;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(0deg, rgba(5, 7, 11, 0.96) 35%, rgba(5, 7, 11, 0.62) 85%, transparent 100%);
+}
+
+.district-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-top: 0.6rem;
+}
+
+.district-btn {
+  padding: 0.42rem 0.72rem;
+  min-height: 38px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(244, 239, 230, 0.09);
+  border: 1px solid rgba(244, 239, 230, 0.20);
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.district-btn:hover {
+  color: #FFFFFF;
+  border-color: var(--gold);
+}
+
+.district-btn[aria-pressed="true"],
+.district-btn.is-active {
+  background: var(--gold);
+  color: #06080D;
+  border-color: var(--gold-bright);
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(214, 174, 88, 0.4);
+}
+
+.stage-caption {
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+}
+
+/* 5. Original CSS/SVG Artwork Previews for Software Portfolio */
+.project-art {
+  position: relative;
+  height: 205px;
+  margin-bottom: 1.35rem;
+  border: 1px solid var(--ivory-border);
+  background: radial-gradient(circle at 50% 35%, rgba(214, 174, 88, 0.12), rgba(7, 9, 15, 0.96) 75%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+
+.project-art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cursor-drift-a {
+  animation: cursorFloatA 6s ease-in-out infinite;
+}
+.cursor-drift-b {
+  animation: cursorFloatB 7s ease-in-out infinite;
+}
+.route-dash-anim {
+  stroke-dasharray: 6 6;
+  animation: dashMarch 12s linear infinite;
+}
+
+/* Configurable Screenshot Gallery Container */
+.project-screenshots {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.project-screenshots figure {
+  border: 1px solid var(--gold-border);
+  background: #07090F;
+  overflow: hidden;
+}
+
+.project-screenshots figcaption {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* 6. Crest Symbolism Anatomy Grid (About Page) */
+.crest-anatomy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.crest-anatomy > * {
+  min-width: 0;
+}
+
+.crest-showcase-panel {
+  position: relative;
+  padding: clamp(1.6rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 45%, rgba(214, 174, 88, 0.16), rgba(9, 12, 19, 0.96) 70%);
+  border: 1px solid var(--gold-border);
+  clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+}
+
+.crest-showcase-panel img {
+  width: min(320px, 72vw);
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+/* 7. Full-Screen Studio Production Ident Modal */
+.ident-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #030407;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.ident-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ident-modal__scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
+  pointer-events: none;
+}
+
+.ident-modal__stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 540px;
+}
+
+.ident-modal__crest {
+  width: min(210px, 52vw);
+  height: auto;
+  margin: 0 auto 1.5rem;
+  filter: grayscale(1) contrast(1.25) drop-shadow(0 0 30px rgba(246, 226, 168, 0.35));
+  transform: scale(0.84);
+  opacity: 0;
+}
+
+.ident-modal.is-open .ident-modal__crest {
+  animation: identCrestReveal 3.6s var(--ease-out-expo) forwards;
+}
+
+.ident-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4.2vw, 2.15rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0;
+}
+
+.ident-modal.is-open .ident-modal__title {
+  animation: identTextReveal 3.4s var(--ease-out-expo) 0.35s forwards;
+}
+
+.ident-modal__sub {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 2.4vw, 0.76rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.55rem;
+  opacity: 0;
+}
+
+.ident-modal.is-open .ident-modal__sub {
+  animation: identTextReveal 3.2s var(--ease-out-expo) 0.65s forwards;
+}
+
+.ident-modal__progress {
+  width: min(260px, 72vw);
+  height: 2px;
+  background: rgba(244, 239, 230, 0.12);
+  margin: 1.75rem auto 1.5rem;
+  overflow: hidden;
+}
+
+.ident-modal__progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #FFFFFF, var(--gold-bright));
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.ident-modal.is-open .ident-modal__progress-bar {
+  animation: identBarFill 3.8s linear forwards;
+}
+
+.ident-modal__close {
+  position: relative;
+  z-index: 3;
+}
+
+/* 8. Keyframes */
+@keyframes spinSlowCW {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinSlowCCW {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulseAura {
+  0%, 100% { transform: scale(0.95); opacity: 0.65; }
+  50% { transform: scale(1.07); opacity: 1; }
+}
+
+@keyframes shockwaveRing {
+  0% { transform: scale(0.75); opacity: 0.9; }
+  100% { transform: scale(1.38); opacity: 0; }
+}
+
+@keyframes floatCrest {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes crestSheen {
+  0%, 64% { transform: translateX(-135%) rotate(12deg); opacity: 0; }
+  72% { opacity: 1; }
+  92%, 100% { transform: translateX(135%) rotate(12deg); opacity: 0; }
+}
+
+@keyframes drawOctagon {
+  from { stroke-dashoffset: 1400; opacity: 0.2; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes highwayFlow {
+  from { background-position: 33.33% 0, 66.66% 0; }
+  to { background-position: 33.33% 48px, 66.66% 48px; }
+}
+
+@keyframes cursorFloatA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(16px, -10px); }
+}
+
+@keyframes cursorFloatB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-14px, 12px); }
+}
+
+@keyframes dashMarch {
+  from { stroke-dashoffset: 120; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes identCrestReveal {
+  0% { opacity: 0; transform: scale(0.82) rotate(-8deg); filter: grayscale(1) brightness(1.4); }
+  35% { opacity: 1; transform: scale(1) rotate(0deg); filter: grayscale(1) contrast(1.2); }
+  75%, 100% { opacity: 1; transform: scale(1.02) rotate(0deg); filter: grayscale(0) drop-shadow(0 0 32px rgba(214, 174, 88, 0.55)); }
+}
+
+@keyframes identTextReveal {
+  0% { opacity: 0; transform: translateY(12px); letter-spacing: 0.26em; }
+  35%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes identBarFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* 9. Responsive Layouts for Hero, Runner Stage & Crest Anatomy */
+@media (max-width: 1024px) {
+  .hero__grid,
+  .featured-game-shell,
+  .crest-anatomy {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .astrolabe {
+    width: min(370px, 86vw);
+    margin: 0.25rem auto 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .quadrant-node {
+    width: 44px;
+    height: 44px;
+  }
+  .quadrant-node--nw { top: 5%; left: 5%; }
+  .quadrant-node--ne { top: 5%; right: 5%; }
+  .quadrant-node--sw { bottom: 5%; left: 5%; }
+  .quadrant-node--se { bottom: 5%; right: 5%; }
+
+  .runner-stage {
+    min-height: 390px;
+  }
+}
+
+/* 10. Strict Reduced-Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ambient-canvas {
+    display: none !important;
+  }
+
+  .reveal,
+  html.js-anim .reveal:not(.is-visible) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .sds-card,
+  .astrolabe {
+    transform: none !important;
+  }
+}

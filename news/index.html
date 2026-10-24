@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News &amp; Development Updates — Shaun David Studios</title>
+  <meta name="description" content="Official studio announcements, game development progress, software updates, and @shaun.david.studios Instagram news from Shaun David Studios in Sri Lanka.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050609">
+  <meta name="author" content="Shaun David (H.K.S Sathsara)">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:site_name" content="Shaun David Studios">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="News &amp; Development Updates — Shaun David Studios">
+  <meta property="og:description" content="Official studio announcements, game development progress, and latest news from Shaun David Studios in Sri Lanka.">
+  <meta property="og:image" content="/assets/img/og-image.png">
+  <meta property="og:image:alt" content="Shaun David Studios crest and updates">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="News &amp; Development Updates — Shaun David Studios">
+  <meta name="twitter:description" content="Official announcements and development logs from Shaun David Studios.">
+  <meta name="twitter:image" content="/assets/img/og-image.png">
+
+  <!-- Favicons & Manifest -->
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preload" href="../assets/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/main.css?v=3">
+  <link rel="stylesheet" href="../assets/css/animations.css?v=3">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "#news-page",
+        "name": "News & Development Updates — Shaun David Studios",
+        "description": "Official studio announcements, development milestones, and release updates from Shaun David Studios.",
+        "isPartOf": {
+          "@id": "#organization"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "#organization",
+        "name": "Shaun David Studios",
+        "alternateName": "SDS",
+        "email": "official.shaundavidstudios@gmail.com",
+        "sameAs": [
+          "https://www.instagram.com/shaun.david.studios/"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/img/sds-logo-original.jpg",
+          "width": 905,
+          "height": 768
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "founder": {
+          "@id": "#shaun-david"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "#shaun-david",
+        "name": "Shaun David",
+        "alternateName": [
+          "H.K.S Sathsara",
+          "H.K.S. Sathsara"
+        ],
+        "jobTitle": "Founder & CEO",
+        "award": "Best English Announcer in Western Province, Sri Lanka",
+        "worksFor": {
+          "@id": "#organization"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="../" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="../assets/img/sds-crest-gold.png" width="42" height="42" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="../">Home</a></li>
+          <li><a class="primary-nav__link" href="../about/">About</a></li>
+          <li><a class="primary-nav__link" href="../shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="../games/">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="./" aria-current="page">News</a></li>
+          <li><a class="primary-nav__link" href="../contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="../games/">Explore Portfolio</a>
+        </div>
+      </nav>
+    </div>
+    <div class="scroll-vernier" aria-hidden="true">
+      <div class="scroll-vernier__bar"></div>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content">
+    <!-- News Hero -->
+    <section class="page-hero" aria-labelledby="news-title">
+      <div class="container">
+        <ol class="breadcrumb" aria-label="Breadcrumb">
+          <li><a href="../">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">News &amp; Development Updates</li>
+        </ol>
+        <div class="eyebrow">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          <span>Official Studio Log</span>
+        </div>
+        <h1 id="news-title" class="page-title">News &amp; Development Updates</h1>
+        <p class="lead" style="max-width: 780px;">
+          Official announcements, engineering progress, and future release notes published directly by <strong>Shaun David Studios</strong> in Sri Lanka.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filterable Updates Stream -->
+    <section class="section" aria-label="Studio Updates Feed">
+      <div class="container" id="news-archive">
+        <!-- Official Instagram Callout for Latest News -->
+        <div class="insta-news-bar reveal">
+          <div style="min-width: 0;">
+            <span class="mono-tag" style="display: block; margin-bottom: 0.28rem;">Real-Time Studio Feed</span>
+            <p style="margin: 0; color: var(--text-primary); font-size: 0.96rem;">
+              Follow <strong>@shaun.david.studios</strong> on Instagram for the <strong>latest news</strong>, teasers, and studio announcements.
+            </p>
+          </div>
+          <a class="btn btn--primary btn--sm" href="https://www.instagram.com/shaun.david.studios/" target="_blank" rel="noopener noreferrer" aria-label="Follow Shaun David Studios on Instagram for latest news">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Follow on Instagram · Latest News</span>
+          </a>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter updates by category" data-filter-group="#news-archive">
+          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Updates</button>
+          <button class="filter-btn" type="button" data-filter="announcement" aria-pressed="false">Studio Announcements</button>
+          <button class="filter-btn" type="button" data-filter="game-dev" aria-pressed="false">Game Development</button>
+          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software Projects</button>
+          <button class="filter-btn" type="button" data-filter="patch-notes" aria-pressed="false">Patch Notes</button>
+        </div>
+
+        <div class="news-list" data-news-feed>
+          <article id="official-website-foundation" class="sds-card news-entry reveal" data-no-tilt data-filter-item="announcement">
+            <div class="news-entry__meta">
+              <time class="news-entry__date" datetime="2026-10">October 2026</time>
+              <span class="badge badge--status">Studio Announcement</span>
+            </div>
+            <div class="news-entry__body">
+              <h2>Establishing the Official Shaun David Studios Web Home</h2>
+              <p>
+                Welcome to the official website of <strong>Shaun David Studios</strong>, founded and led by <strong>Shaun David</strong> (<strong>H.K.S Sathsara</strong>) in Sri Lanka. This site brings together verified information on the studio's creative direction, founder biography, original game development, software engineering projects, and official support channel in one place.
+              </p>
+              <p>
+                Future release announcements, verified play and download links, gameplay screenshots, and patch notes will be published here and announced first on our official Instagram (<a href="https://www.instagram.com/shaun.david.studios/" target="_blank" rel="noopener noreferrer">@shaun.david.studios</a>) for the latest news.
+              </p>
+            </div>
+          </article>
+
+          <article id="sl-bad-boy-dev-overview" class="sds-card news-entry reveal" data-no-tilt data-filter-item="game-dev" style="--delay: 80ms;">
+            <div class="news-entry__meta">
+              <span class="news-entry__date">Active Development</span>
+              <span class="badge badge--status">Game Development</span>
+            </div>
+            <div class="news-entry__body">
+              <h2>Development Progress: SL BAD BOY — Schoolboy Rush</h2>
+              <p>
+                Work continues on <strong>SL BAD BOY — Schoolboy Rush</strong>, Shaun David Studios' debut original 3D endless runner targeting Web browsers and Android devices via Three.js, Vite, and Capacitor.
+              </p>
+              <p>
+                Current engineering milestones focus on fourteen transitioning Sri Lankan districts (including Colombo, Kandy, Ella, Galle, Anuradhapura, Jaffna, and Trincomalee), golden-hour sunset lighting, instanced mesh batching for mobile frame stability, ten articulated playable characters, scooter boost mechanics, and locally synthesized Web Audio music and sound effects.
+              </p>
+              <p style="margin-top: 1rem;">
+                <a class="btn btn--secondary btn--sm" href="../games/#sl-bad-boy">Inspect Project Details</a>
+              </p>
+            </div>
+          </article>
+
+          <article id="software-ecosystem-overview" class="sds-card news-entry reveal" data-no-tilt data-filter-item="software" style="--delay: 160ms;">
+            <div class="news-entry__meta">
+              <span class="news-entry__date">Studio Portfolio</span>
+              <span class="badge">Software Projects</span>
+            </div>
+            <div class="news-entry__body">
+              <h2>Software Initiatives Alongside Game Development</h2>
+              <p>
+                In addition to game development, Shaun David Studios develops standalone web software focused on real-time collaboration and Sri Lanka-centered utility: <strong>SDS Geox Meetings</strong> (real-time WebSocket visual whiteboard and meeting hub) and <strong>RouteMora</strong> (deterministic Sri Lankan destination and budget planner).
+              </p>
+              <p style="margin-top: 1rem;">
+                <a class="btn btn--ghost btn--sm" href="../games/">Browse Software Portfolio</a>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="empty-filter-state" data-filter-empty hidden>
+          <p class="mono-tag" style="margin-bottom: 0.45rem;">No Published Entries in This Category Yet</p>
+          <p>Official release patch notes will be posted here once public game builds are launched.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__lockup" href="../">
+            <img src="../assets/img/sds-crest-gold.png" width="50" height="50" alt="Shaun David Studios emblem">
+            <div>
+              <div class="font-display" style="font-size: 1rem; letter-spacing: 0.08em;">SHAUN DAVID STUDIOS</div>
+              <div class="mono-tag" style="font-size: 0.65rem;">Sri Lanka</div>
+            </div>
+          </a>
+          <p class="site-footer__motto">Creating Music · Games · &amp; Everything Beyond</p>
+          <p class="site-footer__desc">
+            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David (H.K.S Sathsara).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Studio</h2>
+          <ul class="site-footer__links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../about/">About the Studio</a></li>
+            <li><a href="../shaun-david/">Shaun David (Founder &amp; CEO)</a></li>
+            <li><a href="./">News &amp; Dev Updates</a></li>
+            <li><a href="../contact/">Contact &amp; Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Portfolio</h2>
+          <ul class="site-footer__links">
+            <li><a href="../games/#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
+            <li><a href="../games/#sds-geox-meetings">SDS Geox Meetings</a></li>
+            <li><a href="../games/#routemora">RouteMora</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Contact &amp; Latest News</h2>
+          <ul class="site-footer__links">
+            <li><a class="site-footer__email" href="mailto:official.shaundavidstudios@gmail.com">official.shaundavidstudios@gmail.com</a></li>
+            <li><a href="../contact/">Support &amp; Inquiries Hub</a></li>
+          </ul>
+          <div data-social-section style="margin-top: 0.75rem;">
+            <ul class="site-footer__links" data-social-list="footer-links">
+              <li>
+                <a href="https://www.instagram.com/shaun.david.studios/" target="_blank" rel="noopener noreferrer" aria-label="Follow Shaun David Studios on Instagram for latest news">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                  <span>Instagram · Latest News</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <p style="margin-top: 0.85rem; font-size: 0.84rem; color: var(--text-muted);">Based in Sri Lanka</p>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David (H.K.S Sathsara) in Sri Lanka.</p>
+        <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile One-Thumb Quick Navigation Dock (Hidden on Desktop, Shown <= 768px) -->
+  <nav class="mobile-dock" aria-label="Mobile quick navigation">
+    <a class="mobile-dock__link" href="../">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Home</span>
+    </a>
+    <a class="mobile-dock__link" href="../games/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>
+      <span>Games</span>
+    </a>
+    <a class="mobile-dock__link" href="../shaun-david/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+      <span>Founder</span>
+    </a>
+    <a class="mobile-dock__link" href="../about/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 19 7 19 17 12 22 5 17 5 7 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>About</span>
+    </a>
+    <a class="mobile-dock__link" href="../contact/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <script src="../assets/js/site-config.js?v=3"></script>
+  <script src="../assets/js/main.js?v=3"></script>
+  <script src="../assets/js/animations.js?v=3"></script>
+</body>
+</html>

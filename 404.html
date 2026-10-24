@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found (404) — Shaun David Studios</title>
+  <meta name="description" content="The requested page could not be found on the official Shaun David Studios website.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#050609">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="stylesheet" href="assets/css/main.css?v=3">
+  <link rel="stylesheet" href="assets/css/animations.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="./" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="assets/img/sds-crest-gold.png" width="42" height="42" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="./">Home</a></li>
+          <li><a class="primary-nav__link" href="about/">About</a></li>
+          <li><a class="primary-nav__link" href="shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="games/">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="news/">News</a></li>
+          <li><a class="primary-nav__link" href="contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="games/">Explore Portfolio</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content" style="display: flex; align-items: center;">
+    <section class="section" style="width: 100%;" aria-labelledby="error-title">
+      <div class="container" style="max-width: 680px; text-align: center;">
+        <div class="sds-card sds-card--gold" data-no-tilt style="padding: clamp(2rem, 6vw, 4rem);">
+          <img src="assets/img/sds-crest-gold.png" width="116" height="116" alt="Shaun David Studios compass crest" style="margin: 0 auto 1.5rem;">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>Error 404 · Uncharted Coordinate</span>
+          </div>
+          <h1 id="error-title" class="page-title">Off the Charted Map</h1>
+          <p class="lead" style="margin-bottom: 2rem;">
+            The page you requested does not exist or may have moved. Use the compass bearings below to return to an active section of <strong>Shaun David Studios</strong>.
+          </p>
+          <div class="btn-group" style="justify-content: center;">
+            <a class="btn btn--primary" href="./">Return to Home</a>
+            <a class="btn btn--secondary" href="games/">Games &amp; Projects</a>
+            <a class="btn btn--ghost" href="contact/">Contact &amp; Support</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__bottom" style="padding-top: 0;">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David (H.K.S Sathsara) in Sri Lanka.</p>
+        <p style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <a class="site-footer__email" href="mailto:official.shaundavidstudios@gmail.com">official.shaundavidstudios@gmail.com</a>
+          <a href="https://www.instagram.com/shaun.david.studios/" target="_blank" rel="noopener noreferrer">Instagram · Latest News</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile One-Thumb Quick Navigation Dock (Hidden on Desktop, Shown <= 768px) -->
+  <nav class="mobile-dock" aria-label="Mobile quick navigation">
+    <a class="mobile-dock__link" href="./">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Home</span>
+    </a>
+    <a class="mobile-dock__link" href="games/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>
+      <span>Games</span>
+    </a>
+    <a class="mobile-dock__link" href="shaun-david/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+      <span>Founder</span>
+    </a>
+    <a class="mobile-dock__link" href="about/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 19 7 19 17 12 22 5 17 5 7 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>About</span>
+    </a>
+    <a class="mobile-dock__link" href="contact/">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <script src="assets/js/site-config.js?v=3"></script>
+  <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/animations.js?v=3"></script>
+</body>
+</html>
