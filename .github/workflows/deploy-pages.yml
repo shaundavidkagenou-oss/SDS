@@ -15,16 +15,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js for static verification
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -32,16 +29,27 @@ jobs:
       - name: Verify static site integrity & SEO
         run: node scripts/verify-site.mjs
 
+      - name: Stage clean static site bundle
+        run: |
+          mkdir -p _site
+          cp -R index.html 404.html about shaun-david games news contact assets favicon.ico site.webmanifest robots.txt sitemap.xml _headers _redirects .nojekyll _site/
+          chmod -R a+rX _site
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload static site artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: "."
+          path: "_site"
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
