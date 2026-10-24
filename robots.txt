@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Once deployed, run: node scripts/configure-domain.mjs https://<your-live-domain>
-# to append the absolute Sitemap URL automatically.
+Sitemap: https://shaundavidstudios.pages.dev/sitemap.xml
