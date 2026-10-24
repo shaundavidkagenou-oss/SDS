@@ -41,6 +41,7 @@ const REQUIRED_FILES = [
   "sitemap.xml",
   "site.webmanifest",
   "favicon.ico",
+  "google8a5eab19864fee78.html",
   "_headers",
   "_redirects",
   "README.md",
@@ -98,6 +99,11 @@ for (const page of HTML_PAGES) {
   const fullPath = path.join(ROOT, page);
   const pageDir = path.dirname(fullPath);
   const html = fs.readFileSync(fullPath, "utf8");
+
+  // Ensure Google Search Console verification file is never linked or shown to visitors
+  if (/google8a5eab19864fee78/i.test(html)) {
+    fail(`${page}: Must not link to or expose Google verification file.`);
+  }
 
   // Check placeholder domains
   if (/(example\.com|yourdomain\.com|placeholder\.com|localhost:)/i.test(html)) {
@@ -275,11 +281,23 @@ for (const cssFile of ["assets/css/main.css", "assets/css/animations.css"]) {
   }
 }
 
-// 6. Check robots.txt and sitemap.xml for placeholder domains
+// 6. Check robots.txt and sitemap.xml for placeholder domains and ensure verification file is hidden
 for (const seoFile of ["robots.txt", "sitemap.xml"]) {
   const content = fs.readFileSync(path.join(ROOT, seoFile), "utf8");
   if (/(example\.com|yourdomain\.com|placeholder\.com)/i.test(content)) {
     fail(`${seoFile}: Contains forbidden placeholder domain`);
+  }
+  if (/google8a5eab19864fee78/i.test(content)) {
+    fail(`${seoFile}: Must not list or expose Google verification file`);
+  }
+}
+
+// 7. Verify Google Search Console verification file stays byte-for-byte intact
+const gscPath = path.join(ROOT, "google8a5eab19864fee78.html");
+if (fs.existsSync(gscPath)) {
+  const gscContent = fs.readFileSync(gscPath, "utf8");
+  if (gscContent !== "google-site-verification: google8a5eab19864fee78.html") {
+    fail("google8a5eab19864fee78.html content was modified; Google requires exact byte match.");
   }
 }
 

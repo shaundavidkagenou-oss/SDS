@@ -24,7 +24,7 @@ window.SDS_SITE_CONFIG = {
    * Leave blank ("") until your official domain or pages.dev URL is live.
    * Never put placeholder domains like example.com here.
    */
-  siteUrl: "",
+  siteUrl: "https://shaundavidstudios.pages.dev",
 
   /**
    * Founder & CEO Identity
