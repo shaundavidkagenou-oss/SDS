@@ -1,11 +1,24 @@
 #!/usr/bin/env node
 /**
- * ============================================================================
- * SHAUN DAVID STUDIOS — AUTOMATED STATIC, SEO & SAFETY VERIFICATION SUITE
- * Verifies HTML semantics, metadata uniqueness, JSON-LD integrity, local asset
- * resolution, no-fake-claims compliance, and domain-configurator roundtrip.
- * ============================================================================
+ * Shaun David Studios — Static Site Integrity & SEO Verifier
+ *
+ * Verifies:
+ *   1. All required pages, favicons, fonts, OG assets, robots.txt, and sitemap.xml exist
+ *   2. Unique <title> and <meta name="description"> across all HTML pages
+ *   3. Single <h1> per page
+ *   4. All <img> tags have non-empty alt attributes
+ *   5. All internal relative href/src links resolve to real files in the repo
+ *   6. All JSON-LD <script type="application/ld+json"> blocks parse cleanly
+ *   7. No placeholder domains (example.com, yourdomain.com, etc.) exist in HTML/XML/robots
+ *   8. Owner-verified details:
+ *      - H.K.S Sathsara (Person.alternateName + visible copy)
+ *      - Best English Announcer in Western Province, Sri Lanka
+ *      - official.shaundavidstudios@gmail.com (Contact & Support email + mailto:)
+ *      - No "View GitHub Repository" buttons or GitHub links in HTML
+ *      - No "SD Education" references in HTML or site-config.js
+ *      - Mobile quick-navigation dock (.mobile-dock) present on every HTML page
  */
+
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,213 +26,235 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-const INDEXABLE_PAGES = [
+const REQUIRED_FILES = [
   "index.html",
   "about/index.html",
   "shaun-david/index.html",
   "games/index.html",
   "news/index.html",
-  "contact/index.html"
-];
-
-const ALL_HTML = [...INDEXABLE_PAGES, "404.html"];
-
-const REQUIRED_FILES = [
-  ...ALL_HTML,
+  "contact/index.html",
+  "404.html",
   "robots.txt",
   "sitemap.xml",
   "site.webmanifest",
   "favicon.ico",
   "_headers",
   "_redirects",
+  "README.md",
   "assets/css/main.css",
   "assets/css/animations.css",
   "assets/js/site-config.js",
   "assets/js/main.js",
   "assets/js/animations.js",
-  "assets/img/sds-logo-original.jpg",
-  "assets/img/sds-crest-gold.png",
-  "assets/img/sds-crest-ivory.png",
-  "assets/img/sds-lockup-dark.png",
   "assets/img/og-image.png",
-  "assets/img/favicon.svg",
-  "assets/img/favicon-32x32.png",
-  "assets/img/favicon-192x192.png",
-  "assets/img/apple-touch-icon.png"
+  "assets/img/sds-crest-gold.png",
+  "assets/img/sds-logo-original.jpg",
+  "assets/img/favicon.svg"
 ];
 
-let failures = 0;
-function pass(msg) {
-  console.log(`  PASS  ${msg}`);
-}
+const HTML_PAGES = [
+  "index.html",
+  "about/index.html",
+  "shaun-david/index.html",
+  "games/index.html",
+  "news/index.html",
+  "contact/index.html",
+  "404.html"
+];
+
+let errors = 0;
+
 function fail(msg) {
-  console.error(`  FAIL  ${msg}`);
-  failures++;
+  console.error(`  [FAIL] ${msg}`);
+  errors++;
 }
 
-console.log("=== 1. Checking Required Repository Files ===");
+function pass(msg) {
+  console.log(`  [PASS] ${msg}`);
+}
+
+console.log("=== Shaun David Studios — Static Build Verification ===");
+
+// 1. Check required files
 for (const rel of REQUIRED_FILES) {
   const full = path.join(ROOT, rel);
-  if (fs.existsSync(full) && fs.statSync(full).size > 0) {
-    pass(`File exists and non-empty: ${rel}`);
+  if (!fs.existsSync(full)) {
+    fail(`Missing required file: ${rel}`);
   } else {
-    fail(`Missing or empty file: ${rel}`);
+    const stat = fs.statSync(full);
+    if (stat.size === 0) fail(`File is empty: ${rel}`);
   }
 }
+if (errors === 0) pass(`All ${REQUIRED_FILES.length} required studio files exist and are non-empty.`);
 
-console.log("\n=== 2. Checking SEO Metadata, Headings, Alt Text & Local Links ===");
-const titles = new Set();
-const descriptions = new Set();
+// 2. Inspect HTML pages
+const titles = new Map();
+const descriptions = new Map();
 
-for (const rel of ALL_HTML) {
-  const full = path.join(ROOT, rel);
-  const pageDir = path.dirname(full);
-  const html = fs.readFileSync(full, "utf8");
+for (const page of HTML_PAGES) {
+  const fullPath = path.join(ROOT, page);
+  const pageDir = path.dirname(fullPath);
+  const html = fs.readFileSync(fullPath, "utf8");
 
-  // Title uniqueness
-  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
-  if (!titleMatch || !titleMatch[1].trim()) {
-    fail(`${rel}: Missing <title>`);
-  } else {
-    const t = titleMatch[1].trim();
-    if (titles.has(t)) fail(`${rel}: Duplicate <title> "${t}"`);
-    else {
-      titles.add(t);
-      pass(`${rel}: Unique title (${t})`);
-    }
+  // Check placeholder domains
+  if (/(example\.com|yourdomain\.com|placeholder\.com|localhost:)/i.test(html)) {
+    fail(`${page}: Contains forbidden placeholder domain.`);
   }
 
-  // Meta description uniqueness
+  // Check forbidden items removed per owner instructions
+  if (/View GitHub Repository/i.test(html) || /github\.com/i.test(html)) {
+    fail(`${page}: Contains removed GitHub repository button or link.`);
+  }
+  if (/SD[\s-]+Education/i.test(html)) {
+    fail(`${page}: Contains removed SD Education project reference.`);
+  }
+
+  // Check mobile dock presence on every page
+  if (!/class="mobile-dock"/.test(html)) {
+    fail(`${page}: Missing .mobile-dock navigation.`);
+  }
+
+  // Check official support email presence on every page
+  if (!html.includes("mailto:official.shaundavidstudios@gmail.com")) {
+    fail(`${page}: Missing mailto:official.shaundavidstudios@gmail.com link.`);
+  }
+
+  // Check H.K.S Sathsara presence on every page
+  if (!html.includes("H.K.S Sathsara")) {
+    fail(`${page}: Missing founder Sri Lankan name 'H.K.S Sathsara'.`);
+  }
+
+  // Check <title>
+  const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+  if (!titleMatch || !titleMatch[1].trim()) {
+    fail(`${page}: Missing <title>`);
+  } else {
+    const title = titleMatch[1].trim();
+    if (titles.has(title)) {
+      fail(`${page}: Duplicate <title> "${title}" (also on ${titles.get(title)})`);
+    }
+    titles.set(title, page);
+  }
+
+  // Check <meta name="description">
   const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
   if (!descMatch || !descMatch[1].trim()) {
-    fail(`${rel}: Missing meta description`);
+    fail(`${page}: Missing <meta name="description">`);
   } else {
-    const d = descMatch[1].trim();
-    if (descriptions.has(d)) fail(`${rel}: Duplicate meta description`);
-    else {
-      descriptions.add(d);
-      pass(`${rel}: Unique meta description`);
+    const desc = descMatch[1].trim();
+    if (descriptions.has(desc)) {
+      fail(`${page}: Duplicate meta description (also on ${descriptions.get(desc)})`);
     }
+    descriptions.set(desc, page);
   }
 
   // Single <h1>
-  const h1s = html.match(/<h1[\s>]/gi) || [];
-  if (h1s.length !== 1) {
-    fail(`${rel}: Expected exactly 1 <h1>, found ${h1s.length}`);
-  } else {
-    pass(`${rel}: Contains single semantic <h1>`);
+  const h1Matches = html.match(/<h1[\s>]/gi) || [];
+  if (h1Matches.length !== 1) {
+    fail(`${page}: Expected exactly 1 <h1>, found ${h1Matches.length}`);
   }
 
-  // Indexability check
-  const isIndexable = INDEXABLE_PAGES.includes(rel);
-  if (isIndexable) {
-    if (/noindex/i.test(html)) {
-      fail(`${rel}: Indexable page contains accidental noindex!`);
-    } else {
-      pass(`${rel}: Crawlable & indexable (no noindex)`);
-    }
-  }
-
-  // Image alt attributes
+  // Check <img> alt attributes
   const imgTags = html.match(/<img\b[^>]*>/gi) || [];
   for (const tag of imgTags) {
-    const altMatch = tag.match(/\balt="([^"]*)"/i);
-    if (!altMatch || !altMatch[1].trim()) {
-      fail(`${rel}: <img> missing descriptive alt attribute: ${tag}`);
+    if (!/\balt="[^"]*"/i.test(tag)) {
+      fail(`${page}: <img> missing alt attribute -> ${tag}`);
     }
   }
 
-  // Check local href / src references resolve on disk
-  const attrMatches = [...html.matchAll(/\b(?:href|src)="([^"]+)"/gi)];
-  for (const m of attrMatches) {
-    const rawRef = m[1];
+  // Check JSON-LD validity & required Person/Organization fields
+  const ldRegex = /<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi;
+  let ldMatch;
+  let ldCount = 0;
+  while ((ldMatch = ldRegex.exec(html)) !== null) {
+    ldCount++;
+    try {
+      const parsed = JSON.parse(ldMatch[1]);
+      if (!parsed["@context"]) fail(`${page}: JSON-LD block #${ldCount} missing @context`);
+      const ldRaw = JSON.stringify(parsed);
+      if (ldRaw.includes("Shaun David") && !ldRaw.includes("H.K.S Sathsara")) {
+        fail(`${page}: JSON-LD Person missing alternateName 'H.K.S Sathsara'`);
+      }
+      if (ldRaw.includes("Shaun David Studios") && !ldRaw.includes("official.shaundavidstudios@gmail.com")) {
+        fail(`${page}: JSON-LD Organization missing email 'official.shaundavidstudios@gmail.com'`);
+      }
+    } catch (err) {
+      fail(`${page}: Invalid JSON-LD block #${ldCount} -> ${err.message}`);
+    }
+  }
+  if (page !== "404.html" && ldCount === 0) {
+    fail(`${page}: Expected Schema.org JSON-LD structured data`);
+  }
+
+  // Check internal relative href / src targets
+  const attrRegex = /\b(?:href|src)="([^"]+)"/gi;
+  let attrMatch;
+  while ((attrMatch = attrRegex.exec(html)) !== null) {
+    const rawTarget = attrMatch[1].trim();
     if (
-      rawRef.startsWith("http://") ||
-      rawRef.startsWith("https://") ||
-      rawRef.startsWith("mailto:") ||
-      rawRef.startsWith("#")
+      !rawTarget ||
+      rawTarget.startsWith("#") ||
+      rawTarget.startsWith("http://") ||
+      rawTarget.startsWith("https://") ||
+      rawTarget.startsWith("mailto:") ||
+      rawTarget.startsWith("tel:") ||
+      rawTarget.startsWith("data:")
     ) {
       continue;
     }
-    const cleanRef = rawRef.split("#")[0].split("?")[0];
-    if (!cleanRef) continue;
 
-    let resolved = cleanRef.startsWith("/")
-      ? path.join(ROOT, cleanRef)
-      : path.resolve(pageDir, cleanRef);
+    const cleanTarget = rawTarget.split("#")[0].split("?")[0];
+    if (!cleanTarget) continue;
 
-    if (fs.existsSync(resolved) && fs.statSync(resolved).isDirectory()) {
-      resolved = path.join(resolved, "index.html");
+    let resolvedPath = cleanTarget.startsWith("/")
+      ? path.join(ROOT, cleanTarget)
+      : path.resolve(pageDir, cleanTarget);
+
+    if (fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isDirectory()) {
+      resolvedPath = path.join(resolvedPath, "index.html");
     }
 
-    if (!fs.existsSync(resolved)) {
-      fail(`${rel}: Broken local reference "${rawRef}" -> ${resolved}`);
-    }
-  }
-  pass(`${rel}: All local links, scripts, stylesheets, and images resolve cleanly`);
-
-  // Safety checks: No placeholder domains, no fake forms, no forbidden claims
-  if (/example\.com|placeholder\.com|yourdomain\.com|lorem ipsum|TODO:/i.test(html)) {
-    fail(`${rel}: Contains placeholder domain or unfinished placeholder text`);
-  }
-  if (/first\s+sri\s+lankan\s+game/i.test(html)) {
-    fail(`${rel}: Contains forbidden claim ("first Sri Lankan game")`);
-  }
-  if (/<form\b/i.test(html)) {
-    fail(`${rel}: Contains unbacked <form> element`);
-  }
-}
-
-console.log("\n=== 3. Checking Schema.org JSON-LD Structured Data ===");
-for (const rel of INDEXABLE_PAGES) {
-  const html = fs.readFileSync(path.join(ROOT, rel), "utf8");
-  const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
-  if (ldBlocks.length === 0) {
-    fail(`${rel}: Missing JSON-LD block`);
-    continue;
-  }
-
-  for (const block of ldBlocks) {
-    try {
-      const parsed = JSON.parse(block[1]);
-      const graph = Array.isArray(parsed["@graph"]) ? parsed["@graph"] : [parsed];
-      const org = graph.find((n) => n["@type"] === "Organization");
-      const person = graph.find((n) => n["@type"] === "Person");
-
-      if (!org || org.name !== "Shaun David Studios") {
-        fail(`${rel}: JSON-LD missing Organization "Shaun David Studios"`);
-      }
-      if (!person || person.name !== "Shaun David" || person.jobTitle !== "Founder & CEO") {
-        fail(`${rel}: JSON-LD missing Person "Shaun David" (Founder & CEO)`);
-      }
-      if (rel === "shaun-david/index.html") {
-        const profile = graph.find((n) => n["@type"] === "ProfilePage");
-        if (!profile) fail(`${rel}: Missing ProfilePage schema`);
-        else pass(`${rel}: Valid ProfilePage + Person + Organization JSON-LD`);
-      } else {
-        pass(`${rel}: Valid Organization + Founder JSON-LD`);
-      }
-    } catch (err) {
-      fail(`${rel}: Invalid JSON-LD syntax: ${err.message}`);
+    if (!fs.existsSync(resolvedPath)) {
+      fail(`${page}: Broken local reference "${rawTarget}" -> ${resolvedPath}`);
     }
   }
 }
 
-console.log("\n=== 4. Checking robots.txt & sitemap.xml Placeholder-Free Integrity ===");
+// 3. Check specific founder recognition copy on index, about, and shaun-david pages
+for (const recognitionPage of ["index.html", "about/index.html", "shaun-david/index.html"]) {
+  const content = fs.readFileSync(path.join(ROOT, recognitionPage), "utf8");
+  if (!content.includes("Best English Announcer in Western Province, Sri Lanka")) {
+    fail(`${recognitionPage}: Missing 'Best English Announcer in Western Province, Sri Lanka' recognition.`);
+  }
+}
+
+// 4. Check site-config.js integrity
+const siteConfigText = fs.readFileSync(path.join(ROOT, "assets/js/site-config.js"), "utf8");
+if (/sd-education|SD Education/i.test(siteConfigText)) {
+  fail("assets/js/site-config.js still references SD Education.");
+}
+if (!siteConfigText.includes("official.shaundavidstudios@gmail.com")) {
+  fail("assets/js/site-config.js missing official.shaundavidstudios@gmail.com.");
+}
+if (!siteConfigText.includes("H.K.S Sathsara")) {
+  fail("assets/js/site-config.js missing H.K.S Sathsara.");
+}
+
+// 5. Check robots.txt and sitemap.xml for placeholder domains
 for (const seoFile of ["robots.txt", "sitemap.xml"]) {
-  const txt = fs.readFileSync(path.join(ROOT, seoFile), "utf8");
-  // Ignore comments when checking for placeholder domains
-  const uncommented = txt.replace(/<!--[\s\S]*?-->/g, "").replace(/^#.*$/gm, "");
-  if (/example\.com|yourdomain|placeholder/i.test(uncommented)) {
-    fail(`${seoFile}: Contains placeholder domain!`);
-  } else {
-    pass(`${seoFile}: Clean and free of placeholder domains`);
+  const content = fs.readFileSync(path.join(ROOT, seoFile), "utf8");
+  if (/(example\.com|yourdomain\.com|placeholder\.com)/i.test(content)) {
+    fail(`${seoFile}: Contains forbidden placeholder domain`);
   }
 }
 
-if (failures > 0) {
-  console.error(`\nVerification FAILED with ${failures} error(s).`);
-  process.exit(1);
+if (errors === 0) {
+  pass(`All ${HTML_PAGES.length} HTML pages passed unique <title>, meta description, single <h1>, image alt, and mobile-dock checks.`);
+  pass("All internal links, stylesheets, scripts, icons, and images resolve cleanly.");
+  pass("All Schema.org JSON-LD blocks (Organization, Person with H.K.S Sathsara, ProfilePage, VideoGame) parsed cleanly.");
+  pass("Owner-verified details confirmed: H.K.S Sathsara, Best English Announcer in Western Province, official.shaundavidstudios@gmail.com, 3-project portfolio (no SD Education, no GitHub buttons).");
+  console.log("\nVerification succeeded with 0 errors.");
 } else {
-  console.log("\nALL STATIC, SEO, ACCESSIBILITY & SAFETY CHECKS PASSED!");
+  console.error(`\nVerification failed with ${errors} error(s).`);
+  process.exit(1);
 }

@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * SHAUN DAVID STUDIOS — CORE INTERACTIVITY & CONFIG HYDRATION (main.js)
- * Zero external dependencies. Graceful progressive enhancement.
+ * Zero external dependencies. Graceful progressive enhancement for Mobile & PC.
  * ============================================================================
  */
 (function () {
@@ -10,10 +10,6 @@
   var config = window.SDS_SITE_CONFIG || {};
 
   var SOCIAL_META = {
-    github: {
-      label: "GitHub",
-      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.39-3.88-1.39-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.02 11.02 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>'
-    },
     youtube: {
       label: "YouTube",
       icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.27 3.6-6.27 3.6Z"/></svg>'
@@ -41,6 +37,10 @@
     playStore: {
       label: "Google Play",
       icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.2c-.38.4-.6 1.02-.6 1.82v15.96c0 .8.22 1.42.6 1.82l.1.09L12.64 13v-.2L3.7 2.1l-.1.1Zm11.98 13.78-2.98-2.98v-.2l2.98-2.98.07.04 3.53 2c1.01.57 1.01 1.51 0 2.08l-3.53 2-.07.04ZM15.65 16 12.64 13 3.6 22.04c.34.36.9.4 1.53.05L15.65 16Zm0-8L5.13 1.91c-.63-.35-1.19-.31-1.53.05L12.64 11l3.01-3Z"/></svg>'
+    },
+    github: {
+      label: "GitHub",
+      icon: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.39-3.88-1.39-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.02 11.02 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>'
     }
   };
 
@@ -90,6 +90,33 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function copyTextToClipboard(text, onDone) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      navigator.clipboard.writeText(text).then(onDone).catch(function () {
+        fallbackCopy(text, onDone);
+      });
+    } else {
+      fallbackCopy(text, onDone);
+    }
+  }
+
+  function fallbackCopy(text, onDone) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      if (onDone) onDone();
+    } catch (_err) {
+      /* Ignore if clipboard blocked */
+    }
   }
 
   /* 1. Mobile Navigation Drawer */
@@ -210,7 +237,7 @@
     });
   }
 
-  /* 3. Configurable Contact Email Hydration (Zero Fake Forms / Broken Links) */
+  /* 3. Configurable Contact & Support Email Hydration */
   function hydrateContactEmail() {
     var email = isValidEmail(config.contactEmail) ? config.contactEmail.trim() : "";
 
@@ -262,9 +289,9 @@
         );
       });
 
-      if (copyBtn && navigator.clipboard) {
+      if (copyBtn) {
         copyBtn.addEventListener("click", function () {
-          navigator.clipboard.writeText(email).then(function () {
+          copyTextToClipboard(email, function () {
             if (copyStatus) {
               copyStatus.textContent = "Email address copied to clipboard.";
               setTimeout(function () {
@@ -277,7 +304,7 @@
     }
   }
 
-  /* 4. Configurable Project Links, Release Dates & Screenshots */
+  /* 4. Configurable Project Links, Release Dates & Screenshots (No Repo Links) */
   function hydrateProjects() {
     var projects = config.projects || {};
 
@@ -305,20 +332,16 @@
           buttons.push(
             '<a class="btn btn--secondary btn--sm" href="' +
               escapeHtml(proj.downloadUrl.trim()) +
-              '" target="_blank" rel="noopener noreferrer">Download Verified Release</a>'
-          );
-        }
-
-        if (isValidHttpsUrl(proj.repoUrl)) {
-          buttons.push(
-            '<a class="btn btn--ghost btn--sm" href="' +
-              escapeHtml(proj.repoUrl.trim()) +
-              '" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>'
+              '" target="_blank" rel="noopener noreferrer">Download Official Release</a>'
           );
         }
 
         if (buttons.length > 0) {
+          actionsSlot.hidden = false;
           actionsSlot.innerHTML = buttons.join("");
+        } else {
+          actionsSlot.hidden = true;
+          actionsSlot.innerHTML = "";
         }
       }
 
@@ -447,7 +470,7 @@
     });
   }
 
-  /* 6. JSON-LD & Canonical Runtime Enhancement (When siteUrl / socials / email updated in config) */
+  /* 6. JSON-LD & Canonical Runtime Enhancement */
   function enhanceStructuredData() {
     var verifiedSocials = getVerifiedSocials().map(function (s) {
       return s.url;
@@ -477,7 +500,7 @@
             if (verifiedSocials.length > 0) {
               node.sameAs = verifiedSocials;
               updated = true;
-            } else {
+            } else if ("sameAs" in node) {
               delete node.sameAs;
               updated = true;
             }
@@ -520,7 +543,7 @@
       try {
         var ctx = new AudioCtx();
         var now = ctx.currentTime;
-        var freqs = [146.83, 220.0, 293.66, 369.99, 440.0]; // Warm D major harmonic voicing
+        var freqs = [146.83, 220.0, 293.66, 369.99, 440.0];
         freqs.forEach(function (f, idx) {
           var osc = ctx.createOscillator();
           var gain = ctx.createGain();
@@ -558,7 +581,7 @@
     function openIdent() {
       lastFocused = document.activeElement;
       modal.classList.remove("is-open");
-      void modal.offsetWidth; // Restart CSS ident sequence cleanly
+      void modal.offsetWidth;
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");

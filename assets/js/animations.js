@@ -1,8 +1,9 @@
 /**
  * ============================================================================
  * SHAUN DAVID STUDIOS — LOGO-SYNCHRONIZED MOTION ENGINE (animations.js)
- * Hardware-accelerated canvas embers, clockwork astrolabe, 3D card sheen,
- * and SL BAD BOY Sri Lankan district stage controller.
+ * Hardware-accelerated canvas embers & constellations, clockwork astrolabe,
+ * 3D/touch card sheen, and SL BAD BOY Sri Lankan district stage controller
+ * engineered for BOTH Mobile Touch & Desktop PC.
  * Respects `prefers-reduced-motion: reduce` completely.
  * ============================================================================
  */
@@ -41,12 +42,12 @@
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.06 }
     );
 
     items.forEach(function (el) {
       var rect = el.getBoundingClientRect();
-      if (rect.top < vh * 0.94) {
+      if (rect.top < vh * 0.96) {
         el.classList.add("is-visible");
       } else {
         observer.observe(el);
@@ -54,7 +55,7 @@
     });
   }
 
-  /* 2. Scroll Progress Vernier & Compass Divider Rotation */
+  /* 2. Scroll Progress Vernier & Compass Rotation */
   function initScrollTelemetry() {
     var ticking = false;
 
@@ -75,7 +76,7 @@
       if (!prefersReducedMotion()) {
         document.documentElement.style.setProperty(
           "--scroll-deg",
-          (scrollTop * 0.14).toFixed(1) + "deg"
+          (scrollTop * 0.16).toFixed(1) + "deg"
         );
       }
       ticking = false;
@@ -95,7 +96,7 @@
     updateScrollVars();
   }
 
-  /* 3. Interactive Clockwork Compass Astrolabe (Home Hero) */
+  /* 3. Interactive Clockwork Compass Astrolabe (Desktop Pointer + Mobile Touch) */
   function initAstrolabe() {
     var rig = document.getElementById("sds-astrolabe");
     if (!rig) return;
@@ -127,7 +128,14 @@
       }
     };
 
-    function activateQuadrant(key) {
+    function pulseRig() {
+      if (prefersReducedMotion()) return;
+      rig.classList.remove("is-pulsing");
+      void rig.offsetWidth;
+      rig.classList.add("is-pulsing");
+    }
+
+    function activateQuadrant(key, withShockwave) {
       var info = QUADRANT_DATA[key];
       if (!info) return;
 
@@ -140,70 +148,98 @@
       rig.style.setProperty("--aim-deg", info.bearing);
       if (titleEl) titleEl.textContent = info.title;
       if (descEl) descEl.textContent = info.desc;
+      if (withShockwave) pulseRig();
     }
 
     nodes.forEach(function (node) {
       var key = node.getAttribute("data-quadrant");
       node.addEventListener("click", function () {
-        activateQuadrant(key);
+        activateQuadrant(key, true);
       });
       node.addEventListener("mouseenter", function () {
-        activateQuadrant(key);
+        activateQuadrant(key, false);
       });
     });
 
-    var finePointer =
-      window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+    function aimAtClientPoint(clientX, clientY) {
+      if (prefersReducedMotion()) return;
+      var rect = rig.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = Math.max(-1, Math.min(1, (clientX - cx) / (rect.width / 2)));
+      var dy = Math.max(-1, Math.min(1, (clientY - cy) / (rect.height / 2)));
 
-    if (finePointer && !prefersReducedMotion()) {
-      rig.addEventListener("mousemove", function (e) {
-        var rect = rig.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top + rect.height / 2;
-        var dx = (e.clientX - cx) / (rect.width / 2);
-        var dy = (e.clientY - cy) / (rect.height / 2);
+      rig.style.setProperty("--tilt-x", (-dy * 7).toFixed(2) + "deg");
+      rig.style.setProperty("--tilt-y", (dx * 7).toFixed(2) + "deg");
 
-        rig.style.setProperty("--tilt-x", (-dy * 7).toFixed(2) + "deg");
-        rig.style.setProperty("--tilt-y", (dx * 7).toFixed(2) + "deg");
-
-        var angle = (Math.atan2(dy, dx) * 180) / Math.PI + 90;
-        rig.style.setProperty("--aim-deg", angle.toFixed(1) + "deg");
-      });
-
-      rig.addEventListener("mouseleave", function () {
-        rig.style.setProperty("--tilt-x", "0deg");
-        rig.style.setProperty("--tilt-y", "0deg");
-      });
+      var angle = (Math.atan2(dy, dx) * 180) / Math.PI + 90;
+      rig.style.setProperty("--aim-deg", angle.toFixed(1) + "deg");
     }
+
+    function resetTilt() {
+      rig.style.setProperty("--tilt-x", "0deg");
+      rig.style.setProperty("--tilt-y", "0deg");
+    }
+
+    rig.addEventListener("mousemove", function (e) {
+      aimAtClientPoint(e.clientX, e.clientY);
+    });
+    rig.addEventListener("mouseleave", resetTilt);
+
+    rig.addEventListener(
+      "touchmove",
+      function (e) {
+        if (e.touches && e.touches[0]) {
+          aimAtClientPoint(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      },
+      { passive: true }
+    );
+    rig.addEventListener("touchend", resetTilt, { passive: true });
   }
 
-  /* 4. Chamfered 3D Card Spotlight & Perspective Tilt */
+  /* 4. Chamfered Card Spotlight & Tilt (Desktop Hover + Mobile Touch Sheen) */
   function initSpotlightCards() {
     var finePointer =
       window.matchMedia && window.matchMedia("(pointer: fine)").matches;
-    if (!finePointer) return;
-
     var cards = document.querySelectorAll(".sds-card");
+
     cards.forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
+      function updateCardPoint(clientX, clientY, allowTilt) {
         var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
+        var x = clientX - rect.left;
+        var y = clientY - rect.top;
         card.style.setProperty("--mx", x.toFixed(0) + "px");
         card.style.setProperty("--my", y.toFixed(0) + "px");
 
-        if (!prefersReducedMotion() && !card.hasAttribute("data-no-tilt")) {
+        if (allowTilt && !prefersReducedMotion() && !card.hasAttribute("data-no-tilt")) {
           var nx = x / rect.width - 0.5;
           var ny = y / rect.height - 0.5;
           card.style.setProperty("--rx", (-ny * 3.2).toFixed(2) + "deg");
           card.style.setProperty("--ry", (nx * 3.2).toFixed(2) + "deg");
         }
-      });
+      }
 
-      card.addEventListener("mouseleave", function () {
-        card.style.setProperty("--rx", "0deg");
-        card.style.setProperty("--ry", "0deg");
-      });
+      if (finePointer) {
+        card.addEventListener("mousemove", function (e) {
+          updateCardPoint(e.clientX, e.clientY, true);
+        });
+        card.addEventListener("mouseleave", function () {
+          card.style.setProperty("--rx", "0deg");
+          card.style.setProperty("--ry", "0deg");
+        });
+      } else {
+        card.addEventListener(
+          "touchstart",
+          function (e) {
+            if (e.touches && e.touches[0]) {
+              updateCardPoint(e.touches[0].clientX, e.touches[0].clientY, false);
+            }
+          },
+          { passive: true }
+        );
+      }
     });
   }
 
@@ -274,7 +310,7 @@
     });
   }
 
-  /* 6. Ambient Forge-Ember & Geometric Compass Canvas */
+  /* 6. Ambient Forge-Ember & Geometric Compass Canvas (PC + Mobile Touch Sparks!) */
   function initAmbientCanvas() {
     if (prefersReducedMotion()) return;
 
@@ -288,8 +324,9 @@
     var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     var isCoarse =
       window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
-    var count = isCoarse ? 24 : 52;
+    var count = isCoarse ? 32 : 54;
     var particles = [];
+    var bursts = [];
     var pointer = { x: -9999, y: -9999, active: false };
     var rafId = null;
 
@@ -305,12 +342,28 @@
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: -0.15 - Math.random() * 0.38,
-        size: 1 + Math.random() * 2.1,
-        alpha: 0.16 + Math.random() * 0.48,
-        diamond: Math.random() > 0.55
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -0.18 - Math.random() * 0.4,
+        size: 1.1 + Math.random() * 2.1,
+        alpha: 0.18 + Math.random() * 0.48,
+        diamond: Math.random() > 0.5
       };
+    }
+
+    function spawnTouchBurst(x, y) {
+      if (bursts.length > 36) return;
+      for (var k = 0; k < 7; k++) {
+        var angle = (Math.PI * 2 * k) / 7 + Math.random() * 0.4;
+        var speed = 1.1 + Math.random() * 1.9;
+        bursts.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1.0,
+          size: 1.8 + Math.random() * 1.6
+        });
+      }
     }
 
     resize();
@@ -320,20 +373,51 @@
 
     window.addEventListener("resize", resize, { passive: true });
 
-    if (!isCoarse) {
-      window.addEventListener(
-        "mousemove",
-        function (e) {
-          pointer.x = e.clientX;
-          pointer.y = e.clientY;
+    window.addEventListener(
+      "mousemove",
+      function (e) {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+        pointer.active = true;
+      },
+      { passive: true }
+    );
+    window.addEventListener("mouseleave", function () {
+      pointer.active = false;
+    });
+
+    window.addEventListener(
+      "touchstart",
+      function (e) {
+        if (e.touches && e.touches[0]) {
+          pointer.x = e.touches[0].clientX;
+          pointer.y = e.touches[0].clientY;
           pointer.active = true;
-        },
-        { passive: true }
-      );
-      window.addEventListener("mouseleave", function () {
+          spawnTouchBurst(pointer.x, pointer.y);
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      "touchmove",
+      function (e) {
+        if (e.touches && e.touches[0]) {
+          pointer.x = e.touches[0].clientX;
+          pointer.y = e.touches[0].clientY;
+          pointer.active = true;
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      "touchend",
+      function () {
         pointer.active = false;
-      });
-    }
+      },
+      { passive: true }
+    );
+
+    var linkDistSq = isCoarse ? 9200 : 12800;
 
     function render() {
       if (document.hidden) {
@@ -353,9 +437,10 @@
           var dy = p.y - pointer.y;
           var distSq = dx * dx + dy * dy;
           if (distSq < 19600 && distSq > 1) {
-            var force = (140 - Math.sqrt(distSq)) / 140;
-            p.x += (dx / Math.sqrt(distSq)) * force * 1.1;
-            p.y += (dy / Math.sqrt(distSq)) * force * 1.1;
+            var dist = Math.sqrt(distSq);
+            var force = (140 - dist) / 140;
+            p.x += (dx / dist) * force * 1.15;
+            p.y += (dy / dist) * force * 1.15;
           }
         }
 
@@ -379,23 +464,41 @@
           ctx.fill();
         }
 
-        if (!isCoarse) {
-          for (var j = i + 1; j < particles.length; j++) {
-            var q = particles[j];
-            var lx = p.x - q.x;
-            var ly = p.y - q.y;
-            var d2 = lx * lx + ly * ly;
-            if (d2 < 12500) {
-              var lineAlpha = (1 - d2 / 12500) * 0.085;
-              ctx.strokeStyle = "rgba(214, 174, 88, " + lineAlpha.toFixed(3) + ")";
-              ctx.lineWidth = 0.7;
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(q.x, q.y);
-              ctx.stroke();
-            }
+        for (var j = i + 1; j < particles.length; j++) {
+          var q = particles[j];
+          var lx = p.x - q.x;
+          var ly = p.y - q.y;
+          var d2 = lx * lx + ly * ly;
+          if (d2 < linkDistSq) {
+            var lineAlpha = (1 - d2 / linkDistSq) * 0.085;
+            ctx.strokeStyle = "rgba(214, 174, 88, " + lineAlpha.toFixed(3) + ")";
+            ctx.lineWidth = 0.7;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
           }
         }
+      }
+
+      /* Render touch spark bursts */
+      for (var b = bursts.length - 1; b >= 0; b--) {
+        var sp = bursts[b];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vx *= 0.95;
+        sp.vy *= 0.95;
+        sp.life -= 0.032;
+        if (sp.life <= 0) {
+          bursts.splice(b, 1);
+          continue;
+        }
+        ctx.save();
+        ctx.translate(sp.x, sp.y);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillStyle = "rgba(246, 226, 168, " + (sp.life * 0.85).toFixed(3) + ")";
+        ctx.fillRect(-sp.size, -sp.size, sp.size * 2, sp.size * 2);
+        ctx.restore();
       }
 
       rafId = window.requestAnimationFrame(render);

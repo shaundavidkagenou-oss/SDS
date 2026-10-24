@@ -1,9 +1,10 @@
 /* ==========================================================================
    SHAUN DAVID STUDIOS — LOGO-MATCHED ANIMATIONS & INTERACTIVE STAGES
-   GPU-composited choreography with full prefers-reduced-motion support.
+   GPU-composited choreography for BOTH Mobile Touch & Desktop PC.
+   Respects `prefers-reduced-motion: reduce` completely.
    ========================================================================== */
 
-/* 1. Ambient Forge-Ember & Compass Vector Canvas */
+/* 1. Ambient Forge-Ember & Compass Vector Canvas (Desktop + Mobile Touch) */
 .ambient-canvas {
   position: fixed;
   inset: 0;
@@ -11,7 +12,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.72;
+  opacity: 0.76;
 }
 
 /* 2. Progressive Scroll Reveal (Always visible if JS is disabled!) */
@@ -22,11 +23,11 @@
 
 html.js-anim .reveal:not(.is-visible) {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(22px);
 }
 
 html.js-anim .reveal {
-  transition: opacity 0.72s var(--ease-out-expo), transform 0.72s var(--ease-out-expo);
+  transition: opacity 0.68s var(--ease-out-expo), transform 0.68s var(--ease-out-expo);
   transition-delay: var(--delay, 0ms);
 }
 
@@ -41,57 +42,58 @@ html.js-anim .reveal.is-visible {
   min-height: calc(100svh - var(--header-height));
   display: flex;
   align-items: center;
-  padding: clamp(2.8rem, 6vw, 5.2rem) 0;
+  padding: clamp(2.2rem, 6vw, 5.2rem) 0;
   overflow: hidden;
 }
 
 .hero__grid {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
-  gap: clamp(2.2rem, 5vw, 4rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
 
 .hero__motto {
   font-family: var(--font-mono);
-  font-size: clamp(0.75rem, 1.1vw, 0.86rem);
-  letter-spacing: 0.2em;
+  font-size: clamp(0.72rem, 2.2vw, 0.86rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
 }
 
 .hero__motto::before {
   content: '';
-  width: 28px;
+  width: 24px;
   height: 1px;
   background: var(--gold);
+  flex-shrink: 0;
 }
 
 .hero__actions {
-  margin-top: 2rem;
+  margin-top: 1.85rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
+  gap: 0.8rem;
 }
 
 .hero__profiles {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: 1.85rem;
+  padding-top: 1.35rem;
   border-top: 1px solid var(--ivory-border);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.85rem 1.25rem;
+  gap: 0.75rem 1.25rem;
 }
 
 .hero__profiles-label {
   font-family: var(--font-mono);
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -103,30 +105,41 @@ html.js-anim .reveal.is-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .astrolabe {
-  --aim-deg: 0deg;
+  --aim-deg: 135deg;
   --tilt-x: 0deg;
   --tilt-y: 0deg;
   position: relative;
-  width: min(440px, 84vw);
+  width: min(440px, 88vw);
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  transition: transform 0.22s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 .astrolabe__glow {
   position: absolute;
   inset: 12%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(214, 174, 88, 0.26) 0%, rgba(214, 174, 88, 0.06) 52%, transparent 72%);
+  background: radial-gradient(circle, rgba(214, 174, 88, 0.28) 0%, rgba(214, 174, 88, 0.07) 52%, transparent 72%);
   filter: blur(18px);
-  animation: pulseAura 5.5s ease-in-out infinite;
+  animation: pulseAura 5s ease-in-out infinite;
   pointer-events: none;
+}
+
+.astrolabe.is-pulsing::after {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  border: 2px solid var(--gold-bright);
+  pointer-events: none;
+  animation: shockwaveRing 0.7s var(--ease-out-expo) forwards;
 }
 
 .astrolabe__svg {
@@ -139,18 +152,18 @@ html.js-anim .reveal.is-visible {
 
 .astrolabe__ring-outer {
   transform-origin: 250px 250px;
-  animation: spinSlowCW 68s linear infinite;
+  animation: spinSlowCW 60s linear infinite;
 }
 
 .astrolabe__ring-gear {
   transform-origin: 250px 250px;
-  animation: spinSlowCCW 44s linear infinite;
+  animation: spinSlowCCW 38s linear infinite;
 }
 
 .astrolabe__ring-needle {
   transform-origin: 250px 250px;
-  transform: rotate(var(--aim-deg, 0deg));
-  transition: transform 0.35s var(--ease-out-expo);
+  transform: rotate(var(--aim-deg, 135deg));
+  transition: transform 0.42s var(--ease-out-expo);
 }
 
 .astrolabe__octagon-draw {
@@ -162,45 +175,45 @@ html.js-anim .reveal.is-visible {
 /* Central Authentic SDS Crest with Metallic Glint */
 .astrolabe__crest-frame {
   position: relative;
-  width: 56%;
-  height: 56%;
+  width: 55%;
+  height: 55%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 3;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(214, 174, 88, 0.22));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 18px rgba(214, 174, 88, 0.24));
 }
 
 .astrolabe__crest-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: floatCrest 6s ease-in-out infinite;
+  animation: floatCrest 5.5s ease-in-out infinite;
 }
 
 .astrolabe__crest-frame::after {
   content: '';
   position: absolute;
   inset: -6%;
-  background: linear-gradient(115deg, transparent 36%, rgba(255, 248, 220, 0.24) 50%, transparent 64%);
+  background: linear-gradient(115deg, transparent 36%, rgba(255, 248, 220, 0.26) 50%, transparent 64%);
   mix-blend-mode: screen;
   transform: translateX(-130%) rotate(12deg);
-  animation: crestSheen 7.5s ease-in-out infinite;
+  animation: crestSheen 6.5s ease-in-out infinite;
   pointer-events: none;
   border-radius: 50%;
 }
 
-/* 4 Interactive Quadrant Nodes around the Crest */
+/* 4 Interactive Quadrant Nodes around the Crest (48px Thumb-Friendly!) */
 .quadrant-node {
   position: absolute;
   z-index: 5;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(9, 12, 19, 0.92);
-  border: 1px solid var(--gold-border);
+  background: rgba(9, 12, 19, 0.94);
+  border: 1px solid var(--gold-border-strong);
   color: var(--gold-bright);
   cursor: pointer;
   clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
@@ -220,23 +233,23 @@ html.js-anim .reveal.is-visible {
   color: #06080D;
   border-color: #FFFFFF;
   transform: scale(1.12);
-  box-shadow: 0 0 22px rgba(246, 226, 168, 0.55);
+  box-shadow: 0 0 24px rgba(246, 226, 168, 0.6);
 }
 
-.quadrant-node--nw { top: 10%; left: 10%; }
-.quadrant-node--ne { top: 10%; right: 10%; }
-.quadrant-node--sw { bottom: 10%; left: 10%; }
-.quadrant-node--se { bottom: 10%; right: 10%; }
+.quadrant-node--nw { top: 9%; left: 9%; }
+.quadrant-node--ne { top: 9%; right: 9%; }
+.quadrant-node--sw { bottom: 9%; left: 9%; }
+.quadrant-node--se { bottom: 9%; right: 9%; }
 
 .astrolabe-readout {
-  margin-top: 1.15rem;
-  width: min(430px, 92vw);
-  padding: 0.9rem 1.15rem;
-  background: rgba(11, 15, 24, 0.88);
+  margin-top: 1.1rem;
+  width: min(440px, 100%);
+  padding: 0.9rem 1.1rem;
+  background: rgba(11, 15, 24, 0.90);
   border: 1px solid var(--gold-border);
   clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
   text-align: center;
-  min-height: 76px;
+  min-height: 78px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -244,24 +257,24 @@ html.js-anim .reveal.is-visible {
 
 .astrolabe-readout__title {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold-bright);
-  margin-bottom: 0.22rem;
+  margin-bottom: 0.25rem;
 }
 
 .astrolabe-readout__desc {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.45;
+  line-height: 1.48;
 }
 
 /* 4. Featured Game: SL BAD BOY Golden-Hour 3D Showcase Stage */
 .featured-game-shell {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1.35rem, 3vw, 2.5rem);
   align-items: stretch;
 }
 
@@ -271,7 +284,7 @@ html.js-anim .reveal.is-visible {
   --sky-horizon: #F29B38;
   --sun-glow: #FFD27D;
   position: relative;
-  min-height: 400px;
+  min-height: 410px;
   border: 1px solid var(--gold-border);
   clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
   overflow: hidden;
@@ -323,9 +336,9 @@ html.js-anim .reveal.is-visible {
 .runner-stage__sun {
   position: absolute;
   left: 50%;
-  top: 44%;
-  width: 112px;
-  height: 112px;
+  top: 43%;
+  width: 108px;
+  height: 108px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(circle, #FFF8DE 0%, var(--sun-glow) 45%, rgba(245, 158, 61, 0) 74%);
@@ -336,7 +349,7 @@ html.js-anim .reveal.is-visible {
 .runner-stage__rays {
   position: absolute;
   inset: 0;
-  background: repeating-conic-gradient(from 180deg at 50% 48%, rgba(255, 224, 150, 0.09) 0deg 6deg, transparent 6deg 18deg);
+  background: repeating-conic-gradient(from 180deg at 50% 46%, rgba(255, 224, 150, 0.09) 0deg 6deg, transparent 6deg 18deg);
   mix-blend-mode: screen;
   opacity: 0.75;
   pointer-events: none;
@@ -347,8 +360,8 @@ html.js-anim .reveal.is-visible {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 34%;
-  height: 46%;
+  bottom: 35%;
+  height: 45%;
   pointer-events: none;
   z-index: 2;
 }
@@ -386,7 +399,7 @@ html.js-anim .reveal.is-visible {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 280px;
+  width: min(280px, 78%);
   height: 220%;
   transform: translateX(-50%) rotateX(62deg);
   transform-origin: top center;
@@ -411,22 +424,22 @@ html.js-anim .reveal.is-visible {
 .runner-stage__hud-top {
   position: relative;
   z-index: 4;
-  padding: 1rem 1.15rem;
+  padding: 0.9rem 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 0.6rem;
-  background: linear-gradient(180deg, rgba(5, 7, 11, 0.78), transparent);
+  gap: 0.45rem;
+  background: linear-gradient(180deg, rgba(5, 7, 11, 0.82), transparent);
 }
 
 .runner-hud-pill {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(0.64rem, 1.9vw, 0.72rem);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  padding: 0.32rem 0.7rem;
-  background: rgba(7, 10, 16, 0.82);
+  padding: 0.3rem 0.65rem;
+  background: rgba(7, 10, 16, 0.85);
   border: 1px solid rgba(246, 226, 168, 0.35);
   color: var(--gold-bright);
   backdrop-filter: blur(8px);
@@ -435,29 +448,29 @@ html.js-anim .reveal.is-visible {
 .runner-stage__hud-bottom {
   position: relative;
   z-index: 4;
-  padding: 0.9rem 1.1rem;
-  background: linear-gradient(0deg, rgba(5, 7, 11, 0.94) 30%, rgba(5, 7, 11, 0.55) 85%, transparent 100%);
+  padding: 0.85rem 1rem;
+  background: linear-gradient(0deg, rgba(5, 7, 11, 0.96) 35%, rgba(5, 7, 11, 0.62) 85%, transparent 100%);
 }
 
 .district-switcher {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.38rem;
-  margin-top: 0.55rem;
+  gap: 0.42rem;
+  margin-top: 0.6rem;
 }
 
 .district-btn {
-  padding: 0.32rem 0.65rem;
-  min-height: 32px;
+  padding: 0.42rem 0.72rem;
+  min-height: 38px;
   font-family: var(--font-mono);
-  font-size: 0.69rem;
+  font-size: 0.7rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: rgba(244, 239, 230, 0.07);
-  border: 1px solid rgba(244, 239, 230, 0.16);
-  color: var(--text-secondary);
+  background: rgba(244, 239, 230, 0.09);
+  border: 1px solid rgba(244, 239, 230, 0.20);
+  color: var(--text-primary);
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   transition: all 0.2s ease;
 }
 
@@ -472,13 +485,15 @@ html.js-anim .reveal.is-visible {
   color: #06080D;
   border-color: var(--gold-bright);
   font-weight: 700;
+  box-shadow: 0 0 14px rgba(214, 174, 88, 0.4);
 }
 
 .stage-caption {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
+  font-size: 0.69rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  line-height: 1.45;
 }
 
 /* 5. Original CSS/SVG Artwork Previews for Software Portfolio */
@@ -511,7 +526,7 @@ html.js-anim .reveal.is-visible {
   animation: dashMarch 12s linear infinite;
 }
 
-/* Configurable Screenshot Gallery Container (Populated automatically when screenshots exist) */
+/* Configurable Screenshot Gallery Container */
 .project-screenshots {
   margin-top: 1.5rem;
   display: grid;
@@ -535,13 +550,13 @@ html.js-anim .reveal.is-visible {
 .crest-anatomy {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(1.8rem, 4vw, 3rem);
+  gap: clamp(1.6rem, 4vw, 3rem);
   align-items: center;
 }
 
 .crest-showcase-panel {
   position: relative;
-  padding: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.6rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -596,7 +611,7 @@ html.js-anim .reveal.is-visible {
 }
 
 .ident-modal__crest {
-  width: min(210px, 50vw);
+  width: min(210px, 52vw);
   height: auto;
   margin: 0 auto 1.5rem;
   filter: grayscale(1) contrast(1.25) drop-shadow(0 0 30px rgba(246, 226, 168, 0.35));
@@ -610,8 +625,8 @@ html.js-anim .reveal.is-visible {
 
 .ident-modal__title {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3.5vw, 2.15rem);
-  letter-spacing: 0.16em;
+  font-size: clamp(1.25rem, 4.2vw, 2.15rem);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-primary);
   opacity: 0;
@@ -623,8 +638,8 @@ html.js-anim .reveal.is-visible {
 
 .ident-modal__sub {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.22em;
+  font-size: clamp(0.68rem, 2.4vw, 0.76rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   margin-top: 0.55rem;
@@ -636,7 +651,7 @@ html.js-anim .reveal.is-visible {
 }
 
 .ident-modal__progress {
-  width: min(260px, 70vw);
+  width: min(260px, 72vw);
   height: 2px;
   background: rgba(244, 239, 230, 0.12);
   margin: 1.75rem auto 1.5rem;
@@ -672,8 +687,13 @@ html.js-anim .reveal.is-visible {
 }
 
 @keyframes pulseAura {
-  0%, 100% { transform: scale(0.96); opacity: 0.65; }
-  50% { transform: scale(1.06); opacity: 1; }
+  0%, 100% { transform: scale(0.95); opacity: 0.65; }
+  50% { transform: scale(1.07); opacity: 1; }
+}
+
+@keyframes shockwaveRing {
+  0% { transform: scale(0.75); opacity: 0.9; }
+  100% { transform: scale(1.38); opacity: 0; }
 }
 
 @keyframes floatCrest {
@@ -682,8 +702,8 @@ html.js-anim .reveal.is-visible {
 }
 
 @keyframes crestSheen {
-  0%, 68% { transform: translateX(-135%) rotate(12deg); opacity: 0; }
-  74% { opacity: 1; }
+  0%, 64% { transform: translateX(-135%) rotate(12deg); opacity: 0; }
+  72% { opacity: 1; }
   92%, 100% { transform: translateX(135%) rotate(12deg); opacity: 0; }
 }
 
@@ -719,7 +739,7 @@ html.js-anim .reveal.is-visible {
 }
 
 @keyframes identTextReveal {
-  0% { opacity: 0; transform: translateY(12px); letter-spacing: 0.28em; }
+  0% { opacity: 0; transform: translateY(12px); letter-spacing: 0.26em; }
   35%, 100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -741,23 +761,32 @@ html.js-anim .reveal.is-visible {
   }
 
   .astrolabe {
-    width: min(380px, 82vw);
-    margin: 0.5rem auto 0;
+    width: min(370px, 86vw);
+    margin: 0.25rem auto 0;
   }
 }
 
 @media (max-width: 600px) {
-  .quadrant-node {
-    width: 42px;
-    height: 42px;
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .quadrant-node--nw { top: 6%; left: 6%; }
-  .quadrant-node--ne { top: 6%; right: 6%; }
-  .quadrant-node--sw { bottom: 6%; left: 6%; }
-  .quadrant-node--se { bottom: 6%; right: 6%; }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .quadrant-node {
+    width: 44px;
+    height: 44px;
+  }
+  .quadrant-node--nw { top: 5%; left: 5%; }
+  .quadrant-node--ne { top: 5%; right: 5%; }
+  .quadrant-node--sw { bottom: 5%; left: 5%; }
+  .quadrant-node--se { bottom: 5%; right: 5%; }
 
   .runner-stage {
-    min-height: 370px;
+    min-height: 390px;
   }
 }
 

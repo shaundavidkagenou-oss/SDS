@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Shaun David Studios — Sitemap
-  Intentionally ships without placeholder domains (such as example.com).
-  Once your real Cloudflare Pages or custom HTTPS domain is live, run:
-    node scripts/configure-domain.mjs https://your-real-domain
+  Ships without fake or placeholder domains prior to custom domain assignment.
+  Once your official Cloudflare Pages or custom HTTPS domain is live, run:
+    node scripts/configure-domain.mjs https://<your-official-domain>
   to populate absolute canonical URLs across all pages, robots.txt, and sitemap.xml.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

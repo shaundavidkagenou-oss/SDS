@@ -6,7 +6,7 @@
  * release links, screenshots, or announcements across the entire website.
  *
  * SAFETY & DISPLAY RULES:
- * - Leave any unverified email or URL as an empty string ("").
+ * - Leave any unverified URL as an empty string ("").
  * - Empty strings are automatically omitted from buttons, navigation, footers,
  *   and Schema.org JSON-LD `sameAs` arrays — visitors will never see broken
  *   links or "TODO" placeholders.
@@ -23,8 +23,10 @@ window.SDS_SITE_CONFIG = {
 
   founder: {
     name: "Shaun David",
+    alternateName: "H.K.S Sathsara",
     role: "Founder & CEO of Shaun David Studios",
     shortRole: "Founder & CEO",
+    recognition: "Best English Announcer in Western Province, Sri Lanka",
     location: "Sri Lanka"
   },
 
@@ -36,12 +38,9 @@ window.SDS_SITE_CONFIG = {
   siteUrl: "",
 
   /**
-   * Official contact email address.
-   * Example: "contact@shaundavidstudios.com"
-   * When set, live `mailto:` buttons and one-click copy tools appear on Contact & Footer.
-   * Leave "" until a verified studio inbox is ready.
+   * Official contact & support email address.
    */
-  contactEmail: "",
+  contactEmail: "official.shaundavidstudios@gmail.com",
 
   /**
    * Studio branding image paths (relative to site root).
@@ -55,24 +54,24 @@ window.SDS_SITE_CONFIG = {
   },
 
   /**
-   * Official verified public profiles.
-   * Only non-empty HTTPS URLs are rendered on the site and included in JSON-LD `sameAs`.
+   * Official verified public social profiles.
+   * Add verified HTTPS URLs when ready — empty entries remain hidden automatically.
    */
   socials: {
-    github: "https://github.com/shaundavidkagenou-oss",
     youtube: "",
     x: "",
     instagram: "",
     linkedin: "",
     discord: "",
     itchio: "",
-    playStore: ""
+    playStore: "",
+    github: ""
   },
 
   /**
    * Verified Games & Software Portfolio Configuration.
    * Supply `playUrl`, `downloadUrl`, `releaseDate`, or `screenshots` (array of
-   * `{ src: "/assets/img/...", alt: "...", caption: "..." }`) only when verified.
+   * `{ src: "/assets/img/...", alt: "...", caption: "..." }`) when publicly released.
    */
   projects: {
     "sl-bad-boy": {
@@ -85,7 +84,6 @@ window.SDS_SITE_CONFIG = {
       releaseDate: "",
       playUrl: "",
       downloadUrl: "",
-      repoUrl: "https://github.com/shaundavidkagenou-oss/SL-Bad-Boy",
       screenshots: []
     },
     "sds-geox-meetings": {
@@ -97,7 +95,6 @@ window.SDS_SITE_CONFIG = {
       releaseDate: "",
       playUrl: "",
       downloadUrl: "",
-      repoUrl: "https://github.com/shaundavidkagenou-oss/SDS-Geox-Meetings",
       screenshots: []
     },
     "routemora": {
@@ -109,37 +106,12 @@ window.SDS_SITE_CONFIG = {
       releaseDate: "",
       playUrl: "",
       downloadUrl: "",
-      repoUrl: "https://github.com/shaundavidkagenou-oss/RouteMora",
-      screenshots: []
-    },
-    "sd-education": {
-      id: "sd-education",
-      title: "SD Education",
-      category: "software",
-      status: "Public Web Prototype",
-      platforms: "Web Portal (English & Sinhala)",
-      releaseDate: "",
-      playUrl: "https://shaundavidkagenou-oss.github.io/SD-Education/",
-      downloadUrl: "",
-      repoUrl: "https://github.com/shaundavidkagenou-oss/SD-Education",
       screenshots: []
     }
   },
 
   /**
    * Optional quick-publish updates prepended to the News & Development Updates page.
-   * Each entry format:
-   * {
-   *   id: "2026-11-update",
-   *   date: "November 2026",
-   *   isoDate: "2026-11-01",
-   *   category: "game-dev", // "announcement" | "game-dev" | "software" | "patch-notes"
-   *   categoryLabel: "Game Development",
-   *   title: "Update Title",
-   *   summary: "Factual summary paragraph.",
-   *   linkUrl: "",
-   *   linkLabel: ""
-   * }
    */
   additionalUpdates: []
 };

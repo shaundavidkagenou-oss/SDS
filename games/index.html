@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games &amp; Software Projects — Shaun David Studios</title>
-  <meta name="description" content="Official games and software portfolio of Shaun David Studios in Sri Lanka — featuring SL BAD BOY — Schoolboy Rush alongside SDS Geox Meetings, RouteMora, and SD Education.">
+  <meta name="description" content="Official games and software portfolio of Shaun David Studios in Sri Lanka — featuring SL BAD BOY — Schoolboy Rush alongside SDS Geox Meetings and RouteMora.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#050609">
-  <meta name="author" content="Shaun David">
+  <meta name="author" content="Shaun David (H.K.S Sathsara)">
 
   <!-- Open Graph Metadata -->
   <meta property="og:site_name" content="Shaun David Studios">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Games &amp; Software Projects — Shaun David Studios">
-  <meta property="og:description" content="Explore original games and software created in Sri Lanka by Shaun David Studios, featuring SL BAD BOY — Schoolboy Rush.">
+  <meta property="og:description" content="Explore original games and software created in Sri Lanka by Shaun David Studios, featuring SL BAD BOY — Schoolboy Rush, SDS Geox Meetings, and RouteMora.">
   <meta property="og:image" content="/assets/img/og-image.png">
   <meta property="og:image:alt" content="Shaun David Studios emblem and portfolio">
   <meta property="og:image:width" content="1200">
@@ -80,6 +80,7 @@
         "@id": "#organization",
         "name": "Shaun David Studios",
         "alternateName": "SDS",
+        "email": "official.shaundavidstudios@gmail.com",
         "logo": {
           "@type": "ImageObject",
           "url": "/assets/img/sds-logo-original.jpg",
@@ -92,22 +93,21 @@
         },
         "founder": {
           "@id": "#shaun-david"
-        },
-        "sameAs": [
-          "https://github.com/shaundavidkagenou-oss"
-        ]
+        }
       },
       {
         "@type": "Person",
         "@id": "#shaun-david",
         "name": "Shaun David",
+        "alternateName": [
+          "H.K.S Sathsara",
+          "H.K.S. Sathsara"
+        ],
         "jobTitle": "Founder & CEO",
+        "award": "Best English Announcer in Western Province, Sri Lanka",
         "worksFor": {
           "@id": "#organization"
-        },
-        "sameAs": [
-          "https://github.com/shaundavidkagenou-oss"
-        ]
+        }
       }
     ]
   }
@@ -120,7 +120,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand-link" href="../" aria-label="Shaun David Studios — Home">
-        <img class="brand-link__crest" src="../assets/img/sds-crest-gold.png" width="44" height="44" alt="Shaun David Studios octagonal compass crest">
+        <img class="brand-link__crest" src="../assets/img/sds-crest-gold.png" width="42" height="42" alt="Shaun David Studios octagonal compass crest">
         <span class="brand-link__text">
           <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
           <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
@@ -145,7 +145,7 @@
           <li><a class="primary-nav__link" href="../contact/">Contact</a></li>
         </ul>
         <div class="nav-cta">
-          <a class="btn btn--primary btn--sm" href="../contact/">Studio Inquiries</a>
+          <a class="btn btn--primary btn--sm" href="../contact/">Contact &amp; Support</a>
         </div>
       </nav>
     </div>
@@ -170,7 +170,7 @@
         </div>
         <h1 id="portfolio-title" class="page-title">Games &amp; Software Projects</h1>
         <p class="lead" style="max-width: 800px;">
-          Explore the original games and software applications built in Sri Lanka by <strong>Shaun David Studios</strong> — led by our debut 3D game <strong>SL BAD BOY — Schoolboy Rush</strong> alongside real-time web software and educational projects.
+          Explore the original games and software applications built in Sri Lanka by <strong>Shaun David Studios</strong> — led by our debut 3D game <strong>SL BAD BOY — Schoolboy Rush</strong> alongside real-time collaborative and Sri Lanka-focused web software.
         </p>
       </div>
     </section>
@@ -179,13 +179,13 @@
     <section class="section" aria-label="Studio Portfolio Directory">
       <div class="container" id="portfolio-directory">
         <div class="filter-bar" role="group" aria-label="Filter projects by category" data-filter-group="#portfolio-directory">
-          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Projects (4)</button>
+          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Projects (3)</button>
           <button class="filter-btn" type="button" data-filter="game" aria-pressed="false">Games (1)</button>
-          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software &amp; Web (3)</button>
+          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software &amp; Web (2)</button>
         </div>
 
         <!-- 1. FLAGSHIP GAME: SL BAD BOY — SCHOOLBOY RUSH -->
-        <article id="sl-bad-boy" class="sds-card sds-card--gold reveal" data-no-tilt data-filter-item="game" style="margin-bottom: 2.5rem;">
+        <article id="sl-bad-boy" class="sds-card sds-card--gold reveal" data-no-tilt data-filter-item="game" style="margin-bottom: 2.25rem;">
           <div class="badge-row">
             <span class="badge badge--status">
               <span class="badge__pulse" aria-hidden="true"></span>
@@ -309,8 +309,12 @@
                 </div>
               </div>
 
-              <div class="btn-group" style="margin-top: 1.5rem;" data-project-actions="sl-bad-boy">
-                <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SL-Bad-Boy" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
+              <!-- Configurable Play / Download Buttons (Automatically shown when playUrl / downloadUrl are set in site-config.js) -->
+              <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sl-bad-boy" hidden></div>
+
+              <div class="btn-group" style="margin-top: 1rem;">
+                <a class="btn btn--secondary btn--sm" href="../news/#sl-bad-boy-dev-overview">Read Development Log</a>
+                <a class="btn btn--ghost btn--sm" href="../contact/">Game Inquiries &amp; Support</a>
               </div>
             </div>
           </div>
@@ -319,8 +323,8 @@
           <div class="project-screenshots" data-project-screenshots="sl-bad-boy" hidden></div>
         </article>
 
-        <!-- 2. SOFTWARE & WEB PROJECTS GRID -->
-        <div class="grid-3">
+        <!-- 2. SOFTWARE & WEB PROJECTS GRID (2 PROJECTS) -->
+        <div class="grid-2">
           <!-- SDS Geox Meetings -->
           <article id="sds-geox-meetings" class="sds-card reveal" data-filter-item="software">
             <div class="project-art" aria-hidden="true">
@@ -361,9 +365,7 @@
               <li class="tag-chip">Node.js</li>
               <li class="tag-chip">WebSockets</li>
             </ul>
-            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sds-geox-meetings">
-              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SDS-Geox-Meetings" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
-            </div>
+            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sds-geox-meetings" hidden></div>
             <div class="project-screenshots" data-project-screenshots="sds-geox-meetings" hidden></div>
           </article>
 
@@ -397,43 +399,8 @@
               <li class="tag-chip">Vite</li>
               <li class="tag-chip">Deterministic Planner</li>
             </ul>
-            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="routemora">
-              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/RouteMora" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
-            </div>
+            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="routemora" hidden></div>
             <div class="project-screenshots" data-project-screenshots="routemora" hidden></div>
-          </article>
-
-          <!-- SD Education -->
-          <article id="sd-education" class="sds-card reveal" style="--delay: 180ms;" data-filter-item="software">
-            <div class="project-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <rect x="48" y="38" width="264" height="114" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(214,174,88,0.45)" stroke-width="1.5"/>
-                <text x="180" y="78" text-anchor="middle" fill="#F6E2A8" font-family="serif" font-size="22" font-weight="bold">%  ·  ∑  ·  π</text>
-                <text x="180" y="108" text-anchor="middle" fill="#F4EFE6" font-family="monospace" font-size="10">ENGLISH &amp; SINHALA PORTAL</text>
-                <rect x="92" y="122" width="176" height="8" rx="4" fill="rgba(244,239,230,0.12)"/>
-                <rect x="92" y="122" width="118" height="8" rx="4" fill="#34D399"/>
-              </svg>
-            </div>
-
-            <div class="badge-row">
-              <span class="badge badge--live">Public Web Prototype</span>
-              <span class="badge">English &amp; Sinhala</span>
-            </div>
-            <h2>SD Education</h2>
-            <p style="margin-top: 0.6rem;">
-              An interactive, step-by-step web learning portal created specifically for Sri Lankan students. Supports instant toggling between English and Sinhala (සිංහල) to make foundational mathematics concepts clear and approachable.
-            </p>
-            <ul class="tag-list" aria-label="Technologies">
-              <li class="tag-chip">HTML5</li>
-              <li class="tag-chip">CSS3</li>
-              <li class="tag-chip">JavaScript</li>
-              <li class="tag-chip">Bilingual UI</li>
-            </ul>
-            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sd-education">
-              <a class="btn btn--primary btn--sm" href="https://shaundavidkagenou-oss.github.io/SD-Education/" target="_blank" rel="noopener noreferrer">Open Live Web App</a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SD-Education" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
-            </div>
-            <div class="project-screenshots" data-project-screenshots="sd-education" hidden></div>
           </article>
         </div>
 
@@ -449,7 +416,7 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="site-footer__lockup" href="../">
-            <img src="../assets/img/sds-crest-gold.png" width="52" height="52" alt="Shaun David Studios emblem">
+            <img src="../assets/img/sds-crest-gold.png" width="50" height="50" alt="Shaun David Studios emblem">
             <div>
               <div class="font-display" style="font-size: 1rem; letter-spacing: 0.08em;">SHAUN DAVID STUDIOS</div>
               <div class="mono-tag" style="font-size: 0.65rem;">Sri Lanka</div>
@@ -457,7 +424,7 @@
           </a>
           <p class="site-footer__motto">Creating Music · Games · &amp; Everything Beyond</p>
           <p class="site-footer__desc">
-            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David.
+            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David (H.K.S Sathsara).
           </p>
         </div>
 
@@ -468,7 +435,7 @@
             <li><a href="../about/">About the Studio</a></li>
             <li><a href="../shaun-david/">Shaun David (Founder &amp; CEO)</a></li>
             <li><a href="../news/">News &amp; Dev Updates</a></li>
-            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../contact/">Contact &amp; Support</a></li>
           </ul>
         </div>
 
@@ -478,26 +445,52 @@
             <li><a href="#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
             <li><a href="#sds-geox-meetings">SDS Geox Meetings</a></li>
             <li><a href="#routemora">RouteMora</a></li>
-            <li><a href="#sd-education">SD Education</a></li>
           </ul>
         </div>
 
         <div>
-          <h2 class="site-footer__heading">Official Channels</h2>
-          <ul class="site-footer__links" data-social-list="footer-links">
-            <li><a href="https://github.com/shaundavidkagenou-oss" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <h2 class="site-footer__heading">Contact &amp; Support</h2>
+          <ul class="site-footer__links">
+            <li><a href="mailto:official.shaundavidstudios@gmail.com">official.shaundavidstudios@gmail.com</a></li>
+            <li><a href="../contact/">Support &amp; Inquiries Hub</a></li>
           </ul>
-          <p data-footer-email hidden style="margin-top: 0.85rem; font-size: 0.88rem;"></p>
+          <div data-social-section hidden style="margin-top: 0.85rem;">
+            <ul class="site-footer__links" data-social-list="footer-links"></ul>
+          </div>
           <p style="margin-top: 0.9rem; font-size: 0.84rem; color: var(--text-muted);">Based in Sri Lanka</p>
         </div>
       </div>
 
       <div class="site-footer__bottom">
-        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David in Sri Lanka.</p>
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David (H.K.S Sathsara) in Sri Lanka.</p>
         <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
       </div>
     </div>
   </footer>
+
+  <!-- Mobile One-Thumb Quick Navigation Dock -->
+  <nav class="mobile-dock" aria-label="Mobile quick navigation">
+    <a class="mobile-dock__link" href="../">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Home</span>
+    </a>
+    <a class="mobile-dock__link" href="./" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>
+      <span>Games</span>
+    </a>
+    <a class="mobile-dock__link" href="../shaun-david/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+      <span>Founder</span>
+    </a>
+    <a class="mobile-dock__link" href="../about/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 19 7 19 17 12 22 5 17 5 7 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>About</span>
+    </a>
+    <a class="mobile-dock__link" href="../contact/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
 
   <script src="../assets/js/site-config.js"></script>
   <script src="../assets/js/main.js"></script>
