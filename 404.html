@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found (404) — Shaun David Studios</title>
+  <meta name="description" content="The requested page could not be found on the official Shaun David Studios website.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#050609">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="/" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="/assets/img/sds-crest-gold.png" width="44" height="44" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="/">Home</a></li>
+          <li><a class="primary-nav__link" href="/about/">About</a></li>
+          <li><a class="primary-nav__link" href="/shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="/games/">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="/news/">News</a></li>
+          <li><a class="primary-nav__link" href="/contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="/games/">Explore Portfolio</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content" style="display: flex; align-items: center;">
+    <section class="section" style="width: 100%;" aria-labelledby="error-title">
+      <div class="container" style="max-width: 680px; text-align: center;">
+        <div class="sds-card sds-card--gold" data-no-tilt style="padding: clamp(2.5rem, 6vw, 4rem);">
+          <img src="/assets/img/sds-crest-gold.png" width="120" height="120" alt="Shaun David Studios compass crest" style="margin: 0 auto 1.5rem;">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>Error 404 · Uncharted Coordinate</span>
+          </div>
+          <h1 id="error-title" class="page-title">Off the Charted Map</h1>
+          <p class="lead" style="margin-bottom: 2rem;">
+            The page you requested does not exist or may have moved. Use the compass bearings below to return to an active section of <strong>Shaun David Studios</strong>.
+          </p>
+          <div class="btn-group" style="justify-content: center;">
+            <a class="btn btn--primary" href="/">Return to Home</a>
+            <a class="btn btn--secondary" href="/games/">Games &amp; Projects</a>
+            <a class="btn btn--ghost" href="/shaun-david/">Founder Biography</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__bottom" style="padding-top: 0;">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David in Sri Lanka.</p>
+        <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/animations.js"></script>
+</body>
+</html>

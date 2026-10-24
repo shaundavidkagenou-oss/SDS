@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Shaun David Studios Emblem">
+  <defs>
+    <linearGradient id="sds-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E2A8"/>
+      <stop offset="50%" stop-color="#D6AE58"/>
+      <stop offset="100%" stop-color="#9E7628"/>
+    </linearGradient>
+  </defs>
+  <polygon points="38,4 90,4 124,38 124,90 90,124 38,124 4,90 4,38" fill="#07090E" stroke="url(#sds-gold)" stroke-width="4"/>
+  <polygon points="42,11 86,11 117,42 117,86 86,117 42,117 11,86 11,42" fill="none" stroke="#F4EFE6" stroke-opacity="0.22" stroke-width="1.2"/>
+  <circle cx="64" cy="64" r="36" fill="none" stroke="url(#sds-gold)" stroke-width="2.5" stroke-dasharray="9 5"/>
+  <circle cx="64" cy="64" r="27" fill="#0B0E16" stroke="url(#sds-gold)" stroke-width="2.2"/>
+  <polygon points="64,12 69,36 64,32 59,36" fill="url(#sds-gold)"/>
+  <polygon points="64,116 69,92 64,96 59,92" fill="url(#sds-gold)"/>
+  <polygon points="12,64 36,59 32,64 36,69" fill="url(#sds-gold)"/>
+  <polygon points="116,64 92,59 96,64 92,69" fill="url(#sds-gold)"/>
+  <text x="64" y="75" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="31" letter-spacing="1" fill="#F4EFE6">SDS</text>
+</svg>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Shaun David Studios — Independent Game &amp; Software Studio in Sri Lanka</title>
+  <meta name="description" content="Learn about Shaun David Studios, an independent game development and software studio based in Sri Lanka, founded by Founder &amp; CEO Shaun David to build original projects.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050609">
+  <meta name="author" content="Shaun David">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:site_name" content="Shaun David Studios">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Shaun David Studios — Independent Game &amp; Software Studio in Sri Lanka">
+  <meta property="og:description" content="Explore the creative mission, Sri Lankan roots, and engineering principles of Shaun David Studios, founded by Shaun David.">
+  <meta property="og:image" content="/assets/img/og-image.png">
+  <meta property="og:image:alt" content="Shaun David Studios octagonal compass and clockwork crest">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Shaun David Studios — Independent Game &amp; Software Studio">
+  <meta name="twitter:description" content="Explore the creative mission, Sri Lankan roots, and engineering principles of Shaun David Studios.">
+  <meta name="twitter:image" content="/assets/img/og-image.png">
+
+  <!-- Favicons & Manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preload" href="../assets/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+
+  <!-- Schema.org Structured Data (AboutPage + Organization + Founder) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "#about-page",
+        "name": "About Shaun David Studios",
+        "description": "Overview of Shaun David Studios, an independent game development and software studio based in Sri Lanka, founded by Shaun David.",
+        "mainEntity": {
+          "@id": "#organization"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "#organization",
+        "name": "Shaun David Studios",
+        "alternateName": "SDS",
+        "slogan": "Creating Music, Games & Everything Beyond",
+        "description": "Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/img/sds-logo-original.jpg",
+          "width": 905,
+          "height": 768
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "location": {
+          "@type": "Place",
+          "name": "Sri Lanka"
+        },
+        "founder": {
+          "@id": "#shaun-david"
+        },
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "#shaun-david",
+        "name": "Shaun David",
+        "jobTitle": "Founder & CEO",
+        "worksFor": {
+          "@id": "#organization"
+        },
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="../" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="../assets/img/sds-crest-gold.png" width="44" height="44" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="../">Home</a></li>
+          <li><a class="primary-nav__link" href="./" aria-current="page">About</a></li>
+          <li><a class="primary-nav__link" href="../shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="../games/">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="../news/">News</a></li>
+          <li><a class="primary-nav__link" href="../contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="../games/">Explore Portfolio</a>
+        </div>
+      </nav>
+    </div>
+    <div class="scroll-vernier" aria-hidden="true">
+      <div class="scroll-vernier__bar"></div>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="about-title">
+      <div class="container">
+        <ol class="breadcrumb" aria-label="Breadcrumb">
+          <li><a href="../">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">About the Studio</li>
+        </ol>
+        <div class="eyebrow">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          <span>Studio Identity · Sri Lanka</span>
+        </div>
+        <h1 id="about-title" class="page-title">About Shaun David Studios</h1>
+        <p class="lead" style="max-width: 780px;">
+          <strong>Shaun David Studios</strong> is an independent game development and software studio based in <strong>Sri Lanka</strong>, dedicated to building original interactive worlds, practical digital tools, and custom audio experiences from the ground up.
+        </p>
+      </div>
+    </section>
+
+    <!-- Studio Purpose & Creative Direction -->
+    <section class="section" aria-labelledby="purpose-heading">
+      <div class="container">
+        <div class="grid-2" style="align-items: start;">
+          <div class="reveal">
+            <div class="eyebrow">
+              <span class="eyebrow__dot" aria-hidden="true"></span>
+              <span>Purpose &amp; Creative Direction</span>
+            </div>
+            <h2 id="purpose-heading" class="section-title">Original Projects Built Without Shortcuts</h2>
+            <p>
+              Shaun David Studios was established with a clear purpose: to serve as an independent creative workshop where game design, real-time software architecture, and musical expression converge under one coherent vision.
+            </p>
+            <p>
+              Rather than reskinning third-party templates or imitating existing franchises, the studio focuses on original concepts engineered from first principles. In game development, that means designing custom 3D procedural geometry, responsive player movement, synthesized soundtracks, and adaptive rendering pipelines that run cleanly on everyday mobile devices as well as desktop PCs.
+            </p>
+            <p>
+              In software engineering, the same philosophy translates into focused, resilient web applications — ranging from collaborative visual whiteboards to Sri Lanka-centered travel planning and bilingual educational portals.
+            </p>
+          </div>
+
+          <div class="sds-card sds-card--gold reveal" style="--delay: 100ms;">
+            <h3>Based in Sri Lanka</h3>
+            <p>
+              Operating from <strong>Sri Lanka</strong> shapes both the technical pragmatism and the creative atmosphere of Shaun David Studios.
+            </p>
+            <p>
+              Our work embraces Sri Lanka's landscapes, architecture, multilingual street culture, and everyday rhythm as genuine creative inspiration — from Colombo's evening avenues and hill-country viaducts to coastal lighthouses and northern palmyrah horizons — while adhering to modern web and mobile engineering standards accessible to audiences everywhere.
+            </p>
+            <div class="spec-ledger" style="margin-top: 1.5rem;">
+              <div class="spec-row">
+                <span class="spec-label">Studio Name</span>
+                <span class="spec-value">Shaun David Studios</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Base of Operations</span>
+                <span class="spec-value">Sri Lanka</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Primary Disciplines</span>
+                <span class="spec-value">Independent Games &amp; Software</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Ownership Model</span>
+                <span class="spec-value">Independent Studio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anatomy of the Official Emblem -->
+    <section class="section section--alt" aria-labelledby="emblem-heading">
+      <div class="container">
+        <div class="crest-anatomy">
+          <div class="crest-showcase-panel reveal">
+            <img src="../assets/img/sds-lockup-dark.png" width="420" height="302" alt="Official Shaun David Studios full crest and wordmark: Creating Music, Games, and Everything Beyond">
+            <p class="mono-tag">Official Studio Crest &amp; Motto</p>
+          </div>
+
+          <div class="reveal" style="--delay: 100ms;">
+            <div class="eyebrow">
+              <span class="eyebrow__dot" aria-hidden="true"></span>
+              <span>Visual Symbolism</span>
+            </div>
+            <h2 id="emblem-heading" class="section-title">Inside the SDS Crest</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              The official Shaun David Studios crest unites horological precision with creative exploration:
+            </p>
+
+            <div class="grid-2" style="gap: 1rem;">
+              <div class="sds-card" style="padding: 1.25rem;">
+                <h3 style="font-size: 1rem;">Octagonal Compass</h3>
+                <p style="font-size: 0.88rem;">Cardinal needles pointing North, South, East, and West represent independent creative direction and exploring uncharted ideas.</p>
+              </div>
+              <div class="sds-card" style="padding: 1.25rem;">
+                <h3 style="font-size: 1rem;">Clockwork Gear</h3>
+                <p style="font-size: 0.88rem;">The inner cogwheel represents software engineering, frame-budget discipline, and interlocking technical systems.</p>
+              </div>
+              <div class="sds-card" style="padding: 1.25rem;">
+                <h3 style="font-size: 1rem;">Music &amp; Quill</h3>
+                <p style="font-size: 0.88rem;">Musical notes and the radiant feather pen reflect original sound synthesis, composition, and world authorship.</p>
+              </div>
+              <div class="sds-card" style="padding: 1.25rem;">
+                <h3 style="font-size: 1rem;">Directional D-Pad</h3>
+                <p style="font-size: 0.88rem;">Tactile control, fair gameplay responsiveness, and player-first interaction across touchscreens and keyboards.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Principles -->
+    <section class="section" aria-labelledby="principles-heading">
+      <div class="container">
+        <div class="section-header section-header--center reveal">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>How We Build</span>
+          </div>
+          <h2 id="principles-heading" class="section-title">Studio Standards</h2>
+          <p class="lead">
+            Every game prototype and software project at Shaun David Studios follows four foundational commitments.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="sds-card reveal">
+            <h3>1. Original Craft &amp; Fair Play</h3>
+            <p>We build original procedural assets, synthesized audio, and deterministic rulesets without copying external game assets or relying on deceptive mechanics.</p>
+          </article>
+          <article class="sds-card reveal" style="--delay: 80ms;">
+            <h3>2. Mobile &amp; Desktop Accessibility</h3>
+            <p>Projects are engineered to scale cleanly across Android phones, tablets, and desktop browsers, respecting hardware budgets and reduced-motion preferences.</p>
+          </article>
+          <article class="sds-card reveal" style="--delay: 160ms;">
+            <h3>3. Cultural Authenticity</h3>
+            <p>When portraying Sri Lankan locations or themes, we focus on thoughtful architectural, geographic, and multilingual detail rather than exaggeration.</p>
+          </article>
+          <article class="sds-card reveal" style="--delay: 240ms;">
+            <h3>4. Honest Communication</h3>
+            <p>Development milestones, prototypes, and active builds are described transparently — distinguishing clearly between works in progress and finalized public releases.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Introduction Section -->
+    <section class="section section--alt" aria-labelledby="about-founder-heading">
+      <div class="container">
+        <div class="sds-card sds-card--gold reveal" data-no-tilt>
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow__dot" aria-hidden="true"></span>
+                <span>Founder &amp; Leadership</span>
+              </div>
+              <h2 id="about-founder-heading" class="section-title">Shaun David</h2>
+              <p class="mono-tag" style="margin-bottom: 1rem;">Founder &amp; CEO of Shaun David Studios</p>
+              <p>
+                <strong>Shaun David</strong> is the <strong>Founder &amp; CEO of Shaun David Studios</strong>. Based in Sri Lanka, he leads the studio's creative direction, game engineering, procedural world design, and software development across its entire portfolio.
+              </p>
+              <p>
+                From architecting the fourteen-district 3D world of <em>SL BAD BOY — Schoolboy Rush</em> to building collaborative web software and educational tools, Shaun David combines hands-on technical execution with a long-term vision for original independent creation.
+              </p>
+              <div class="btn-group" style="margin-top: 1.65rem;">
+                <a class="btn btn--primary" href="../shaun-david/">Read Full Founder Biography</a>
+                <a class="btn btn--secondary" href="../games/">View Studio Portfolio</a>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+              <img src="../assets/img/sds-crest-ivory.png" width="190" height="190" alt="Shaun David Studios ivory emblem" style="margin-bottom: 1.25rem; filter: drop-shadow(0 0 22px rgba(214, 174, 88, 0.25));">
+              <p class="font-display" style="font-size: 1.15rem; letter-spacing: 0.08em;">SHAUN DAVID</p>
+              <p class="mono-tag" style="margin-top: 0.3rem;">Founder &amp; CEO · Sri Lanka</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__lockup" href="../">
+            <img src="../assets/img/sds-crest-gold.png" width="52" height="52" alt="Shaun David Studios emblem">
+            <div>
+              <div class="font-display" style="font-size: 1rem; letter-spacing: 0.08em;">SHAUN DAVID STUDIOS</div>
+              <div class="mono-tag" style="font-size: 0.65rem;">Sri Lanka</div>
+            </div>
+          </a>
+          <p class="site-footer__motto">Creating Music · Games · &amp; Everything Beyond</p>
+          <p class="site-footer__desc">
+            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Studio</h2>
+          <ul class="site-footer__links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./">About the Studio</a></li>
+            <li><a href="../shaun-david/">Shaun David (Founder &amp; CEO)</a></li>
+            <li><a href="../news/">News &amp; Dev Updates</a></li>
+            <li><a href="../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Portfolio</h2>
+          <ul class="site-footer__links">
+            <li><a href="../games/#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
+            <li><a href="../games/#sds-geox-meetings">SDS Geox Meetings</a></li>
+            <li><a href="../games/#routemora">RouteMora</a></li>
+            <li><a href="../games/#sd-education">SD Education</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Official Channels</h2>
+          <ul class="site-footer__links" data-social-list="footer-links">
+            <li><a href="https://github.com/shaundavidkagenou-oss" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+          <p data-footer-email hidden style="margin-top: 0.85rem; font-size: 0.88rem;"></p>
+          <p style="margin-top: 0.9rem; font-size: 0.84rem; color: var(--text-muted);">Based in Sri Lanka</p>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David in Sri Lanka.</p>
+        <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site-config.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

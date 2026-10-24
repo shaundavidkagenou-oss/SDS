@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games &amp; Software Projects — Shaun David Studios</title>
+  <meta name="description" content="Official games and software portfolio of Shaun David Studios in Sri Lanka — featuring SL BAD BOY — Schoolboy Rush alongside SDS Geox Meetings, RouteMora, and SD Education.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050609">
+  <meta name="author" content="Shaun David">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:site_name" content="Shaun David Studios">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Games &amp; Software Projects — Shaun David Studios">
+  <meta property="og:description" content="Explore original games and software created in Sri Lanka by Shaun David Studios, featuring SL BAD BOY — Schoolboy Rush.">
+  <meta property="og:image" content="/assets/img/og-image.png">
+  <meta property="og:image:alt" content="Shaun David Studios emblem and portfolio">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Games &amp; Software Projects — Shaun David Studios">
+  <meta name="twitter:description" content="Explore original games and software created in Sri Lanka by Shaun David Studios.">
+  <meta name="twitter:image" content="/assets/img/og-image.png">
+
+  <!-- Favicons & Manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preload" href="../assets/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+
+  <!-- Schema.org Structured Data (CollectionPage + VideoGame + Organization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "#portfolio-page",
+        "name": "Games & Software Projects — Shaun David Studios",
+        "description": "Official portfolio of independent games and software projects developed by Shaun David Studios in Sri Lanka.",
+        "isPartOf": {
+          "@id": "#organization"
+        },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "#sl-bad-boy",
+        "name": "SL BAD BOY — Schoolboy Rush",
+        "description": "An original 3D Sri Lankan endless runner for Web and Android built with Three.js, JavaScript, Vite, and Capacitor across fourteen themed Sri Lankan districts.",
+        "genre": [
+          "Endless Runner",
+          "Action"
+        ],
+        "gamePlatform": [
+          "Web Browser",
+          "Android"
+        ],
+        "applicationCategory": "Game",
+        "inLanguage": [
+          "en",
+          "si",
+          "ta"
+        ],
+        "author": {
+          "@id": "#organization"
+        },
+        "creator": {
+          "@id": "#shaun-david"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "#organization",
+        "name": "Shaun David Studios",
+        "alternateName": "SDS",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/img/sds-logo-original.jpg",
+          "width": 905,
+          "height": 768
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "founder": {
+          "@id": "#shaun-david"
+        },
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "#shaun-david",
+        "name": "Shaun David",
+        "jobTitle": "Founder & CEO",
+        "worksFor": {
+          "@id": "#organization"
+        },
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="../" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="../assets/img/sds-crest-gold.png" width="44" height="44" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="../">Home</a></li>
+          <li><a class="primary-nav__link" href="../about/">About</a></li>
+          <li><a class="primary-nav__link" href="../shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="./" aria-current="page">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="../news/">News</a></li>
+          <li><a class="primary-nav__link" href="../contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="../contact/">Studio Inquiries</a>
+        </div>
+      </nav>
+    </div>
+    <div class="scroll-vernier" aria-hidden="true">
+      <div class="scroll-vernier__bar"></div>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content">
+    <!-- Portfolio Hero -->
+    <section class="page-hero" aria-labelledby="portfolio-title">
+      <div class="container">
+        <ol class="breadcrumb" aria-label="Breadcrumb">
+          <li><a href="../">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page">Games &amp; Projects</li>
+        </ol>
+        <div class="eyebrow">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          <span>Official Studio Portfolio</span>
+        </div>
+        <h1 id="portfolio-title" class="page-title">Games &amp; Software Projects</h1>
+        <p class="lead" style="max-width: 800px;">
+          Explore the original games and software applications built in Sri Lanka by <strong>Shaun David Studios</strong> — led by our debut 3D game <strong>SL BAD BOY — Schoolboy Rush</strong> alongside real-time web software and educational projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portfolio Section with Interactive Filter -->
+    <section class="section" aria-label="Studio Portfolio Directory">
+      <div class="container" id="portfolio-directory">
+        <div class="filter-bar" role="group" aria-label="Filter projects by category" data-filter-group="#portfolio-directory">
+          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Projects (4)</button>
+          <button class="filter-btn" type="button" data-filter="game" aria-pressed="false">Games (1)</button>
+          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software &amp; Web (3)</button>
+        </div>
+
+        <!-- 1. FLAGSHIP GAME: SL BAD BOY — SCHOOLBOY RUSH -->
+        <article id="sl-bad-boy" class="sds-card sds-card--gold reveal" data-no-tilt data-filter-item="game" style="margin-bottom: 2.5rem;">
+          <div class="badge-row">
+            <span class="badge badge--status">
+              <span class="badge__pulse" aria-hidden="true"></span>
+              <span>Flagship Game · In Active Development</span>
+            </span>
+            <span class="badge">Web Browser &amp; Android</span>
+            <span class="badge">Three.js · JavaScript · Vite · Capacitor</span>
+          </div>
+
+          <h2 class="section-title" style="margin-bottom: 0.75rem;">SL BAD BOY — Schoolboy Rush</h2>
+          <p class="lead" style="margin-bottom: 1.75rem;">
+            Shaun David Studios' first original 3D endless-runner game — engineered for Web and Android across fourteen interconnected Sri Lankan districts with custom procedural landmarks, golden-hour sunset lighting, and synthesized Web Audio music.
+          </p>
+
+          <div class="featured-game-shell">
+            <!-- Interactive Golden-Hour 14-District World Preview -->
+            <div class="runner-stage" data-runner-stage data-district="colombo" role="region" aria-label="Interactive district atmosphere preview for SL BAD BOY — Schoolboy Rush">
+              <div class="runner-stage__rays" aria-hidden="true"></div>
+              <div class="runner-stage__sun" aria-hidden="true"></div>
+
+              <div class="runner-stage__hud-top">
+                <span class="runner-hud-pill" data-district-banner>COLOMBO · කොළඹ · DISTRICT 01/14</span>
+                <span class="runner-hud-pill">ORIGINAL STUDIO WORLD PREVIEW</span>
+              </div>
+
+              <div class="runner-stage__landmarks" aria-hidden="true">
+                <svg class="landmark-scene is-active" data-landmark-scene="colombo" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M0,220 L0,165 L55,165 L55,130 L95,130 L95,172 L135,172 L135,112 L175,112 L175,178 L255,178 L255,220 Z" fill="#0B0E17" opacity="0.92"/>
+                  <path d="M294,220 L297,88 L286,74 C284,62 294,52 300,46 C306,52 316,62 314,74 L303,88 L306,220 Z" fill="#090C14"/>
+                  <line x1="300" y1="46" x2="300" y2="14" stroke="#FFD27D" stroke-width="2.2"/>
+                  <path d="M350,220 L350,145 L395,145 L395,118 L442,118 L442,168 L495,168 L495,140 L545,140 L545,180 L600,180 L600,220 Z" fill="#0B0E17" opacity="0.92"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="kandy" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M0,220 Q110,95 240,155 T480,125 T600,160 L600,220 Z" fill="#13222E" opacity="0.8"/>
+                  <path d="M190,220 L190,175 L230,155 L270,175 L270,162 L300,140 L330,162 L330,175 L370,155 L410,175 L410,220 Z" fill="#0A1018"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="ella" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M0,220 L0,110 Q140,155 300,148 Q460,155 600,105 L600,220 Z" fill="#0D1C1E" opacity="0.72"/>
+                  <path d="M60,150 L540,150 L540,220 L515,220 L515,176 A18,22 0 0,0 479,176 L479,220 L460,220 L460,176 A18,22 0 0,0 424,176 L424,220 L405,220 L405,176 A18,22 0 0,0 369,176 L369,220 L350,220 L350,176 A18,22 0 0,0 314,176 L314,220 L295,220 L295,176 A18,22 0 0,0 259,176 L259,220 L240,220 L240,176 A18,22 0 0,0 204,176 L204,220 L185,220 L185,176 A18,22 0 0,0 149,176 L149,220 L130,220 L130,176 A18,22 0 0,0 94,176 L94,220 L60,220 Z" fill="#090D14"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="galle" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M0,220 L0,182 L220,176 L265,186 L600,188 L600,220 Z" fill="#0B0F18"/>
+                  <polygon points="168,178 175,92 189,92 196,178" fill="#080B12"/>
+                  <rect x="172" y="82" width="20" height="10" fill="#FFD27D"/>
+                  <polygon points="170,82 182,70 194,82" fill="#080B12"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="anuradhapura" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M185,220 L185,198 L415,198 L415,220 Z" fill="#0D0A09"/>
+                  <path d="M210,198 A90,86 0 0,1 390,198 Z" fill="#0D0A09"/>
+                  <rect x="286" y="98" width="28" height="16" fill="#0D0A09"/>
+                  <polygon points="292,98 300,52 308,98" fill="#0D0A09"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="jaffna" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <rect x="205" y="160" width="190" height="60" fill="#0B0D15"/>
+                  <path d="M272,160 A28,26 0 0,1 328,160 Z" fill="#0B0D15"/>
+                  <line x1="110" y1="220" x2="112" y2="128" stroke="#0B0D15" stroke-width="6"/>
+                  <circle cx="112" cy="124" r="18" fill="#0B0D15"/>
+                  <line x1="488" y1="220" x2="486" y2="132" stroke="#0B0D15" stroke-width="6"/>
+                  <circle cx="486" cy="128" r="18" fill="#0B0D15"/>
+                </svg>
+
+                <svg class="landmark-scene" data-landmark-scene="trincomalee" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                  <path d="M0,220 L0,190 L330,190 L395,118 L475,112 L525,165 L600,175 L600,220 Z" fill="#09111E"/>
+                  <polygon points="420,114 435,76 450,114" fill="#09111E"/>
+                </svg>
+              </div>
+
+              <div class="runner-stage__road-wrap" aria-hidden="true">
+                <div class="runner-stage__road">
+                  <div class="runner-stage__lanes"></div>
+                </div>
+              </div>
+
+              <div class="runner-stage__hud-bottom">
+                <p class="stage-caption" data-district-detail>
+                  Colombo Fort approach, Galle Face horizon, standalone Colombo Lotus Tower, and evening bus traffic.
+                </p>
+                <div class="district-switcher" role="group" aria-label="Inspect featured Sri Lankan districts">
+                  <button class="district-btn is-active" type="button" data-district-btn="colombo" aria-pressed="true">Colombo</button>
+                  <button class="district-btn" type="button" data-district-btn="kandy" aria-pressed="false">Kandy</button>
+                  <button class="district-btn" type="button" data-district-btn="ella" aria-pressed="false">Ella</button>
+                  <button class="district-btn" type="button" data-district-btn="galle" aria-pressed="false">Galle</button>
+                  <button class="district-btn" type="button" data-district-btn="anuradhapura" aria-pressed="false">Anuradhapura</button>
+                  <button class="district-btn" type="button" data-district-btn="jaffna" aria-pressed="false">Jaffna</button>
+                  <button class="district-btn" type="button" data-district-btn="trincomalee" aria-pressed="false">Trincomalee</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Verified Feature Set -->
+            <div>
+              <h3>Verified Gameplay &amp; World Details</h3>
+              <p style="color: var(--text-secondary);">
+                Built completely from original code and locally generated procedural assets, <em>SL BAD BOY — Schoolboy Rush</em> takes players across <strong>fourteen transitioning 1,080 m districts</strong>: Colombo, Maharagama, Pettah, Kotte, Kandy, Kadugannawa, Nuwara Eliya, Ella, Galle, Negombo, Anuradhapura, Polonnaruwa, Jaffna, and Trincomalee.
+              </p>
+              <p style="color: var(--text-secondary);">
+                Gameplay includes ten unlockable articulated runners in an offline coin shop, a Sri Lankan police pursuit character, a 10-second 1.2× scooter boost with temporary obstacle shield, rare mango-juice packet revives, swept near-miss bonuses, daily missions, and custom Web Audio pentatonic music and SFX.
+              </p>
+
+              <div class="spec-ledger" style="margin-top: 1.25rem; padding: 1.15rem; background: rgba(6, 8, 13, 0.65); border: 1px solid var(--ivory-border);">
+                <div class="spec-row">
+                  <span class="spec-label">Development Status</span>
+                  <span class="spec-value">In Active Development</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Target Platforms</span>
+                  <span class="spec-value">Web Browser &amp; Android (API 24+)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Android Package ID</span>
+                  <span class="spec-value" style="font-family: var(--font-mono); font-size: 0.85rem;">lk.shaun.slbadboy</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Public Release Date</span>
+                  <span class="spec-value" data-project-release="sl-bad-boy">To Be Announced</span>
+                </div>
+              </div>
+
+              <div class="btn-group" style="margin-top: 1.5rem;" data-project-actions="sl-bad-boy">
+                <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SL-Bad-Boy" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Optional Verified Screenshot Gallery (Automatically shown when screenshots are added to site-config.js) -->
+          <div class="project-screenshots" data-project-screenshots="sl-bad-boy" hidden></div>
+        </article>
+
+        <!-- 2. SOFTWARE & WEB PROJECTS GRID -->
+        <div class="grid-3">
+          <!-- SDS Geox Meetings -->
+          <article id="sds-geox-meetings" class="sds-card reveal" data-filter-item="software">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 360 190">
+                <defs>
+                  <pattern id="geox-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(244,239,230,0.06)" stroke-width="1"/>
+                  </pattern>
+                </defs>
+                <rect width="360" height="190" fill="url(#geox-grid)"/>
+                <rect x="34" y="42" width="96" height="54" rx="4" fill="rgba(214,174,88,0.16)" stroke="#D6AE58" stroke-width="1.5"/>
+                <text x="82" y="73" text-anchor="middle" fill="#F4EFE6" font-family="monospace" font-size="10">API GATEWAY</text>
+                <rect x="218" y="32" width="104" height="50" rx="4" fill="rgba(86,207,225,0.14)" stroke="#56CFE1" stroke-width="1.5"/>
+                <text x="270" y="61" text-anchor="middle" fill="#F4EFE6" font-family="monospace" font-size="10">WS ENGINE</text>
+                <rect x="218" y="106" width="104" height="50" rx="4" fill="rgba(52,211,153,0.14)" stroke="#34D399" stroke-width="1.5"/>
+                <text x="270" y="135" text-anchor="middle" fill="#F4EFE6" font-family="monospace" font-size="10">BOARD STATE</text>
+                <path class="route-dash-anim" d="M 130 69 C 174 69, 174 57, 218 57" fill="none" stroke="#F6E2A8" stroke-width="1.8"/>
+                <path class="route-dash-anim" d="M 130 69 C 174 69, 174 131, 218 131" fill="none" stroke="#56CFE1" stroke-width="1.8"/>
+                <g class="cursor-drift-a">
+                  <polygon points="152,118 156,134 161,128 168,130" fill="#F6E2A8"/>
+                  <rect x="162" y="132" width="46" height="15" rx="2" fill="#D6AE58"/>
+                  <text x="185" y="143" text-anchor="middle" fill="#06080D" font-family="monospace" font-size="8" font-weight="bold">LIVE</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge badge--status">In Development</span>
+              <span class="badge">Web Application</span>
+            </div>
+            <h2>SDS Geox Meetings</h2>
+            <p style="margin-top: 0.6rem;">
+              Real-time browser-based collaborative whiteboard and strategy hub built by Shaun David Studios. Supports WebSocket cursor sync, infinite zoom-and-pan vector canvas, sticky notes with dot-voting, agile sprint cards, shared countdown timers, and SVG/PNG export.
+            </p>
+            <ul class="tag-list" aria-label="Technologies">
+              <li class="tag-chip">React 18</li>
+              <li class="tag-chip">TypeScript</li>
+              <li class="tag-chip">Node.js</li>
+              <li class="tag-chip">WebSockets</li>
+            </ul>
+            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sds-geox-meetings">
+              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SDS-Geox-Meetings" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
+            </div>
+            <div class="project-screenshots" data-project-screenshots="sds-geox-meetings" hidden></div>
+          </article>
+
+          <!-- RouteMora -->
+          <article id="routemora" class="sds-card reveal" style="--delay: 90ms;" data-filter-item="software">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 360 190">
+                <circle cx="72" cy="134" r="7" fill="#D6AE58"/>
+                <circle cx="152" cy="84" r="7" fill="#F6E2A8"/>
+                <circle cx="228" cy="108" r="7" fill="#56CFE1"/>
+                <circle cx="294" cy="54" r="7" fill="#34D399"/>
+                <path class="route-dash-anim" d="M 72 134 Q 110 86 152 84 T 228 108 T 294 54" fill="none" stroke="#D6AE58" stroke-width="2.2"/>
+                <text x="72" y="156" text-anchor="middle" fill="#B9C2D3" font-family="monospace" font-size="9">COLOMBO</text>
+                <text x="152" y="69" text-anchor="middle" fill="#B9C2D3" font-family="monospace" font-size="9">KANDY</text>
+                <text x="228" y="130" text-anchor="middle" fill="#B9C2D3" font-family="monospace" font-size="9">ELLA</text>
+                <text x="294" y="39" text-anchor="middle" fill="#B9C2D3" font-family="monospace" font-size="9">TRINCO</text>
+              </svg>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge badge--status">Active Project</span>
+              <span class="badge">Sri Lanka Planner</span>
+            </div>
+            <h2>RouteMora</h2>
+            <p style="margin-top: 0.6rem;">
+              A Sri Lanka-first destination discovery directory and deterministic trip-planning web app covering 15 Sri Lankan destinations. Features editable day-by-day activity itineraries, transparent LKR group/room/per-person budget arithmetic, and printable PDF trip summaries.
+            </p>
+            <ul class="tag-list" aria-label="Technologies">
+              <li class="tag-chip">React</li>
+              <li class="tag-chip">TypeScript</li>
+              <li class="tag-chip">Vite</li>
+              <li class="tag-chip">Deterministic Planner</li>
+            </ul>
+            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="routemora">
+              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/RouteMora" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
+            </div>
+            <div class="project-screenshots" data-project-screenshots="routemora" hidden></div>
+          </article>
+
+          <!-- SD Education -->
+          <article id="sd-education" class="sds-card reveal" style="--delay: 180ms;" data-filter-item="software">
+            <div class="project-art" aria-hidden="true">
+              <svg viewBox="0 0 360 190">
+                <rect x="48" y="38" width="264" height="114" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(214,174,88,0.45)" stroke-width="1.5"/>
+                <text x="180" y="78" text-anchor="middle" fill="#F6E2A8" font-family="serif" font-size="22" font-weight="bold">%  ·  ∑  ·  π</text>
+                <text x="180" y="108" text-anchor="middle" fill="#F4EFE6" font-family="monospace" font-size="10">ENGLISH &amp; SINHALA PORTAL</text>
+                <rect x="92" y="122" width="176" height="8" rx="4" fill="rgba(244,239,230,0.12)"/>
+                <rect x="92" y="122" width="118" height="8" rx="4" fill="#34D399"/>
+              </svg>
+            </div>
+
+            <div class="badge-row">
+              <span class="badge badge--live">Public Web Prototype</span>
+              <span class="badge">English &amp; Sinhala</span>
+            </div>
+            <h2>SD Education</h2>
+            <p style="margin-top: 0.6rem;">
+              An interactive, step-by-step web learning portal created specifically for Sri Lankan students. Supports instant toggling between English and Sinhala (සිංහල) to make foundational mathematics concepts clear and approachable.
+            </p>
+            <ul class="tag-list" aria-label="Technologies">
+              <li class="tag-chip">HTML5</li>
+              <li class="tag-chip">CSS3</li>
+              <li class="tag-chip">JavaScript</li>
+              <li class="tag-chip">Bilingual UI</li>
+            </ul>
+            <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="sd-education">
+              <a class="btn btn--primary btn--sm" href="https://shaundavidkagenou-oss.github.io/SD-Education/" target="_blank" rel="noopener noreferrer">Open Live Web App</a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SD-Education" target="_blank" rel="noopener noreferrer">View GitHub Repository</a>
+            </div>
+            <div class="project-screenshots" data-project-screenshots="sd-education" hidden></div>
+          </article>
+        </div>
+
+        <div class="empty-filter-state" data-filter-empty hidden>
+          <p>No projects match the selected filter.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__lockup" href="../">
+            <img src="../assets/img/sds-crest-gold.png" width="52" height="52" alt="Shaun David Studios emblem">
+            <div>
+              <div class="font-display" style="font-size: 1rem; letter-spacing: 0.08em;">SHAUN DAVID STUDIOS</div>
+              <div class="mono-tag" style="font-size: 0.65rem;">Sri Lanka</div>
+            </div>
+          </a>
+          <p class="site-footer__motto">Creating Music · Games · &amp; Everything Beyond</p>
+          <p class="site-footer__desc">
+            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Studio</h2>
+          <ul class="site-footer__links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../about/">About the Studio</a></li>
+            <li><a href="../shaun-david/">Shaun David (Founder &amp; CEO)</a></li>
+            <li><a href="../news/">News &amp; Dev Updates</a></li>
+            <li><a href="../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Portfolio</h2>
+          <ul class="site-footer__links">
+            <li><a href="#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
+            <li><a href="#sds-geox-meetings">SDS Geox Meetings</a></li>
+            <li><a href="#routemora">RouteMora</a></li>
+            <li><a href="#sd-education">SD Education</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Official Channels</h2>
+          <ul class="site-footer__links" data-social-list="footer-links">
+            <li><a href="https://github.com/shaundavidkagenou-oss" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+          <p data-footer-email hidden style="margin-top: 0.85rem; font-size: 0.88rem;"></p>
+          <p style="margin-top: 0.9rem; font-size: 0.84rem; color: var(--text-muted);">Based in Sri Lanka</p>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David in Sri Lanka.</p>
+        <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site-config.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

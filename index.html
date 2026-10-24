@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shaun David Studios — Independent Game &amp; Software Studio in Sri Lanka</title>
+  <meta name="description" content="Official website of Shaun David Studios, an independent game development and software studio based in Sri Lanka, founded and led by Founder &amp; CEO Shaun David.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050609">
+  <meta name="author" content="Shaun David">
+
+  <!-- Open Graph / Link Preview Metadata -->
+  <meta property="og:site_name" content="Shaun David Studios">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shaun David Studios — Independent Game &amp; Software Studio in Sri Lanka">
+  <meta property="og:description" content="Independent game development and software projects forged in Sri Lanka by Founder &amp; CEO Shaun David. Creating Music, Games &amp; Everything Beyond.">
+  <meta property="og:image" content="/assets/img/og-image.png">
+  <meta property="og:image:alt" content="Shaun David Studios octagonal compass and clockwork crest with motto Creating Music, Games &amp; Everything Beyond">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shaun David Studios — Independent Game &amp; Software Studio in Sri Lanka">
+  <meta name="twitter:description" content="Independent game development and software projects forged in Sri Lanka by Founder &amp; CEO Shaun David.">
+  <meta name="twitter:image" content="/assets/img/og-image.png">
+
+  <!-- Favicons & Web App Manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Preload Critical Display Font & Hero Emblem -->
+  <link rel="preload" href="assets/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/sds-crest-gold.png" as="image">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <!-- Schema.org Structured Data (Organization + Founder Person + WebSite) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "#organization",
+        "name": "Shaun David Studios",
+        "alternateName": "SDS",
+        "slogan": "Creating Music, Games & Everything Beyond",
+        "description": "Shaun David Studios is an independent game development and software studio based in Sri Lanka, founded by Shaun David.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/img/sds-logo-original.jpg",
+          "width": 905,
+          "height": 768
+        },
+        "image": "/assets/img/og-image.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "location": {
+          "@type": "Place",
+          "name": "Sri Lanka",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "LK"
+          }
+        },
+        "founder": {
+          "@id": "#shaun-david"
+        },
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "#shaun-david",
+        "name": "Shaun David",
+        "jobTitle": "Founder & CEO",
+        "description": "Founder & CEO of Shaun David Studios, an independent game developer and software creator based in Sri Lanka.",
+        "worksFor": {
+          "@id": "#organization"
+        },
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Sri Lanka"
+        },
+        "knowsAbout": [
+          "Independent Game Development",
+          "Software Engineering",
+          "3D Browser and Mobile Games",
+          "Web Audio Synthesis"
+        ],
+        "sameAs": [
+          "https://github.com/shaundavidkagenou-oss"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "#website",
+        "name": "Shaun David Studios",
+        "publisher": {
+          "@id": "#organization"
+        },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Architectural Header -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="./" aria-label="Shaun David Studios — Home">
+        <img class="brand-link__crest" src="assets/img/sds-crest-gold.png" width="44" height="44" alt="Shaun David Studios octagonal compass crest">
+        <span class="brand-link__text">
+          <span class="brand-link__name">SHAUN DAVID STUDIOS</span>
+          <span class="brand-link__sub">Sri Lanka · Est. Independent</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+
+      <nav id="primary-navigation" class="primary-nav" data-primary-nav aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="./" aria-current="page">Home</a></li>
+          <li><a class="primary-nav__link" href="about/">About</a></li>
+          <li><a class="primary-nav__link" href="shaun-david/">Founder</a></li>
+          <li><a class="primary-nav__link" href="games/">Games &amp; Projects</a></li>
+          <li><a class="primary-nav__link" href="news/">News</a></li>
+          <li><a class="primary-nav__link" href="contact/">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn--primary btn--sm" href="games/">Explore Portfolio</a>
+        </div>
+      </nav>
+    </div>
+    <div class="scroll-vernier" aria-hidden="true">
+      <div class="scroll-vernier__bar"></div>
+    </div>
+  </header>
+  <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+  <main id="main-content">
+    <!-- 1. HERO STAGE -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>Independent Studio · Sri Lanka</span>
+          </div>
+
+          <h1 id="hero-heading" class="display-title">Shaun David Studios</h1>
+          <p class="hero__motto">Creating Music · Games · &amp; Everything Beyond</p>
+
+          <p class="lead">
+            <strong>Shaun David Studios</strong> is an independent game development and software studio based in <strong>Sri Lanka</strong>. Founded and led by <strong>Shaun David</strong> (Founder &amp; CEO), the studio builds original 3D games, interactive web applications, and synthesized soundscapes engineered from the ground up.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="games/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Explore Games &amp; Projects</span>
+            </a>
+            <a class="btn btn--secondary" href="shaun-david/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+              <span>Meet Founder Shaun David</span>
+            </a>
+            <button class="btn btn--ghost" type="button" data-open-ident aria-haspopup="dialog" aria-controls="sds-ident-modal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 19 7 19 17 12 22 5 17 5 7 12 2"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Play Studio Ident</span>
+            </button>
+          </div>
+
+          <div class="hero__profiles" data-social-section>
+            <span class="hero__profiles-label">Official Verified Profiles</span>
+            <ul class="social-links" data-social-list="pills">
+              <li>
+                <a class="social-pill" href="https://github.com/shaundavidkagenou-oss" target="_blank" rel="noopener noreferrer" aria-label="Shaun David Studios on GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.02c-3.2.7-3.88-1.39-3.88-1.39-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.02 11.02 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Clockwork Compass Emblem Rig (Matched to SDS-Logo.jpg) -->
+        <div class="astrolabe-wrap">
+          <div id="sds-astrolabe" class="astrolabe" role="group" aria-label="Interactive Shaun David Studios Crest">
+            <div class="astrolabe__glow" aria-hidden="true"></div>
+
+            <!-- Precision Octagon, Compass Degree Bezel, Counter-Rotating Gear & Cardinal Spears -->
+            <svg class="astrolabe__svg" viewBox="0 0 500 500" aria-hidden="true">
+              <defs>
+                <linearGradient id="rig-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F6E2A8"/>
+                  <stop offset="50%" stop-color="#D6AE58"/>
+                  <stop offset="100%" stop-color="#8F691E"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Octagonal Crest Frame -->
+              <polygon class="astrolabe__octagon-draw" points="154,18 346,18 482,154 482,346 346,482 154,482 18,346 18,154" fill="none" stroke="url(#rig-gold)" stroke-width="2" stroke-opacity="0.72"/>
+              <polygon points="161,32 339,32 468,161 468,339 339,468 161,468 32,339 32,161" fill="none" stroke="#F4EFE6" stroke-width="0.8" stroke-opacity="0.16"/>
+
+              <!-- Rotating 360° Compass Bezel -->
+              <g class="astrolabe__ring-outer">
+                <circle cx="250" cy="250" r="204" fill="none" stroke="url(#rig-gold)" stroke-width="1.2" stroke-opacity="0.42" stroke-dasharray="3 9"/>
+                <circle cx="250" cy="250" r="192" fill="none" stroke="#F4EFE6" stroke-width="0.7" stroke-opacity="0.15"/>
+                <text x="250" y="54" text-anchor="middle" fill="#D6AE58" font-family="monospace" font-size="10" letter-spacing="2">000° N</text>
+                <text x="448" y="253" text-anchor="middle" fill="#D6AE58" font-family="monospace" font-size="10" letter-spacing="1">090°</text>
+                <text x="250" y="454" text-anchor="middle" fill="#D6AE58" font-family="monospace" font-size="10" letter-spacing="2">180° S</text>
+                <text x="52" y="253" text-anchor="middle" fill="#D6AE58" font-family="monospace" font-size="10" letter-spacing="1">270°</text>
+              </g>
+
+              <!-- Counter-Rotating Mechanical Gear Ring -->
+              <g class="astrolabe__ring-gear">
+                <circle cx="250" cy="250" r="164" fill="none" stroke="url(#rig-gold)" stroke-width="10" stroke-opacity="0.22" stroke-dasharray="14 14"/>
+                <circle cx="250" cy="250" r="157" fill="none" stroke="url(#rig-gold)" stroke-width="1.4" stroke-opacity="0.45"/>
+              </g>
+
+              <!-- Pointer-Tracking Compass Spear Needle -->
+              <g class="astrolabe__ring-needle">
+                <polygon points="250,62 256,112 250,104 244,112" fill="url(#rig-gold)" opacity="0.85"/>
+                <polygon points="250,438 255,392 250,398 245,392" fill="#F4EFE6" opacity="0.35"/>
+              </g>
+            </svg>
+
+            <!-- 4 Interactive Quadrant Nodes Matching the Logo's Symbols -->
+            <button class="quadrant-node quadrant-node--nw" type="button" data-quadrant="music" aria-pressed="false" aria-label="Inspect Music and Audio Synthesis quadrant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </button>
+
+            <button class="quadrant-node quadrant-node--ne" type="button" data-quadrant="story" aria-pressed="false" aria-label="Inspect Original Worlds and Culture quadrant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+            </button>
+
+            <button class="quadrant-node quadrant-node--sw" type="button" data-quadrant="software" aria-pressed="false" aria-label="Inspect Software Engineering quadrant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.77 1.02 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+
+            <button class="quadrant-node quadrant-node--se is-active" type="button" data-quadrant="games" aria-pressed="true" aria-label="Inspect Independent Game Development quadrant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>
+            </button>
+
+            <!-- Authentic Extracted SDS Crest -->
+            <div class="astrolabe__crest-frame">
+              <img class="astrolabe__crest-img" src="assets/img/sds-crest-gold.png" width="280" height="280" alt="Shaun David Studios emblem featuring an octagonal compass, clockwork gear, musical notes, quill, D-pad, and SDS monogram">
+            </div>
+          </div>
+
+          <div class="astrolabe-readout" aria-live="polite">
+            <div id="astrolabe-readout-title" class="astrolabe-readout__title">CREST QUADRANT IV · INDEPENDENT GAME DEVELOPMENT</div>
+            <p id="astrolabe-readout-desc" class="astrolabe-readout__desc">Select any of the four emblem quadrants above to inspect how Games, Music, Storytelling, and Software unite at Shaun David Studios.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FOUR CREATIVE PILLARS (MATCHED TO THE LOGO CREST) -->
+    <section class="section section--alt" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="section-header section-header--center reveal">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>The Four Symbols of Our Crest</span>
+          </div>
+          <h2 id="pillars-heading" class="section-title">Crafted Around Discipline &amp; Direction</h2>
+          <p class="lead">
+            Every element inside the Shaun David Studios emblem reflects a real creative and engineering discipline practiced at the studio in Sri Lanka.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="sds-card reveal" style="--delay: 0ms;">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg>
+            </div>
+            <h3>Original Games</h3>
+            <p>Responsive 3D browser and Android game mechanics built with custom procedural geometry, fair collision systems, and smooth mobile-to-PC performance.</p>
+          </article>
+
+          <article class="sds-card reveal" style="--delay: 80ms;">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-2.9-7.1-2.1 2.1M7 17l-2.1 2.1m0-14.2L7 7m10 10 2.1 2.1"/></svg>
+            </div>
+            <h3>Software Engineering</h3>
+            <p>Practical web tools and real-time applications — from low-latency collaborative whiteboards to deterministic Sri Lankan itinerary planning.</p>
+          </article>
+
+          <article class="sds-card reveal" style="--delay: 160ms;">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h3>Music &amp; Audio</h3>
+            <p>Synthesized Web Audio scores, pentatonic melodies, and responsive sound effects engineered directly alongside interactive gameplay.</p>
+          </article>
+
+          <article class="sds-card reveal" style="--delay: 240ms;">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/></svg>
+            </div>
+            <h3>Sri Lankan Inspiration</h3>
+            <p>Authentic local atmosphere — drawing inspiration from Sri Lanka's cities, hill-country railways, coastal towns, heritage architecture, and everyday street life.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED FLAGSHIP GAME: SL BAD BOY — SCHOOLBOY RUSH -->
+    <section class="section" aria-labelledby="featured-game-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>Flagship Game Project</span>
+          </div>
+          <h2 id="featured-game-heading" class="section-title">SL BAD BOY — Schoolboy Rush</h2>
+          <p class="lead">
+            Shaun David Studios' debut original 3D endless runner for Web and Android — taking players across fourteen interconnected Sri Lankan districts bathed in golden-hour evening light.
+          </p>
+        </div>
+
+        <div class="featured-game-shell">
+          <!-- Interactive Golden-Hour 3D Sri Lanka World Preview Stage -->
+          <div class="runner-stage reveal" data-runner-stage data-district="colombo" role="region" aria-label="Interactive Sri Lankan District Atmosphere Preview for SL BAD BOY — Schoolboy Rush">
+            <div class="runner-stage__rays" aria-hidden="true"></div>
+            <div class="runner-stage__sun" aria-hidden="true"></div>
+
+            <div class="runner-stage__hud-top">
+              <span class="runner-hud-pill" data-district-banner>COLOMBO · කොළඹ · DISTRICT 01/14</span>
+              <span class="runner-hud-pill">WEB &amp; ANDROID · IN DEVELOPMENT</span>
+            </div>
+
+            <!-- Original Vector Landmark Silhouettes per Sri Lankan District -->
+            <div class="runner-stage__landmarks" aria-hidden="true">
+              <!-- Colombo: Lotus Tower & Colombo Fort Skyline -->
+              <svg class="landmark-scene is-active" data-landmark-scene="colombo" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M0,220 L0,165 L55,165 L55,130 L95,130 L95,172 L135,172 L135,112 L175,112 L175,178 L255,178 L255,220 Z" fill="#0B0E17" opacity="0.92"/>
+                <!-- Lotus Tower Silhouette -->
+                <path d="M294,220 L297,88 L286,74 C284,62 294,52 300,46 C306,52 316,62 314,74 L303,88 L306,220 Z" fill="#090C14"/>
+                <line x1="300" y1="46" x2="300" y2="14" stroke="#FFD27D" stroke-width="2.2"/>
+                <path d="M350,220 L350,145 L395,145 L395,118 L442,118 L442,168 L495,168 L495,140 L545,140 L545,180 L600,180 L600,220 Z" fill="#0B0E17" opacity="0.92"/>
+              </svg>
+
+              <!-- Kandy: Hillsides, Mist & Lake Temple Roofline -->
+              <svg class="landmark-scene" data-landmark-scene="kandy" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M0,220 Q110,95 240,155 T480,125 T600,160 L600,220 Z" fill="#13222E" opacity="0.8"/>
+                <path d="M190,220 L190,175 L230,155 L270,175 L270,162 L300,140 L330,162 L330,175 L370,155 L410,175 L410,220 Z" fill="#0A1018"/>
+              </svg>
+
+              <!-- Ella: Iconic Nine Arches Viaduct & Hill Pines -->
+              <svg class="landmark-scene" data-landmark-scene="ella" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M0,220 L0,110 Q140,155 300,148 Q460,155 600,105 L600,220 Z" fill="#0D1C1E" opacity="0.72"/>
+                <path d="M60,150 L540,150 L540,220 L515,220 L515,176 A18,22 0 0,0 479,176 L479,220 L460,220 L460,176 A18,22 0 0,0 424,176 L424,220 L405,220 L405,176 A18,22 0 0,0 369,176 L369,220 L350,220 L350,176 A18,22 0 0,0 314,176 L314,220 L295,220 L295,176 A18,22 0 0,0 259,176 L259,220 L240,220 L240,176 A18,22 0 0,0 204,176 L204,220 L185,220 L185,176 A18,22 0 0,0 149,176 L149,220 L130,220 L130,176 A18,22 0 0,0 94,176 L94,220 L60,220 Z" fill="#090D14"/>
+              </svg>
+
+              <!-- Galle: Fort Ramparts, Lighthouse & Coconut Palms -->
+              <svg class="landmark-scene" data-landmark-scene="galle" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M0,220 L0,182 L220,176 L265,186 L600,188 L600,220 Z" fill="#0B0F18"/>
+                <polygon points="168,178 175,92 189,92 196,178" fill="#080B12"/>
+                <rect x="172" y="82" width="20" height="10" fill="#FFD27D"/>
+                <polygon points="170,82 182,70 194,82" fill="#080B12"/>
+              </svg>
+
+              <!-- Anuradhapura: Monumental Ancient Stupa & Sacred Trees -->
+              <svg class="landmark-scene" data-landmark-scene="anuradhapura" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M185,220 L185,198 L415,198 L415,220 Z" fill="#0D0A09"/>
+                <path d="M210,198 A90,86 0 0,1 390,198 Z" fill="#0D0A09"/>
+                <rect x="286" y="98" width="28" height="16" fill="#0D0A09"/>
+                <polygon points="292,98 300,52 308,98" fill="#0D0A09"/>
+              </svg>
+
+              <!-- Jaffna: Library Domes & Palmyrah Palms -->
+              <svg class="landmark-scene" data-landmark-scene="jaffna" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <rect x="205" y="160" width="190" height="60" fill="#0B0D15"/>
+                <path d="M272,160 A28,26 0 0,1 328,160 Z" fill="#0B0D15"/>
+                <line x1="110" y1="220" x2="112" y2="128" stroke="#0B0D15" stroke-width="6"/>
+                <circle cx="112" cy="124" r="18" fill="#0B0D15"/>
+                <line x1="488" y1="220" x2="486" y2="132" stroke="#0B0D15" stroke-width="6"/>
+                <circle cx="486" cy="128" r="18" fill="#0B0D15"/>
+              </svg>
+
+              <!-- Trincomalee: Koneswaram Cliff Headland & Harbour -->
+              <svg class="landmark-scene" data-landmark-scene="trincomalee" viewBox="0 0 600 220" preserveAspectRatio="xMidYMax slice">
+                <path d="M0,220 L0,190 L330,190 L395,118 L475,112 L525,165 L600,175 L600,220 Z" fill="#09111E"/>
+                <polygon points="420,114 435,76 450,114" fill="#09111E"/>
+              </svg>
+            </div>
+
+            <!-- 3D Perspective Three-Lane Highway -->
+            <div class="runner-stage__road-wrap" aria-hidden="true">
+              <div class="runner-stage__road">
+                <div class="runner-stage__lanes"></div>
+              </div>
+            </div>
+
+            <div class="runner-stage__hud-bottom">
+              <p class="stage-caption" data-district-detail>
+                Colombo Fort approach, Galle Face horizon, standalone Colombo Lotus Tower, and evening bus traffic.
+              </p>
+              <div class="district-switcher" role="group" aria-label="Preview Sri Lankan districts from SL BAD BOY">
+                <button class="district-btn is-active" type="button" data-district-btn="colombo" aria-pressed="true">Colombo</button>
+                <button class="district-btn" type="button" data-district-btn="kandy" aria-pressed="false">Kandy</button>
+                <button class="district-btn" type="button" data-district-btn="ella" aria-pressed="false">Ella</button>
+                <button class="district-btn" type="button" data-district-btn="galle" aria-pressed="false">Galle</button>
+                <button class="district-btn" type="button" data-district-btn="anuradhapura" aria-pressed="false">Anuradhapura</button>
+                <button class="district-btn" type="button" data-district-btn="jaffna" aria-pressed="false">Jaffna</button>
+                <button class="district-btn" type="button" data-district-btn="trincomalee" aria-pressed="false">Trincomalee</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Verified Game Specifications & Overview -->
+          <article class="sds-card sds-card--gold reveal" style="--delay: 100ms;">
+            <div class="badge-row">
+              <span class="badge badge--status">
+                <span class="badge__pulse" aria-hidden="true"></span>
+                <span>In Active Development</span>
+              </span>
+              <span class="badge">Three.js · Vite · Capacitor</span>
+            </div>
+
+            <h3>An Original 3D Sri Lankan Endless Runner</h3>
+            <p>
+              <strong>SL BAD BOY — Schoolboy Rush</strong> blends fast three-lane endless-runner action with original procedural Sri Lankan landmarks, Sinhala, Tamil, and English roadside signage, ten unlockable playable runners, a 1.2× scooter boost, mango-juice revives, and synthesized Web Audio music.
+            </p>
+            <p>
+              All 3D models, textures, signage, and audio cues are generated locally with adaptive quality scaling so the game runs smoothly across both mobile touchscreens and desktop browsers.
+            </p>
+
+            <div class="spec-ledger" style="margin-top: 1.35rem;">
+              <div class="spec-row">
+                <span class="spec-label">World Scope</span>
+                <span class="spec-value">14 Sri Lankan Districts</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Target Platforms</span>
+                <span class="spec-value">Web Browser &amp; Android</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Release Status</span>
+                <span class="spec-value" data-project-release="sl-bad-boy">In Active Development</span>
+              </div>
+            </div>
+
+            <div class="btn-group" style="margin-top: 1.65rem;">
+              <a class="btn btn--primary btn--sm" href="games/#sl-bad-boy">Full Game Breakdown</a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/shaundavidkagenou-oss/SL-Bad-Boy" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SOFTWARE & WEB PROJECTS SNAPSHOT -->
+    <section class="section section--alt" aria-labelledby="software-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            <span>Beyond Games · Studio Software</span>
+          </div>
+          <h2 id="software-heading" class="section-title">Original Software &amp; Web Engineering</h2>
+          <p class="lead">
+            Alongside game development, Shaun David Studios designs and builds real-time collaborative software, Sri Lanka-focused planning utilities, and educational web experiences.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="sds-card reveal" style="--delay: 0ms;">
+            <div class="badge-row">
+              <span class="badge badge--status">In Development</span>
+              <span class="badge">WebSockets · React · TypeScript</span>
+            </div>
+            <h3>SDS Geox Meetings</h3>
+            <p>Browser-based real-time collaborative visual whiteboard and meeting hub featuring an infinite vector canvas, sticky notes, dot-voting, and architecture templates.</p>
+            <p style="margin-top: 1.25rem;">
+              <a href="games/#sds-geox-meetings">Explore SDS Geox Meetings →</a>
+            </p>
+          </article>
+
+          <article class="sds-card reveal" style="--delay: 90ms;">
+            <div class="badge-row">
+              <span class="badge badge--status">Active Project</span>
+              <span class="badge">Sri Lanka Travel Planner</span>
+            </div>
+            <h3>RouteMora</h3>
+            <p>A Sri Lanka-first destination discovery guide and deterministic trip-planning application covering 15 destinations with editable day-by-day itineraries and LKR budget tracking.</p>
+            <p style="margin-top: 1.25rem;">
+              <a href="games/#routemora">Explore RouteMora →</a>
+            </p>
+          </article>
+
+          <article class="sds-card reveal" style="--delay: 180ms;">
+            <div class="badge-row">
+              <span class="badge badge--live">Public Web Prototype</span>
+              <span class="badge">English &amp; Sinhala</span>
+            </div>
+            <h3>SD Education</h3>
+            <p>A bilingual interactive learning portal built for Sri Lankan students, presenting step-by-step foundational mathematics lessons in both English and Sinhala (සිංහල).</p>
+            <p style="margin-top: 1.25rem;">
+              <a href="games/#sd-education">Explore SD Education →</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FOUNDER & STUDIO LEADERSHIP SPOTLIGHT -->
+    <section class="section" aria-labelledby="founder-spotlight-heading">
+      <div class="container">
+        <div class="sds-card sds-card--gold reveal" data-no-tilt>
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow__dot" aria-hidden="true"></span>
+                <span>Studio Leadership</span>
+              </div>
+              <h2 id="founder-spotlight-heading" class="section-title">Founded &amp; Led by Shaun David</h2>
+              <p class="lead" style="margin-bottom: 1rem;">
+                <strong>Shaun David</strong> is the <strong>Founder &amp; CEO of Shaun David Studios</strong> in Sri Lanka.
+              </p>
+              <p>
+                Working across game direction, 3D rendering systems, custom audio synthesis, and full-stack software development, Shaun David established Shaun David Studios to create original interactive experiences rooted in strong engineering craft and Sri Lankan cultural inspiration.
+              </p>
+              <div class="btn-group" style="margin-top: 1.75rem;">
+                <a class="btn btn--primary" href="shaun-david/">Read Shaun David's Biography</a>
+                <a class="btn btn--secondary" href="about/">About Shaun David Studios</a>
+              </div>
+            </div>
+
+            <div class="spec-ledger" style="padding: 1.5rem; background: rgba(5, 7, 12, 0.65); border: 1px solid var(--ivory-border);">
+              <div class="spec-row">
+                <span class="spec-label">Studio Name</span>
+                <span class="spec-value">Shaun David Studios (SDS)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Founder &amp; CEO</span>
+                <span class="spec-value">Shaun David</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Studio Location</span>
+                <span class="spec-value">Sri Lanka</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Core Focus</span>
+                <span class="spec-value">Independent Games &amp; Software</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Studio Motto</span>
+                <span class="spec-value">Creating Music · Games · &amp; Everything Beyond</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Branded Studio Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__lockup" href="./">
+            <img src="assets/img/sds-crest-gold.png" width="52" height="52" alt="Shaun David Studios emblem">
+            <div>
+              <div class="font-display" style="font-size: 1rem; letter-spacing: 0.08em;">SHAUN DAVID STUDIOS</div>
+              <div class="mono-tag" style="font-size: 0.65rem;">Sri Lanka</div>
+            </div>
+          </a>
+          <p class="site-footer__motto">Creating Music · Games · &amp; Everything Beyond</p>
+          <p class="site-footer__desc">
+            Independent game development and software studio based in Sri Lanka, founded and led by CEO Shaun David.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Studio</h2>
+          <ul class="site-footer__links">
+            <li><a href="./">Home</a></li>
+            <li><a href="about/">About the Studio</a></li>
+            <li><a href="shaun-david/">Shaun David (Founder &amp; CEO)</a></li>
+            <li><a href="news/">News &amp; Dev Updates</a></li>
+            <li><a href="contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Portfolio</h2>
+          <ul class="site-footer__links">
+            <li><a href="games/#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
+            <li><a href="games/#sds-geox-meetings">SDS Geox Meetings</a></li>
+            <li><a href="games/#routemora">RouteMora</a></li>
+            <li><a href="games/#sd-education">SD Education</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__heading">Official Channels</h2>
+          <ul class="site-footer__links" data-social-list="footer-links">
+            <li><a href="https://github.com/shaundavidkagenou-oss" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+          <p data-footer-email hidden style="margin-top: 0.85rem; font-size: 0.88rem;"></p>
+          <p style="margin-top: 0.9rem; font-size: 0.84rem; color: var(--text-muted);">
+            Based in Sri Lanka
+          </p>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Shaun David Studios. Founded by Shaun David in Sri Lanka.</p>
+        <p class="mono-tag" style="color: var(--text-muted);">Official Studio Website</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Shaun David Studios Production Ident Modal -->
+  <div id="sds-ident-modal" class="ident-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="ident-modal-title">
+    <div class="ident-modal__scanlines" aria-hidden="true"></div>
+    <div class="ident-modal__stage">
+      <img class="ident-modal__crest" src="assets/img/sds-crest-gold.png" width="210" height="210" alt="Shaun David Studios production crest">
+      <h2 id="ident-modal-title" class="ident-modal__title">Shaun David Studios</h2>
+      <p class="ident-modal__sub">Creating Music · Games · &amp; Everything Beyond</p>
+      <div class="ident-modal__progress" aria-hidden="true">
+        <div class="ident-modal__progress-bar"></div>
+      </div>
+      <button class="btn btn--secondary btn--sm ident-modal__close" type="button" data-close-ident>Skip Ident (Esc)</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
