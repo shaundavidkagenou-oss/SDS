@@ -41,6 +41,8 @@ const REQUIRED_FILES = [
   "sitemap.xml",
   "site.webmanifest",
   "favicon.ico",
+  "favicon.png",
+  "favicon-48x48.png",
   "google8a5eab19864fee78.html",
   "_headers",
   "_redirects",
@@ -299,6 +301,41 @@ if (fs.existsSync(gscPath)) {
   if (gscContent !== "google-site-verification: google8a5eab19864fee78.html") {
     fail("google8a5eab19864fee78.html content was modified; Google requires exact byte match.");
   }
+}
+
+// 8. Verify Google Search favicon PNG headers, dimensions (multiples of 48px), <head> tags, and crawler access
+function checkPngDimensions(relFile, expectedW, expectedH) {
+  const fullPath = path.join(ROOT, relFile);
+  if (!fs.existsSync(fullPath)) return;
+  const buf = fs.readFileSync(fullPath);
+  const pngSig = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  if (buf.length < 24 || !buf.subarray(0, 8).equals(pngSig)) {
+    fail(`${relFile}: Invalid PNG signature`);
+    return;
+  }
+  const w = buf.readUInt32BE(16);
+  const h = buf.readUInt32BE(20);
+  if (w !== expectedW || h !== expectedH) {
+    fail(`${relFile}: Expected ${expectedW}x${expectedH} PNG, found ${w}x${h}`);
+  }
+}
+
+checkPngDimensions("favicon.png", 192, 192);
+checkPngDimensions("favicon-48x48.png", 48, 48);
+
+for (const page of HTML_PAGES) {
+  const html = fs.readFileSync(path.join(ROOT, page), "utf8");
+  if (!/<link\s+rel="icon"\s+type="image\/png"\s+sizes="192x192"\s+href="\/favicon\.png"\s*>/i.test(html)) {
+    fail(`${page}: Missing <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">`);
+  }
+  if (!/<link\s+rel="icon"\s+type="image\/png"\s+sizes="48x48"\s+href="\/favicon-48x48\.png"\s*>/i.test(html)) {
+    fail(`${page}: Missing <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">`);
+  }
+}
+
+const robotsText = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");
+if (/Disallow:\s*\/(?:favicon|$|\s)/im.test(robotsText)) {
+  fail("robots.txt blocks crawler access to /favicon.png");
 }
 
 if (errors === 0) {

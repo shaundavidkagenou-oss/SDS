@@ -19,6 +19,12 @@
 /favicon.ico
   Cache-Control: public, max-age=86400
 
+/favicon.png
+  Cache-Control: public, max-age=86400
+
+/favicon-48x48.png
+  Cache-Control: public, max-age=86400
+
 /google*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Cache-Control: public, max-age=0, must-revalidate
