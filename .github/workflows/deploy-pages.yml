@@ -32,7 +32,7 @@ jobs:
       - name: Stage clean static site bundle
         run: |
           mkdir -p _site
-          cp -R index.html 404.html google8a5eab19864fee78.html about shaun-david games news contact assets favicon.ico site.webmanifest robots.txt sitemap.xml _headers _redirects .nojekyll _site/
+          cp -R index.html 404.html google8a5eab19864fee78.html about shaun-david games news contact assets favicon.ico favicon.png favicon-48x48.png site.webmanifest robots.txt sitemap.xml _headers _redirects .nojekyll _site/
           chmod -R a+rX _site
 
       - name: Configure GitHub Pages
