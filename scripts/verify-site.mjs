@@ -55,6 +55,8 @@ const REQUIRED_FILES = [
   "assets/img/og-image.png",
   "assets/img/sds-crest-gold.png",
   "assets/img/sds-logo-original.jpg",
+  "assets/img/riderise-lk-logo.png",
+  "assets/img/riderise-lk-logo.webp",
   "assets/img/favicon.svg"
 ];
 
@@ -338,12 +340,24 @@ if (/Disallow:\s*\/(?:favicon|$|\s)/im.test(robotsText)) {
   fail("robots.txt blocks crawler access to /favicon.png");
 }
 
+// 9. Verify RideRise LK app & news showcase presence and badge dimensions
+checkPngDimensions("assets/img/riderise-lk-logo.png", 800, 800);
+for (const rrPage of ["index.html", "games/index.html", "news/index.html", "shaun-david/index.html"]) {
+  const html = fs.readFileSync(path.join(ROOT, rrPage), "utf8");
+  if (!html.includes("RideRise LK")) {
+    fail(`${rrPage}: Missing 'RideRise LK' app reference`);
+  }
+}
+if (!siteConfigText.includes('"riderise-lk"')) {
+  fail("assets/js/site-config.js missing 'riderise-lk' project entry");
+}
+
 if (errors === 0) {
   pass(`All ${HTML_PAGES.length} HTML pages passed unique <title>, meta description, single <h1>, image alt, and SVG sizing checks.`);
   pass("All CSS multi-column grids use minmax(0, ...) overflow guards for PC & mobile.");
   pass("All internal links, stylesheets, scripts, icons, and images resolve cleanly.");
-  pass("All Schema.org JSON-LD blocks (Organization, Person with H.K.S Sathsara, Instagram sameAs, ProfilePage, VideoGame) parsed cleanly.");
-  pass("Owner-verified details confirmed: H.K.S Sathsara, Best English Announcer in Western Province, official.shaundavidstudios@gmail.com, Instagram (@shaun.david.studios for Latest News), 3-project portfolio.");
+  pass("All Schema.org JSON-LD blocks (Organization, Person with H.K.S Sathsara, Instagram sameAs, ProfilePage, VideoGame, SoftwareApplication, BlogPosting) parsed cleanly.");
+  pass("Owner-verified details confirmed: H.K.S Sathsara, Best English Announcer in Western Province, official.shaundavidstudios@gmail.com, Instagram (@shaun.david.studios for Latest News), 4-project portfolio including RideRise LK.");
   console.log("\nVerification succeeded with 0 errors.");
 } else {
   console.error(`\nVerification failed with ${errors} error(s).`);
