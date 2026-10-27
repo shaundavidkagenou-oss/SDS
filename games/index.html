@@ -34,7 +34,7 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <link rel="preload" href="../assets/fonts/cinzel-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/main.css?v=3">
+  <link rel="stylesheet" href="../assets/css/main.css?v=4">
   <link rel="stylesheet" href="../assets/css/animations.css?v=3">
 
   <!-- Schema.org Structured Data (CollectionPage + VideoGame + Organization) -->
@@ -79,6 +79,27 @@
           "@id": "#shaun-david"
         },
         "url": "https://shaundavidstudios.pages.dev/games/#sl-bad-boy"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "#riderise-lk",
+        "name": "RideRise LK",
+        "description": "Ride, Stunt, Connect — a community, stunt-learning, guild, and custom bike-build platform designed by Shaun David Studios for BMX, freestyle, and stunt players in Sri Lanka.",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Android, Web",
+        "inLanguage": [
+          "en",
+          "si",
+          "ta"
+        ],
+        "image": "https://shaundavidstudios.pages.dev/assets/img/riderise-lk-logo.png",
+        "author": {
+          "@id": "#organization"
+        },
+        "creator": {
+          "@id": "#shaun-david"
+        },
+        "url": "https://shaundavidstudios.pages.dev/games/#riderise-lk"
       },
       {
         "@type": "Organization",
@@ -180,7 +201,7 @@
         </div>
         <h1 id="portfolio-title" class="page-title">Games &amp; Software Projects</h1>
         <p class="lead" style="max-width: 800px;">
-          Explore the original games and software applications built in Sri Lanka by <strong>Shaun David Studios</strong> — led by our debut 3D game <strong>SL BAD BOY — Schoolboy Rush</strong> alongside real-time collaborative and Sri Lanka-focused web software.
+          Explore the original games, mobile platforms, and web applications built in Sri Lanka by <strong>Shaun David Studios</strong> — featuring our debut 3D game <strong>SL BAD BOY — Schoolboy Rush</strong>, our Sri Lankan stunt-rider app <strong>RideRise LK</strong>, and real-time collaborative and planning software.
         </p>
       </div>
     </section>
@@ -189,9 +210,9 @@
     <section class="section" aria-label="Studio Portfolio Directory">
       <div class="container" id="portfolio-directory">
         <div class="filter-bar" role="group" aria-label="Filter projects by category" data-filter-group="#portfolio-directory">
-          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Projects (3)</button>
+          <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All Projects (4)</button>
           <button class="filter-btn" type="button" data-filter="game" aria-pressed="false">Games (1)</button>
-          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Software &amp; Web (2)</button>
+          <button class="filter-btn" type="button" data-filter="software" aria-pressed="false">Apps &amp; Software (3)</button>
         </div>
 
         <!-- 1. FLAGSHIP GAME: SL BAD BOY — SCHOOLBOY RUSH -->
@@ -333,7 +354,87 @@
           <div class="project-screenshots" data-project-screenshots="sl-bad-boy" hidden></div>
         </article>
 
-        <!-- 2. SOFTWARE & WEB PROJECTS GRID (2 PROJECTS) -->
+        <!-- 2. FEATURED APP FOR SRI LANKAN STUNT RIDERS: RIDERISE LK -->
+        <article id="riderise-lk" class="sds-card sds-card--gold reveal" data-no-tilt data-filter-item="software" style="margin-bottom: 2.25rem;">
+          <div class="badge-row">
+            <span class="badge badge--status">
+              <span class="badge__pulse" aria-hidden="true"></span>
+              <span>New Studio App · In Active Development</span>
+            </span>
+            <span class="badge">Android &amp; Web</span>
+            <span class="badge">Ride · Stunt · Connect</span>
+          </div>
+
+          <h2 class="section-title" style="margin-bottom: 0.75rem;">RideRise LK</h2>
+          <p class="lead" style="margin-bottom: 1.75rem;">
+            An original community, stunt-learning, rider guild, and custom bike-build platform engineered by <strong>Shaun David Studios</strong> specifically for stunt players, BMX riders, and freestyle crews across Sri Lanka.
+          </p>
+
+          <div class="riderise-layout">
+            <div class="riderise-badge-stage">
+              <picture>
+                <source srcset="../assets/img/riderise-lk-logo.webp" type="image/webp">
+                <img src="../assets/img/riderise-lk-logo.png" width="290" height="290" loading="lazy" alt="Official RideRise LK BMX sunset badge — Ride, Stunt, Connect by Shaun David Studios">
+              </picture>
+            </div>
+
+            <div>
+              <h3>Built for Sri Lanka's Stunt &amp; Freestyle Community</h3>
+              <p style="color: var(--text-secondary);">
+                Designed around the studio motto <em>Ride · Stunt · Connect</em>, <strong>RideRise LK</strong> unites Sri Lankan BMX, stunt, and freestyle riders inside a dedicated platform featuring <strong>rider guilds</strong>, real-time WebRTC guild voice rooms, press-and-hold walkie-talkie push-to-talk (PTT), and consent-first privacy-safe live guild map coordination.
+              </p>
+              <p style="color: var(--text-secondary);">
+                Beyond crew coordination, the app includes structured beginner, intermediate, advanced, and bike-maintenance learning pathways with checklists and quizzes, district-filtered Sri Lankan stunt events, and a custom parts and bike-build planner with LKR price filters and compatibility checks.
+              </p>
+
+              <div class="spec-ledger" style="margin-top: 1.25rem; padding: 1.15rem; background: rgba(6, 8, 13, 0.65); border: 1px solid var(--ivory-border);">
+                <div class="spec-row">
+                  <span class="spec-label">Development Status</span>
+                  <span class="spec-value">In Active Development</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Designed For</span>
+                  <span class="spec-value">Stunt Players, BMX &amp; Freestyle Riders in Sri Lanka</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Target Platforms</span>
+                  <span class="spec-value">Android &amp; Web Application</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Android Package ID</span>
+                  <span class="spec-value" style="font-family: var(--font-mono); font-size: 0.85rem;">lk.shaunstudios.riderise</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Languages</span>
+                  <span class="spec-value">English · සිංහල · தமிழ்</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Public Release Date</span>
+                  <span class="spec-value" data-project-release="riderise-lk">To Be Announced</span>
+                </div>
+              </div>
+
+              <ul class="tag-list" aria-label="Core Features">
+                <li class="tag-chip">Rider Guilds &amp; Walkie-Talkie PTT</li>
+                <li class="tag-chip">WebRTC Crew Voice Rooms</li>
+                <li class="tag-chip">Stunt Learning Pathways</li>
+                <li class="tag-chip">LKR Bike-Build Planner</li>
+                <li class="tag-chip">Sri Lanka Stunt Events</li>
+              </ul>
+
+              <div class="btn-group" style="margin-top: 1.4rem;" data-project-actions="riderise-lk" hidden></div>
+
+              <div class="btn-group" style="margin-top: 1rem;">
+                <a class="btn btn--secondary btn--sm" href="../news/#riderise-lk-announcement">Read Launch Announcement</a>
+                <a class="btn btn--ghost btn--sm" href="../contact/">App Inquiries &amp; Support</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-screenshots" data-project-screenshots="riderise-lk" hidden></div>
+        </article>
+
+        <!-- 3. COLLABORATIVE & PLANNING WEB SOFTWARE GRID (2 PROJECTS) -->
         <div class="grid-2">
           <!-- SDS Geox Meetings -->
           <article id="sds-geox-meetings" class="sds-card reveal" data-filter-item="software">
@@ -453,6 +554,7 @@
           <h2 class="site-footer__heading">Portfolio</h2>
           <ul class="site-footer__links">
             <li><a href="#sl-bad-boy">SL BAD BOY — Schoolboy Rush</a></li>
+            <li><a href="#riderise-lk">RideRise LK</a></li>
             <li><a href="#sds-geox-meetings">SDS Geox Meetings</a></li>
             <li><a href="#routemora">RouteMora</a></li>
           </ul>

@@ -75,6 +75,17 @@ window.SDS_SITE_CONFIG = {
       releaseDate: "",
       screenshots: []
     },
+    "riderise-lk": {
+      title: "RideRise LK",
+      category: "software",
+      status: "In Active Development",
+      platforms: ["Android", "Web Application"],
+      packageId: "lk.shaunstudios.riderise",
+      playUrl: "",
+      downloadUrl: "",
+      releaseDate: "",
+      screenshots: []
+    },
     "sds-geox-meetings": {
       title: "SDS Geox Meetings",
       category: "software",
